@@ -34,7 +34,10 @@
     "IDEVersion": "2023.8.2.108",
   },
   "resources": [
+    {"id":{"name":"fStateMachine","path":"scripts/fStateMachine/fStateMachine.yy",},},
     {"id":{"name":"oCont_Main","path":"objects/oCont_Main/oCont_Main.yy",},},
+    {"id":{"name":"oSample_","path":"objects/oSample_/oSample_.yy",},},
+    {"id":{"name":"fSampleBehavior","path":"scripts/fSampleBehavior/fSampleBehavior.yy",},},
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
   ],
   "RoomOrderNodes": [
