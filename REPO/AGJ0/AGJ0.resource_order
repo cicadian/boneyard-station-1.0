@@ -17,6 +17,9 @@
     {"name":"Timelines","order":8,"path":"folders/Timelines.yy",},
   ],
   "ResourceOrderSettings": [
+    {"name":"__CONSTS","order":2,"path":"scripts/__CONSTS/__CONSTS.yy",},
+    {"name":"oCont_World","order":2,"path":"objects/oCont_World/oCont_World.yy",},
+    {"name":"sTex_World","order":1,"path":"sprites/sTex_World/sTex_World.yy",},
     {"name":"oSample_","order":1,"path":"objects/oSample_/oSample_.yy",},
     {"name":"fSampleBehavior","order":1,"path":"scripts/fSampleBehavior/fSampleBehavior.yy",},
   ],

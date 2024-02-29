@@ -35,8 +35,11 @@
   },
   "resources": [
     {"id":{"name":"fStateMachine","path":"scripts/fStateMachine/fStateMachine.yy",},},
+    {"id":{"name":"__CONSTS","path":"scripts/__CONSTS/__CONSTS.yy",},},
     {"id":{"name":"sTile_Path","path":"sprites/sTile_Path/sTile_Path.yy",},},
+    {"id":{"name":"oCont_World","path":"objects/oCont_World/oCont_World.yy",},},
     {"id":{"name":"oCont_Main","path":"objects/oCont_Main/oCont_Main.yy",},},
+    {"id":{"name":"sTex_World","path":"sprites/sTex_World/sTex_World.yy",},},
     {"id":{"name":"oSample_","path":"objects/oSample_/oSample_.yy",},},
     {"id":{"name":"fSampleBehavior","path":"scripts/fSampleBehavior/fSampleBehavior.yy",},},
     {"id":{"name":"tTile_Path","path":"tilesets/tTile_Path/tTile_Path.yy",},},
