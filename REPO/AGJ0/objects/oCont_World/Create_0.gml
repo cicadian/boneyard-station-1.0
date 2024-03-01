@@ -29,7 +29,7 @@ global.fov = 70;
 global.fog_on = true;
 global.fog_color = c_black;
 global.fog_start = CELL_SIZE;
-global.fog_end = CELL_SIZE * 5;
+global.fog_end = CELL_SIZE * 4;
 
 global.world_grid = ds_grid_create(GAME_W, GAME_H);
 ds_grid_clear(global.world_grid, __CELL_PATH.FULL);

@@ -42,3 +42,5 @@ enum __CARDINAL {
 #macro KEY_RIGHT    vk_right
 #macro KEY_FORWARD  vk_up
 #macro KEY_BACKWARD vk_down
+
+#macro FONTMAP " ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789.,!?:;\"'[]()"

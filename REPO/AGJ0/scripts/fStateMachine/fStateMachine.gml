@@ -2,14 +2,12 @@
 /// @desc {void} builds a state machine from a map
 /// @arg {map} stateMap
 /// @arg {script} stateDefault
-/// @arg {str} stateName//NYI
-function stateMachine_init(_stateMap, _stateDefault, _stateName){
+function stateMachine_init(_stateMap, _stateDefault){
 	_stateMap[? "PRV"] = _stateDefault;
 	_stateMap[? "CUR"] = _stateDefault;
 	_stateMap[? "NEXT"] = _stateDefault;
 	_stateMap[? "INIT"] = false;
 	_stateMap[? "DONE"] = false;
-	_stateMap[? "NAME"] = _stateName;
 }
 
 /// @func stateMachine_push
