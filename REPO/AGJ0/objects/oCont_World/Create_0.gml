@@ -1,14 +1,37 @@
-tex_world = sprite_get_texture(sTex_World, 0);
+surf_world = -1;
+
+// texture stuff
 tex_spr_size = 32;
 tex_sht_size = 512;
 tex_pix_uvs  = 1 / tex_sht_size; // 1 pixel in UV coordinates
 tex_spr_uvs  = tex_pix_uvs * tex_spr_size; // 32 pixels in UV coordinates
-texcoord_default_x = tex_pix_uvs; // default start x position for world texture
-texcoord_default_y = tex_pix_uvs; // default start y position for world_texture
-texcoord_north_x  = texcoord_default_x + (tex_spr_uvs * 1) + (tex_pix_uvs * 1);
-texcoord_east_x   = texcoord_default_x + (tex_spr_uvs * 2) + (tex_pix_uvs * 2);
-texcoord_south_x  = texcoord_default_x + (tex_spr_uvs * 3) + (tex_pix_uvs * 3);
-texcoord_west_x   = texcoord_default_x + (tex_spr_uvs * 4) + (tex_pix_uvs * 4);
-texcoord_top_x    = texcoord_default_x + (tex_spr_uvs * 5) + (tex_pix_uvs * 5);
-texcoord_bottom_x = texcoord_default_x + (tex_spr_uvs * 6) + (tex_pix_uvs * 6);
+tex_spr_m_uvs = tex_spr_uvs + (tex_pix_uvs * 2); // 34 pixels in UV coordinates
+texcoord_default_u = 0; // default start x position for world texture
+texcoord_default_v = 0 + tex_pix_uvs; // default start y position for world_texture
+texcoord_north_u  = (tex_spr_m_uvs * 1) + tex_pix_uvs;
+texcoord_east_u   = (tex_spr_m_uvs * 2) + tex_pix_uvs;
+texcoord_south_u  = (tex_spr_m_uvs * 3) + tex_pix_uvs;
+texcoord_west_u   = (tex_spr_m_uvs * 4) + tex_pix_uvs;
+texcoord_top_u    = (tex_spr_m_uvs * 5) + tex_pix_uvs;
+texcoord_bottom_u = (tex_spr_m_uvs * 6) + tex_pix_uvs;
 
+// 3d stuff
+vertex_format_begin();
+vertex_format_add_position_3d();
+vertex_format_add_texcoord();
+vertex_format_add_color();
+world_format = vertex_format_end();
+
+world_vbuff = undefined;
+world_tex = sprite_get_texture(sTex_World, 0);
+
+global.fov = 70;
+global.fog_on = true;
+global.fog_color = c_black;
+global.fog_start = CELL_SIZE;
+global.fog_end = CELL_SIZE * 5;
+
+global.world_grid = ds_grid_create(GAME_W, GAME_H);
+ds_grid_clear(global.world_grid, __CELL_PATH.FULL);
+
+world_build();
