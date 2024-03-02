@@ -10,7 +10,7 @@
 #macro GAME_ASPECT NATIVE_W / NATIVE_H
 
 #macro START_X 224
-#macro START_Y 4
+#macro START_Y 12
 
 #macro GAME_W room_width div CELL_SIZE
 #macro GAME_H room_height div CELL_SIZE
@@ -41,6 +41,25 @@ enum __CARDINAL {
 enum __DOOR_ORIENTATION{
 	HORIZONTAL,
 	VERTICAL
+}
+
+enum __CLICKZONE_TYPE{
+	START_CONSOLE,
+	ARMORY,
+	ENGINE,
+	START_EXIT,
+	EMERGENCY_LIGHTSWITCH,
+	FUEL_SLOT,
+	ELEVATOR_UP,
+	ELEVATOR_DOWN,
+	FUEL,
+	BRIDGE_CONSOLE,
+	CAPTAIN,
+	
+	DOOR_FAKE,
+	RUBBLE,
+	
+	NONE
 }
 
 #macro KEY_LEFT       vk_left

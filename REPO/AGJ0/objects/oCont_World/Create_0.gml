@@ -27,6 +27,8 @@ world_tex = sprite_get_texture(sTex_World, 0);
 
 door_tex = sprite_get_texture(sTex_Door, 0);
 
+clickzone_tex = sprite_get_texture(sTex_Clickzone, 0);
+
 global.fov = 70;
 global.fog_on = true;
 global.fog_color = c_black;

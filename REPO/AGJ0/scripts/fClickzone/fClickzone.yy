@@ -1,7 +1,7 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "fState_Game",
+  "name": "fClickzone",
   "isCompatibility": false,
   "isDnD": false,
   "parent": {

@@ -37,6 +37,12 @@ if (world_vbuff != undefined){
 		}
 		vertex_submit(door_buffer_list[| _i][? "VBUFF"], pr_trianglelist, door_tex);
 	}
+	matrix_set(matrix_world, _worldMat);
+	with (oClickzone){
+		if (vbuff != undefined){
+			vertex_submit(vbuff, pr_trianglelist, tex);
+		}
+	}
 	
 	gpu_set_fog(false, global.fog_color, global.fog_start, global.fog_end);
 	

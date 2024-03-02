@@ -1,0 +1,2 @@
+type = __CLICKZONE_TYPE.ELEVATOR_UP;
+wall = __CELL_WALLS.NORTH;

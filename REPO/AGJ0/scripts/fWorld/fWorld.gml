@@ -12,67 +12,11 @@ function world_build(){
 	}
 	vertex_end(world_vbuff);
 	vertex_freeze(world_vbuff);
-	
-	var _vbuff;
 	with (oDoor){
-		var _x1 = grid_x * CELL_SIZE;
-		var _x2 = _x1 + CELL_SIZE;
-		var _y1 = grid_y * CELL_SIZE;
-		var _y2 = _y1 + CELL_SIZE;
-		var _z1 = 0;
-		var _z2 = CELL_SIZE; 
-		_vbuff = vertex_create_buffer();
-		vertex_begin(_vbuff, other.world_format);
-		if (orientation == __DOOR_ORIENTATION.HORIZONTAL){
-			vertex_position_3d(_vbuff, _x2 - (CELL_SIZE / 2), _y1, _z2);
-			vertex_texcoord(_vbuff, other.texcoord_default_u, other.texcoord_default_v);
-			vertex_colour(_vbuff, c_white, 1);
-			vertex_position_3d(_vbuff, _x2 - (CELL_SIZE / 2), _y2, _z2);
-			vertex_texcoord(_vbuff, other.texcoord_default_u + other.tex_spr_uvs, other.texcoord_default_v);
-			vertex_colour(_vbuff, c_white, 1);
-			vertex_position_3d(_vbuff, _x2 - (CELL_SIZE / 2), _y2, _z1);
-			vertex_texcoord(_vbuff, other.texcoord_default_u + other.tex_spr_uvs, other.texcoord_default_v + other.tex_spr_uvs);
-			vertex_colour(_vbuff, c_white, 1);
-
-			vertex_position_3d(_vbuff, _x2 - (CELL_SIZE / 2), _y1, _z2);
-			vertex_texcoord(_vbuff, other.texcoord_default_u, other.texcoord_default_v);
-			vertex_colour(_vbuff, c_white, 1);
-			vertex_position_3d(_vbuff, _x2 - (CELL_SIZE / 2), _y2, _z1);
-			vertex_texcoord(_vbuff, other.texcoord_default_u + other.tex_spr_uvs, other.texcoord_default_v + other.tex_spr_uvs);
-			vertex_colour(_vbuff, c_white, 1);
-			vertex_position_3d(_vbuff, _x2 - (CELL_SIZE / 2), _y1, _z1);
-			vertex_texcoord(_vbuff, other.texcoord_default_u, other.texcoord_default_v + other.tex_spr_uvs);
-			vertex_colour(_vbuff, c_white, 1);
-		}
-		else if (orientation == __DOOR_ORIENTATION.VERTICAL){
-			vertex_position_3d(_vbuff, _x1, _y1 + (CELL_SIZE / 2), _z2);
-			vertex_texcoord(_vbuff, other.texcoord_default_u, other.texcoord_default_v);
-			vertex_colour(_vbuff, c_white, 1);
-			vertex_position_3d(_vbuff, _x2, _y1 + (CELL_SIZE / 2), _z2);
-			vertex_texcoord(_vbuff, other.texcoord_default_u + other.tex_spr_uvs, other.texcoord_default_v);
-			vertex_colour(_vbuff, c_white, 1);
-			vertex_position_3d(_vbuff, _x2, _y1 + (CELL_SIZE / 2), _z1);
-			vertex_texcoord(_vbuff, other.texcoord_default_u + other.tex_spr_uvs, other.texcoord_default_v + other.tex_spr_uvs);
-			vertex_colour(_vbuff, c_white, 1);
-
-			vertex_position_3d(_vbuff, _x1, _y1 + (CELL_SIZE / 2), _z2);
-			vertex_texcoord(_vbuff, other.texcoord_default_u, other.texcoord_default_v);
-			vertex_colour(_vbuff, c_white, 1);
-			vertex_position_3d(_vbuff, _x2, _y1 + (CELL_SIZE / 2), _z1);
-			vertex_texcoord(_vbuff, other.texcoord_default_u + other.tex_spr_uvs, other.texcoord_default_v + other.tex_spr_uvs);
-			vertex_colour(_vbuff, c_white, 1);
-			vertex_position_3d(_vbuff, _x1, _y1 + (CELL_SIZE / 2), _z1);
-			vertex_texcoord(_vbuff, other.texcoord_default_u, other.texcoord_default_v + other.tex_spr_uvs);
-			vertex_colour(_vbuff, c_white, 1);
-		}
-		vertex_end(_vbuff);
-		vertex_freeze(_vbuff);
-		var _map = ds_map_create();
-		_map[? "VBUFF"] = _vbuff;
-		_map[? "ID"]    = id;
-		ds_list_add(other.door_buffer_list, _map);
-		other.door_count++;
-		ds_list_mark_as_map(other.door_buffer_list, other.door_count);
+		door_build();
+	}
+	with (oClickzone){
+		clickzone_build(id);
 	}
 }
 
@@ -83,8 +27,19 @@ function world_build(){
 function world_build_cell(_grid_x, _grid_y){
 	for (var _i = 0; _i < __CELL_WALLS.SIZE; _i++){
 		var _is_empty = global.world_grid[# _grid_x, _grid_y] == __CELL_PATH.EMPTY;
+		var _build = true;
+		var _u = oCont_World.texcoord_default_u;
+		var _v = oCont_World.texcoord_default_v;
+		var _clickzone_id = instance_position(_grid_x * CELL_SIZE, _grid_y * CELL_SIZE, oClickzone);
 		if (_is_empty){
-			world_build_wall(_grid_x, _grid_y, _i);
+			if (_clickzone_id != noone){
+				if (_clickzone_id.wall == _i){
+					_build = false;
+				}
+			}
+			if (_build){
+				world_build_wall(_grid_x, _grid_y, _i, oCont_World.world_vbuff, _u, _v);
+			}
 		}
 	}
 }
@@ -94,7 +49,10 @@ function world_build_cell(_grid_x, _grid_y){
 /// @arg {real} grid_x
 /// @arg {real} grid_y
 /// @arg {real} type
-function world_build_wall(_grid_x, _grid_y, _type){
+/// @arg {vbuff} vbuff
+/// @arg {real} u
+/// @arg {real} v
+function world_build_wall(_grid_x, _grid_y, _type, _vbuff, _u, _v){
 	var _x1 = _grid_x * CELL_SIZE;
 	var _x2 = _x1 + CELL_SIZE;
 	var _y1 = _grid_y * CELL_SIZE;
@@ -102,144 +60,150 @@ function world_build_wall(_grid_x, _grid_y, _type){
 	var _z1 = 0;
 	var _z2 = CELL_SIZE; 
 	var _build = false;
+
 	switch(_type){
 		case __CELL_WALLS.NORTH:
 			_build = !pathgrid_get_empty(_grid_x, _grid_y - 1);
+			if (object_index == oClickzone){
+				if (type == __CLICKZONE_TYPE.CAPTAIN){
+					_build = true; // The captain clickzone exists as a special wall
+				}
+			}
 			if (_build){
-				vertex_position_3d(world_vbuff, _x1, _y1, _z2);
-				vertex_texcoord(world_vbuff, texcoord_north_u, texcoord_default_v);
-				vertex_colour(world_vbuff, c_white, 1);
-				vertex_position_3d(world_vbuff, _x2, _y1, _z2);
-				vertex_texcoord(world_vbuff, texcoord_north_u + tex_spr_uvs, texcoord_default_v);
-				vertex_colour(world_vbuff, c_white, 1);
-				vertex_position_3d(world_vbuff, _x2, _y1, _z1);
-				vertex_texcoord(world_vbuff, texcoord_north_u + tex_spr_uvs, texcoord_default_v + tex_spr_uvs);
-				vertex_colour(world_vbuff, c_white, 1);
+				vertex_position_3d(_vbuff, _x1, _y1, _z2);
+				vertex_texcoord(_vbuff, _u, _v);
+				vertex_colour(_vbuff, c_white, 1);
+				vertex_position_3d(_vbuff, _x2, _y1, _z2);
+				vertex_texcoord(_vbuff, _u + oCont_World.tex_spr_uvs, _v);
+				vertex_colour(_vbuff, c_white, 1);
+				vertex_position_3d(_vbuff, _x2, _y1, _z1);
+				vertex_texcoord(_vbuff, _u + oCont_World.tex_spr_uvs, _v + oCont_World.tex_spr_uvs);
+				vertex_colour(_vbuff, c_white, 1);
 
-				vertex_position_3d(world_vbuff, _x1, _y1, _z2);
-				vertex_texcoord(world_vbuff, texcoord_north_u, texcoord_default_v);
-				vertex_colour(world_vbuff, c_white, 1);
-				vertex_position_3d(world_vbuff, _x2, _y1, _z1);
-				vertex_texcoord(world_vbuff, texcoord_north_u + tex_spr_uvs, texcoord_default_v + tex_spr_uvs);
-				vertex_colour(world_vbuff, c_white, 1);
-				vertex_position_3d(world_vbuff, _x1, _y1, _z1);
-				vertex_texcoord(world_vbuff, texcoord_north_u, texcoord_default_v + tex_spr_uvs);
-				vertex_colour(world_vbuff, c_white, 1);
+				vertex_position_3d(_vbuff, _x1, _y1, _z2);
+				vertex_texcoord(_vbuff, _u, _v);
+				vertex_colour(_vbuff, c_white, 1);
+				vertex_position_3d(_vbuff, _x2, _y1, _z1);
+				vertex_texcoord(_vbuff, _u + oCont_World.tex_spr_uvs, _v + oCont_World.tex_spr_uvs);
+				vertex_colour(_vbuff, c_white, 1);
+				vertex_position_3d(_vbuff, _x1, _y1, _z1);
+				vertex_texcoord(_vbuff, _u, _v + oCont_World.tex_spr_uvs);
+				vertex_colour(_vbuff, c_white, 1);
 			}
 			break;
 		case __CELL_WALLS.EAST:
 			_build = !pathgrid_get_empty(_grid_x + 1, _grid_y);
 			if (_build){
-				vertex_position_3d(world_vbuff, _x2, _y1, _z2);
-				vertex_texcoord(world_vbuff, texcoord_east_u, texcoord_default_v);
-				vertex_colour(world_vbuff, c_white, 1);
-				vertex_position_3d(world_vbuff, _x2, _y2, _z2);
-				vertex_texcoord(world_vbuff, texcoord_east_u + tex_spr_uvs, texcoord_default_v);
-				vertex_colour(world_vbuff, c_white, 1);
-				vertex_position_3d(world_vbuff, _x2, _y2, _z1);
-				vertex_texcoord(world_vbuff, texcoord_east_u + tex_spr_uvs, texcoord_default_v + tex_spr_uvs);
-				vertex_colour(world_vbuff, c_white, 1);
+				vertex_position_3d(_vbuff, _x2, _y1, _z2);
+				vertex_texcoord(_vbuff, _u, _v);
+				vertex_colour(_vbuff, c_white, 1);
+				vertex_position_3d(_vbuff, _x2, _y2, _z2);
+				vertex_texcoord(_vbuff, _u + oCont_World.tex_spr_uvs, _v);
+				vertex_colour(_vbuff, c_white, 1);
+				vertex_position_3d(_vbuff, _x2, _y2, _z1);
+				vertex_texcoord(_vbuff, _u + oCont_World.tex_spr_uvs, _v + oCont_World.tex_spr_uvs);
+				vertex_colour(_vbuff, c_white, 1);
 
-				vertex_position_3d(world_vbuff, _x2, _y1, _z2);
-				vertex_texcoord(world_vbuff, texcoord_east_u, texcoord_default_v);
-				vertex_colour(world_vbuff, c_white, 1);
-				vertex_position_3d(world_vbuff, _x2, _y2, _z1);
-				vertex_texcoord(world_vbuff, texcoord_east_u + tex_spr_uvs, texcoord_default_v + tex_spr_uvs);
-				vertex_colour(world_vbuff, c_white, 1);
-				vertex_position_3d(world_vbuff, _x2, _y1, _z1);
-				vertex_texcoord(world_vbuff, texcoord_east_u, texcoord_default_v + tex_spr_uvs);
-				vertex_colour(world_vbuff, c_white, 1);
+				vertex_position_3d(_vbuff, _x2, _y1, _z2);
+				vertex_texcoord(_vbuff, _u, _v);
+				vertex_colour(_vbuff, c_white, 1);
+				vertex_position_3d(_vbuff, _x2, _y2, _z1);
+				vertex_texcoord(_vbuff, _u + oCont_World.tex_spr_uvs, _v + oCont_World.tex_spr_uvs);
+				vertex_colour(_vbuff, c_white, 1);
+				vertex_position_3d(_vbuff, _x2, _y1, _z1);
+				vertex_texcoord(_vbuff, _u, _v + oCont_World.tex_spr_uvs);
+				vertex_colour(_vbuff, c_white, 1);
 			}
 			break;
 		case __CELL_WALLS.SOUTH:
 			_build = !pathgrid_get_empty(_grid_x, _grid_y + 1);
 			if (_build){
-				vertex_position_3d(world_vbuff, _x2, _y2, _z2);
-				vertex_texcoord(world_vbuff, texcoord_south_u, texcoord_default_v);
-				vertex_colour(world_vbuff, c_white, 1);
-				vertex_position_3d(world_vbuff, _x1, _y2, _z2);
-				vertex_texcoord(world_vbuff, texcoord_south_u + tex_spr_uvs, texcoord_default_v);
-				vertex_colour(world_vbuff, c_white, 1);
-				vertex_position_3d(world_vbuff, _x1, _y2, _z1);
-				vertex_texcoord(world_vbuff, texcoord_south_u + tex_spr_uvs, texcoord_default_v + tex_spr_uvs);
-				vertex_colour(world_vbuff, c_white, 1);
+				vertex_position_3d(_vbuff, _x2, _y2, _z2);
+				vertex_texcoord(_vbuff, _u, _v);
+				vertex_colour(_vbuff, c_white, 1);
+				vertex_position_3d(_vbuff, _x1, _y2, _z2);
+				vertex_texcoord(_vbuff, _u + oCont_World.tex_spr_uvs, _v);
+				vertex_colour(_vbuff, c_white, 1);
+				vertex_position_3d(_vbuff, _x1, _y2, _z1);
+				vertex_texcoord(_vbuff, _u + oCont_World.tex_spr_uvs, _v + oCont_World.tex_spr_uvs);
+				vertex_colour(_vbuff, c_white, 1);
 
-				vertex_position_3d(world_vbuff, _x2, _y2, _z2);
-				vertex_texcoord(world_vbuff, texcoord_south_u, texcoord_default_v);
-				vertex_colour(world_vbuff, c_white, 1);
-				vertex_position_3d(world_vbuff, _x1, _y2, _z1);
-				vertex_texcoord(world_vbuff, texcoord_south_u + tex_spr_uvs, texcoord_default_v + tex_spr_uvs);
-				vertex_colour(world_vbuff, c_white, 1);
-				vertex_position_3d(world_vbuff, _x2, _y2, _z1);
-				vertex_texcoord(world_vbuff, texcoord_south_u, texcoord_default_v + tex_spr_uvs);
-				vertex_colour(world_vbuff, c_white, 1);
+				vertex_position_3d(_vbuff, _x2, _y2, _z2);
+				vertex_texcoord(_vbuff, _u, _v);
+				vertex_colour(_vbuff, c_white, 1);
+				vertex_position_3d(_vbuff, _x1, _y2, _z1);
+				vertex_texcoord(_vbuff, _u + oCont_World.tex_spr_uvs, _v + oCont_World.tex_spr_uvs);
+				vertex_colour(_vbuff, c_white, 1);
+				vertex_position_3d(_vbuff, _x2, _y2, _z1);
+				vertex_texcoord(_vbuff, _u, _v + oCont_World.tex_spr_uvs);
+				vertex_colour(_vbuff, c_white, 1);
 			}
 			break;
 		case __CELL_WALLS.WEST:
 			_build = !pathgrid_get_empty(_grid_x - 1, _grid_y);
 			if (_build){
-				vertex_position_3d(world_vbuff, _x1, _y2, _z2);
-				vertex_texcoord(world_vbuff, texcoord_west_u, texcoord_default_v);
-				vertex_colour(world_vbuff, c_white, 1);
-				vertex_position_3d(world_vbuff, _x1, _y1, _z2);
-				vertex_texcoord(world_vbuff, texcoord_west_u + tex_spr_uvs, texcoord_default_v);
-				vertex_colour(world_vbuff, c_white, 1);
-				vertex_position_3d(world_vbuff, _x1, _y1, _z1);
-				vertex_texcoord(world_vbuff, texcoord_west_u + tex_spr_uvs, texcoord_default_v + tex_spr_uvs);
-				vertex_colour(world_vbuff, c_white, 1);
+				vertex_position_3d(_vbuff, _x1, _y2, _z2);
+				vertex_texcoord(_vbuff, _u, _v);
+				vertex_colour(_vbuff, c_white, 1);
+				vertex_position_3d(_vbuff, _x1, _y1, _z2);
+				vertex_texcoord(_vbuff, _u + oCont_World.tex_spr_uvs, _v);
+				vertex_colour(_vbuff, c_white, 1);
+				vertex_position_3d(_vbuff, _x1, _y1, _z1);
+				vertex_texcoord(_vbuff, _u + oCont_World.tex_spr_uvs, _v + oCont_World.tex_spr_uvs);
+				vertex_colour(_vbuff, c_white, 1);
 
-				vertex_position_3d(world_vbuff, _x1, _y2, _z2);
-				vertex_texcoord(world_vbuff, texcoord_west_u, texcoord_default_v);
-				vertex_colour(world_vbuff, c_white, 1);
-				vertex_position_3d(world_vbuff, _x1, _y1, _z1);
-				vertex_texcoord(world_vbuff, texcoord_west_u + tex_spr_uvs, texcoord_default_v + tex_spr_uvs);
-				vertex_colour(world_vbuff, c_white, 1);
-				vertex_position_3d(world_vbuff, _x1, _y2, _z1);
-				vertex_texcoord(world_vbuff, texcoord_west_u, texcoord_default_v + tex_spr_uvs);
-				vertex_colour(world_vbuff, c_white, 1);
+				vertex_position_3d(_vbuff, _x1, _y2, _z2);
+				vertex_texcoord(_vbuff, _u, _v);
+				vertex_colour(_vbuff, c_white, 1);
+				vertex_position_3d(_vbuff, _x1, _y1, _z1);
+				vertex_texcoord(_vbuff, _u + oCont_World.tex_spr_uvs, _v + oCont_World.tex_spr_uvs);
+				vertex_colour(_vbuff, c_white, 1);
+				vertex_position_3d(_vbuff, _x1, _y2, _z1);
+				vertex_texcoord(_vbuff, _u, _v + oCont_World.tex_spr_uvs);
+				vertex_colour(_vbuff, c_white, 1);
 			}
 			break;
 		case __CELL_WALLS.TOP:
-			vertex_position_3d(world_vbuff, _x1, _y1, _z2);
-			vertex_texcoord(world_vbuff, texcoord_top_u, texcoord_default_v);
-			vertex_colour(world_vbuff, c_white, 1);
-			vertex_position_3d(world_vbuff, _x2, _y1, _z2);
-			vertex_texcoord(world_vbuff, texcoord_top_u + tex_spr_uvs, texcoord_default_v);
-			vertex_colour(world_vbuff, c_white, 1);
-			vertex_position_3d(world_vbuff, _x2, _y2, _z2);
-			vertex_texcoord(world_vbuff, texcoord_top_u + tex_spr_uvs, texcoord_default_v + tex_spr_uvs);
-			vertex_colour(world_vbuff, c_white, 1);
+			vertex_position_3d(_vbuff, _x1, _y1, _z2);
+			vertex_texcoord(_vbuff, _u, _v);
+			vertex_colour(_vbuff, c_white, 1);
+			vertex_position_3d(_vbuff, _x2, _y1, _z2);
+			vertex_texcoord(_vbuff, _u + oCont_World.tex_spr_uvs, _v);
+			vertex_colour(_vbuff, c_white, 1);
+			vertex_position_3d(_vbuff, _x2, _y2, _z2);
+			vertex_texcoord(_vbuff, _u + oCont_World.tex_spr_uvs, _v + oCont_World.tex_spr_uvs);
+			vertex_colour(_vbuff, c_white, 1);
 
-			vertex_position_3d(world_vbuff, _x1, _y1, _z2);
-			vertex_texcoord(world_vbuff, texcoord_top_u, texcoord_default_v);
-			vertex_colour(world_vbuff, c_white, 1);
-			vertex_position_3d(world_vbuff, _x2, _y2, _z2);
-			vertex_texcoord(world_vbuff, texcoord_top_u + tex_spr_uvs, texcoord_default_v + tex_spr_uvs);
-			vertex_colour(world_vbuff, c_white, 1);
-			vertex_position_3d(world_vbuff, _x1, _y2, _z2);
-			vertex_texcoord(world_vbuff, texcoord_top_u, texcoord_default_v + tex_spr_uvs);
-			vertex_colour(world_vbuff, c_white, 1);
+			vertex_position_3d(_vbuff, _x1, _y1, _z2);
+			vertex_texcoord(_vbuff, _u, _v);
+			vertex_colour(_vbuff, c_white, 1);
+			vertex_position_3d(_vbuff, _x2, _y2, _z2);
+			vertex_texcoord(_vbuff, _u + oCont_World.tex_spr_uvs, _v + oCont_World.tex_spr_uvs);
+			vertex_colour(_vbuff, c_white, 1);
+			vertex_position_3d(_vbuff, _x1, _y2, _z2);
+			vertex_texcoord(_vbuff, _u, _v + oCont_World.tex_spr_uvs);
+			vertex_colour(_vbuff, c_white, 1);
 			break;
 		case __CELL_WALLS.BOTTOM:
-			vertex_position_3d(world_vbuff, _x1, _y1, _z1);
-			vertex_texcoord(world_vbuff, texcoord_bottom_u, texcoord_default_v);
-			vertex_colour(world_vbuff, c_white, 1);
-			vertex_position_3d(world_vbuff, _x2, _y1, _z1);
-			vertex_texcoord(world_vbuff, texcoord_bottom_u + tex_spr_uvs, texcoord_default_v);
-			vertex_colour(world_vbuff, c_white, 1);
-			vertex_position_3d(world_vbuff, _x2, _y2, _z1);
-			vertex_texcoord(world_vbuff, texcoord_bottom_u + tex_spr_uvs, texcoord_default_v + tex_spr_uvs);
-			vertex_colour(world_vbuff, c_white, 1);
+			vertex_position_3d(_vbuff, _x1, _y1, _z1);
+			vertex_texcoord(_vbuff, _u, _v);
+			vertex_colour(_vbuff, c_white, 1);
+			vertex_position_3d(_vbuff, _x2, _y1, _z1);
+			vertex_texcoord(_vbuff, _u + oCont_World.tex_spr_uvs, _v);
+			vertex_colour(_vbuff, c_white, 1);
+			vertex_position_3d(_vbuff, _x2, _y2, _z1);
+			vertex_texcoord(_vbuff, _u + oCont_World.tex_spr_uvs, _v + oCont_World.tex_spr_uvs);
+			vertex_colour(_vbuff, c_white, 1);
 
-			vertex_position_3d(world_vbuff, _x1, _y1, _z1);
-			vertex_texcoord(world_vbuff, texcoord_bottom_u, texcoord_default_v);
-			vertex_colour(world_vbuff, c_white, 1);
-			vertex_position_3d(world_vbuff, _x2, _y2, _z1);
-			vertex_texcoord(world_vbuff, texcoord_bottom_u + tex_spr_uvs, texcoord_default_v + tex_spr_uvs);
-			vertex_colour(world_vbuff, c_white, 1);
-			vertex_position_3d(world_vbuff, _x1, _y2, _z1);
-			vertex_texcoord(world_vbuff, texcoord_bottom_u, texcoord_default_v + tex_spr_uvs);
-			vertex_colour(world_vbuff, c_white, 1);
+			vertex_position_3d(_vbuff, _x1, _y1, _z1);
+			vertex_texcoord(_vbuff, _u, _v);
+			vertex_colour(_vbuff, c_white, 1);
+			vertex_position_3d(_vbuff, _x2, _y2, _z1);
+			vertex_texcoord(_vbuff, _u + oCont_World.tex_spr_uvs, _v + oCont_World.tex_spr_uvs);
+			vertex_colour(_vbuff, c_white, 1);
+			vertex_position_3d(_vbuff, _x1, _y2, _z1);
+			vertex_texcoord(_vbuff, _u, _v + oCont_World.tex_spr_uvs);
+			vertex_colour(_vbuff, c_white, 1);
 			break;
 	}
 }

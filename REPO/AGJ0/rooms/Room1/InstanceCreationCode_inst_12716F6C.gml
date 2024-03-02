@@ -1,0 +1,2 @@
+type = __CLICKZONE_TYPE.FUEL;
+wall = __CELL_WALLS.SOUTH;
