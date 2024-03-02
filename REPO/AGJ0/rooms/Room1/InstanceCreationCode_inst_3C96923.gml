@@ -1,0 +1,1 @@
+type = __WALKZONE_TYPE.ENEMIES;

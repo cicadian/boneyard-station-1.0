@@ -62,6 +62,13 @@ enum __CLICKZONE_TYPE{
 	NONE
 }
 
+enum __WALKZONE_TYPE{
+	ARMORY,
+	STATION,
+	CARGO,
+	ENEMIES
+}
+
 #macro PORT_X 2
 #macro PORT_Y 122
 #macro DIALOG_X 40
