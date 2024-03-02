@@ -46,6 +46,8 @@
     {"id":{"name":"oEntity_","path":"objects/oEntity_/oEntity_.yy",},},
     {"id":{"name":"fPathgrid","path":"scripts/fPathgrid/fPathgrid.yy",},},
     {"id":{"name":"sTex_World","path":"sprites/sTex_World/sTex_World.yy",},},
+    {"id":{"name":"sCursor_Aim","path":"sprites/sCursor_Aim/sCursor_Aim.yy",},},
+    {"id":{"name":"sCursor_Default","path":"sprites/sCursor_Default/sCursor_Default.yy",},},
     {"id":{"name":"fTile","path":"scripts/fTile/fTile.yy",},},
     {"id":{"name":"oPlayer","path":"objects/oPlayer/oPlayer.yy",},},
     {"id":{"name":"fClickzone","path":"scripts/fClickzone/fClickzone.yy",},},

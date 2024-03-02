@@ -24,3 +24,6 @@ some kind of shader effect
 posterization
 textures per wall
 death effects
+
+
+reduce scope of clickzones to literally the entire wall rather than a specific area on that wall

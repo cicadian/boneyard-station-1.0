@@ -21,10 +21,10 @@ enum __CELL_PATH {
 }
 
 enum __CELL_WALLS {
-	NORTH,
 	EAST,
-	SOUTH,
+	NORTH,
 	WEST,
+	SOUTH,
 	TOP,
 	BOTTOM,
 	SIZE
@@ -62,10 +62,10 @@ enum __CLICKZONE_TYPE{
 	NONE
 }
 
-#macro KEY_LEFT       vk_left
-#macro KEY_RIGHT      vk_right
-#macro KEY_FORWARD    vk_up
-#macro KEY_BACKWARD   vk_down
+#macro KEY_LEFT       ord("A")
+#macro KEY_RIGHT      ord("D")
+#macro KEY_FORWARD    ord("W")
+#macro KEY_BACKWARD   ord("S")
 #macro KEY_SKIP       vk_space
 #macro MOUSE_INTERACT mb_left
 #macro MOUSE_SHOOT    mb_right

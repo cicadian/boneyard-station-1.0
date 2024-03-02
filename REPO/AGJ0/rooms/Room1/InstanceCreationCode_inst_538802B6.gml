@@ -1,2 +1,2 @@
 type = __CLICKZONE_TYPE.DOOR_FAKE;
-wall = __CELL_WALLS.SOUTH;
+wall = __CARDINAL.SOUTH;

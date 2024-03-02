@@ -25,6 +25,8 @@
     {"name":"oEntity_","order":3,"path":"objects/oEntity_/oEntity_.yy",},
     {"name":"fPathgrid","order":5,"path":"scripts/fPathgrid/fPathgrid.yy",},
     {"name":"sTex_World","order":1,"path":"sprites/sTex_World/sTex_World.yy",},
+    {"name":"sCursor_Aim","order":9,"path":"sprites/sCursor_Aim/sCursor_Aim.yy",},
+    {"name":"sCursor_Default","order":8,"path":"sprites/sCursor_Default/sCursor_Default.yy",},
     {"name":"fTile","order":4,"path":"scripts/fTile/fTile.yy",},
     {"name":"oPlayer","order":4,"path":"objects/oPlayer/oPlayer.yy",},
     {"name":"fClickzone","order":10,"path":"scripts/fClickzone/fClickzone.yy",},

@@ -1,2 +1,2 @@
 type = __CLICKZONE_TYPE.FUEL_SLOT;
-wall = __CELL_WALLS.NORTH;
+wall = __CARDINAL.NORTH;
