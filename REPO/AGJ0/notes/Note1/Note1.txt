@@ -1,0 +1,29 @@
+3/2 add click zones based on what cell you're in and what kind of object it is
+link up click zone objects to dialog events and doors
+3/3 add paint tiles and do some art!
+3/4 add death and checkpoint and roaming enemies that can't go through doors
+3/5 add shooting and being shot at, start sounds and music
+3/6 add elevator/teleport, begin work on final area
+3/7 finish work on final area, add any missing text events
+3/8 add sound and music and an art pass
+3/9 continue as needed
+3/10 ???
+3/12 try to finish project
+3/13 hopefully done
+3/14 hopefully done
+
+art needed
+walls/ceilings/floor, light switch, door panel, door, doorframe, shutter
+gun, laserbeam, enemy1, enemy2, final enemy parts, captain, creep, pile
+eversion skins
+
+bonus art if there's time
+intro and outro1/outro2
+pulsing fog
+some kind of shader effect
+posterization
+textures per wall
+death effects
+
+
+reduce scope of clickzones to literally the entire wall rather than a specific area on that wall

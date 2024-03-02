@@ -28,6 +28,21 @@ if (world_vbuff != undefined){
 	gpu_set_fog(global.fog_on, global.fog_color, global.fog_start, global.fog_end);
 	
 	vertex_submit(world_vbuff, pr_trianglelist, world_tex);
+	for (var _i = 0; _i < door_count; _i++){
+		if (state_door_get_open(door_buffer_list[| _i][? "ID"])){
+			matrix_set(matrix_world, matrix_build(0, 0, CELL_SIZE - (CELL_SIZE / 4), 0, 0, 0, 1, 1, 1));
+		}
+		else{
+			matrix_set(matrix_world, _worldMat);
+		}
+		vertex_submit(door_buffer_list[| _i][? "VBUFF"], pr_trianglelist, door_tex);
+	}
+	matrix_set(matrix_world, _worldMat);
+	with (oClickzone){
+		if (vbuff != undefined){
+			vertex_submit(vbuff, pr_trianglelist, tex);
+		}
+	}
 	
 	gpu_set_fog(false, global.fog_color, global.fog_start, global.fog_end);
 	

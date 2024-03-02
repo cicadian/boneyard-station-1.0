@@ -1,0 +1,1 @@
+stateMachine_run(stateMap_door);

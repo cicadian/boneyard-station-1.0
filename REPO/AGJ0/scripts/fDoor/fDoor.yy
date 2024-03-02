@@ -1,7 +1,7 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "fState_Game",
+  "name": "fDoor",
   "isCompatibility": false,
   "isDnD": false,
   "parent": {

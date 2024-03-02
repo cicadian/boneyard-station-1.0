@@ -10,7 +10,7 @@
 #macro GAME_ASPECT NATIVE_W / NATIVE_H
 
 #macro START_X 224
-#macro START_Y 4
+#macro START_Y 12
 
 #macro GAME_W room_width div CELL_SIZE
 #macro GAME_H room_height div CELL_SIZE
@@ -21,10 +21,10 @@ enum __CELL_PATH {
 }
 
 enum __CELL_WALLS {
-	NORTH,
 	EAST,
-	SOUTH,
+	NORTH,
 	WEST,
+	SOUTH,
 	TOP,
 	BOTTOM,
 	SIZE
@@ -38,10 +38,34 @@ enum __CARDINAL {
 	SIZE
 }
 
-#macro KEY_LEFT       vk_left
-#macro KEY_RIGHT      vk_right
-#macro KEY_FORWARD    vk_up
-#macro KEY_BACKWARD   vk_down
+enum __DOOR_ORIENTATION{
+	HORIZONTAL,
+	VERTICAL
+}
+
+enum __CLICKZONE_TYPE{
+	START_CONSOLE,
+	ARMORY,
+	ENGINE,
+	START_EXIT,
+	EMERGENCY_LIGHTSWITCH,
+	FUEL_SLOT,
+	ELEVATOR_UP,
+	ELEVATOR_DOWN,
+	FUEL,
+	BRIDGE_CONSOLE,
+	CAPTAIN,
+	
+	DOOR_FAKE,
+	RUBBLE,
+	
+	NONE
+}
+
+#macro KEY_LEFT       ord("A")
+#macro KEY_RIGHT      ord("D")
+#macro KEY_FORWARD    ord("W")
+#macro KEY_BACKWARD   ord("S")
 #macro KEY_SKIP       vk_space
 #macro MOUSE_INTERACT mb_left
 #macro MOUSE_SHOOT    mb_right

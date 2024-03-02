@@ -25,6 +25,10 @@ world_format = vertex_format_end();
 world_vbuff = undefined;
 world_tex = sprite_get_texture(sTex_World, 0);
 
+door_tex = sprite_get_texture(sTex_Door, 0);
+
+clickzone_tex = sprite_get_texture(sTex_Clickzone, 0);
+
 global.fov = 70;
 global.fog_on = true;
 global.fog_color = c_black;
@@ -34,4 +38,5 @@ global.fog_end = CELL_SIZE * 4;
 global.world_grid = ds_grid_create(GAME_W, GAME_H);
 ds_grid_clear(global.world_grid, __CELL_PATH.FULL);
 
-world_build();
+door_buffer_list = ds_list_create();
+door_count = 0;

@@ -18,3 +18,8 @@ flag_tut_gun = false;
 
 counter_tutorial = 0;
 counter_tutorial_max = 60;
+
+cursor_spr = -1;
+cursor_default = sCursor_Default;
+cursor_aim     = sCursor_Aim;
+cursor_frame = 0;

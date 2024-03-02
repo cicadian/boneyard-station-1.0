@@ -38,7 +38,12 @@ if (keyboard_check_pressed(KEY_FORWARD)){
 	if (_moveX && _moveY){
 		// Make sure we're not trying to enter a wall
 		var _empty = global.world_grid[# _gridX + _vecX, _gridY + _vecY] == __CELL_PATH.EMPTY;
-		if (_empty){
+		var _door_id = instance_position(x + (_vecX * CELL_SIZE), y + (_vecY * CELL_SIZE), oDoor);
+		var _blocked = false;
+		if (_door_id != noone){
+			_blocked = state_door_get_closed(_door_id);
+		}
+		if (_empty && !_blocked){
 			x += CELL_SIZE * _vecX;
 			y += CELL_SIZE * _vecY;
 			grid_x = x div CELL_SIZE;
@@ -54,7 +59,12 @@ else if (keyboard_check_pressed(KEY_BACKWARD)){
 	if (_moveX && _moveY){
 		// Make sure we're not trying to enter a wall
 		var _empty = global.world_grid[# _gridX - _vecX, _gridY - _vecY] == __CELL_PATH.EMPTY;
-		if (_empty){
+		var _door_id = instance_position(x - (_vecX * CELL_SIZE), y - (_vecY * CELL_SIZE), oDoor);
+		var _blocked = false;
+		if (_door_id != noone){
+			_blocked = state_door_get_closed(_door_id);
+		}
+		if (_empty && !_blocked){
 			x -= CELL_SIZE * _vecX;
 			y -= CELL_SIZE * _vecY;
 			grid_x = x div CELL_SIZE;

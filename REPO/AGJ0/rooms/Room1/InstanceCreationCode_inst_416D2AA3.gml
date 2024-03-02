@@ -1,0 +1,2 @@
+type = __CLICKZONE_TYPE.ARMORY;
+wall = __CARDINAL.WEST;
