@@ -17,7 +17,7 @@ function clickzone_execute(_id){
 	switch (_id.type){
 		case __CLICKZONE_TYPE.START_CONSOLE:
 			//dialog event for pressing console at start
-			oCont_Game.dialog_index = __DIALOG.TUTORIAL;
+			oCont_Game.dialog_index = __DIALOG.BRIDGE_CONSOLE_START;
 			break;
 	}
 }

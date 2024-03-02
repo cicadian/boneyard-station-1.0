@@ -6,17 +6,21 @@ function dialog_lookup(_event, _page){
 	var _str = "LINE MISSING"
 	dialog_page_count = 1;
 	switch (_event){
-		case __DIALOG.TUTORIAL:
-			dialog_page_count = 3;
+		case __DIALOG.BRIDGE_CONSOLE_START:
+			dialog_page_count = 4;
+			dialog_portrait = sPort_Player;
 			if (_page == 0){
-				_str = "Test dialog, this is a test. \"Wow, what an amazing test!\" \nThere will be more tests after this you assure yourself.";
+				_str = "I've docked with the station but nobody is responding to my hails. Maybe I should try again?";
 			}
 			if (_page == 1){
-				_str = "PAGE 2";
+				_str = "\"This is Captain Damian of the scout vessel Kestrel calling Boneyard Station, does anyone read me?\"";
 			}
 			if (_page == 2){
-				_str = "GJQPIOBJWEOGITYHWEOGINGowieghweoighgnhu bibziuqwiuohwetewtpwetoh";
+				_str = "\"Damn...\""
 			}
+			if (_page == 3){
+				_str = "Guess I better head to the back of my ship and see if I can get through the airlock. It might be a good idea to arm myself too.";
+			}	
 			break;
 	}
 	return _str;

@@ -8,6 +8,7 @@ dialog_page = 0;
 dialog_page_count = 1;
 dialog_displayed = false;
 dialog_string = "";
+dialog_portrait = -1;
 
 lock_controls = false;
 

@@ -62,6 +62,12 @@ enum __CLICKZONE_TYPE{
 	NONE
 }
 
+#macro PORT_X 2
+#macro PORT_Y 122
+#macro DIALOG_X 40
+#macro DIALOG_Y 128
+#macro DIALOG_W 270
+
 #macro KEY_LEFT       ord("A")
 #macro KEY_RIGHT      ord("D")
 #macro KEY_FORWARD    ord("W")

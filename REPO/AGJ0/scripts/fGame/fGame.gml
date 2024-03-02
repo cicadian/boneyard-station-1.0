@@ -56,6 +56,7 @@ function game_declare_methods(){
 						dialog_string = "";
 						dialog_displayed = false;
 						lock_controls = false;
+						dialog_portrait = -1;
 					}
 					else{
 						dialog_string = dialog_lookup(dialog_index, dialog_page);
