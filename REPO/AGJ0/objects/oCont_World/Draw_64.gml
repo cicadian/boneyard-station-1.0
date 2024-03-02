@@ -1,1 +1,0 @@
-draw_text(0, 64, FONTMAP);

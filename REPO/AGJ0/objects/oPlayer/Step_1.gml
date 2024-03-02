@@ -1,3 +1,7 @@
+if (oCont_Game.lock_controls){
+	exit;
+}
+
 if (keyboard_check_pressed(KEY_RIGHT)){
 	dir -= 90; // Right...
 	if (dir < 0){
