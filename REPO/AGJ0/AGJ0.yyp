@@ -44,6 +44,7 @@
     {"id":{"name":"oCont_World","path":"objects/oCont_World/oCont_World.yy",},},
     {"id":{"name":"sFont_Dialogue","path":"sprites/sFont_Dialogue/sFont_Dialogue.yy",},},
     {"id":{"name":"fDialog","path":"scripts/fDialog/fDialog.yy",},},
+    {"id":{"name":"Note1","path":"notes/Note1/Note1.yy",},},
     {"id":{"name":"oCont_Game","path":"objects/oCont_Game/oCont_Game.yy",},},
     {"id":{"name":"oCont_Main","path":"objects/oCont_Main/oCont_Main.yy",},},
     {"id":{"name":"oEntity_","path":"objects/oEntity_/oEntity_.yy",},},
