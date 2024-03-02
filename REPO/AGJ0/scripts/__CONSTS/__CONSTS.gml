@@ -38,6 +38,11 @@ enum __CARDINAL {
 	SIZE
 }
 
+enum __DOOR_ORIENTATION{
+	HORIZONTAL,
+	VERTICAL
+}
+
 #macro KEY_LEFT       vk_left
 #macro KEY_RIGHT      vk_right
 #macro KEY_FORWARD    vk_up

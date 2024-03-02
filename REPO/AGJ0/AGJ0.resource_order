@@ -17,6 +17,7 @@
     {"name":"Timelines","order":8,"path":"folders/Timelines.yy",},
   ],
   "ResourceOrderSettings": [
+    {"name":"sTex_Door","order":5,"path":"sprites/sTex_Door/sTex_Door.yy",},
     {"name":"__CONSTS","order":2,"path":"scripts/__CONSTS/__CONSTS.yy",},
     {"name":"fWorld","order":3,"path":"scripts/fWorld/fWorld.yy",},
     {"name":"sTest","order":2,"path":"sprites/sTest/sTest.yy",},
@@ -30,6 +31,9 @@
     {"name":"sTex_World","order":1,"path":"sprites/sTex_World/sTex_World.yy",},
     {"name":"fTile","order":4,"path":"scripts/fTile/fTile.yy",},
     {"name":"oPlayer","order":4,"path":"objects/oPlayer/oPlayer.yy",},
+    {"name":"fState_Door","order":9,"path":"scripts/fState_Door/fState_Door.yy",},
+    {"name":"sDoor","order":4,"path":"sprites/sDoor/sDoor.yy",},
+    {"name":"oDoor","order":6,"path":"objects/oDoor/oDoor.yy",},
     {"name":"oSample_","order":1,"path":"objects/oSample_/oSample_.yy",},
     {"name":"fState_Game","order":6,"path":"scripts/fState_Game/fState_Game.yy",},
     {"name":"fSampleBehavior","order":1,"path":"scripts/fSampleBehavior/fSampleBehavior.yy",},

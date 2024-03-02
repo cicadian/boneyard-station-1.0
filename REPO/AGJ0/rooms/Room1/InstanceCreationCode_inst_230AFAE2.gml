@@ -1,0 +1,1 @@
+orientation = __DOOR_ORIENTATION.HORIZONTAL;

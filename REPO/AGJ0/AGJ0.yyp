@@ -35,6 +35,7 @@
   },
   "resources": [
     {"id":{"name":"fStateMachine","path":"scripts/fStateMachine/fStateMachine.yy",},},
+    {"id":{"name":"sTex_Door","path":"sprites/sTex_Door/sTex_Door.yy",},},
     {"id":{"name":"__CONSTS","path":"scripts/__CONSTS/__CONSTS.yy",},},
     {"id":{"name":"fWorld","path":"scripts/fWorld/fWorld.yy",},},
     {"id":{"name":"sTile_Path","path":"sprites/sTile_Path/sTile_Path.yy",},},
@@ -50,6 +51,9 @@
     {"id":{"name":"sTex_World","path":"sprites/sTex_World/sTex_World.yy",},},
     {"id":{"name":"fTile","path":"scripts/fTile/fTile.yy",},},
     {"id":{"name":"oPlayer","path":"objects/oPlayer/oPlayer.yy",},},
+    {"id":{"name":"fState_Door","path":"scripts/fState_Door/fState_Door.yy",},},
+    {"id":{"name":"sDoor","path":"sprites/sDoor/sDoor.yy",},},
+    {"id":{"name":"oDoor","path":"objects/oDoor/oDoor.yy",},},
     {"id":{"name":"oSample_","path":"objects/oSample_/oSample_.yy",},},
     {"id":{"name":"fState_Game","path":"scripts/fState_Game/fState_Game.yy",},},
     {"id":{"name":"fSampleBehavior","path":"scripts/fSampleBehavior/fSampleBehavior.yy",},},
