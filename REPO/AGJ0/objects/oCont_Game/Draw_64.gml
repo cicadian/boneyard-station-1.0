@@ -1,0 +1,1 @@
+draw_text_ext(4, 128, dialog_string, 10, 300);

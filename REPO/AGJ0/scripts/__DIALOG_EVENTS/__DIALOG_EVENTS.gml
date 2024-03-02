@@ -1,0 +1,5 @@
+enum __DIALOG {
+	TUTORIAL,
+	ARMORY,
+	SIZE
+}
