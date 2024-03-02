@@ -55,6 +55,7 @@
     {"id":{"name":"sWalkzone","path":"sprites/sWalkzone/sWalkzone.yy",},},
     {"id":{"name":"fDoor","path":"scripts/fDoor/fDoor.yy",},},
     {"id":{"name":"sDoor","path":"sprites/sDoor/sDoor.yy",},},
+    {"id":{"name":"fWalkzone","path":"scripts/fWalkzone/fWalkzone.yy",},},
     {"id":{"name":"oDoor","path":"objects/oDoor/oDoor.yy",},},
     {"id":{"name":"oSample_","path":"objects/oSample_/oSample_.yy",},},
     {"id":{"name":"oWalkzone","path":"objects/oWalkzone/oWalkzone.yy",},},

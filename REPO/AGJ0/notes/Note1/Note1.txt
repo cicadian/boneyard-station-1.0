@@ -1,5 +1,3 @@
-3/2 add click zones based on what cell you're in and what kind of object it is
-link up click zone objects to dialog events and doors
 3/3 add paint tiles and do some art!
 3/4 add death and checkpoint and roaming enemies that can't go through doors
 3/5 add shooting and being shot at, start sounds and music
@@ -24,6 +22,3 @@ some kind of shader effect
 posterization
 textures per wall
 death effects
-
-
-reduce scope of clickzones to literally the entire wall rather than a specific area on that wall

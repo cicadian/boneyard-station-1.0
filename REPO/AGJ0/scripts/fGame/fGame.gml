@@ -38,6 +38,13 @@ function game_declare_methods(){
 					}
 				}
 			}
+			var _walkzone = instance_position(oPlayer.x, oPlayer.y, oWalkzone);
+			if (_walkzone != noone){
+				if (!_walkzone.triggered){
+					walkzone_execute(_walkzone);
+					_walkzone.triggered = true;
+				}
+			}
 		}
 
 		if (dialog_index != -1 && !dialog_displayed){

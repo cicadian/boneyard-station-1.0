@@ -34,6 +34,7 @@
     {"name":"sWalkzone","order":11,"path":"sprites/sWalkzone/sWalkzone.yy",},
     {"name":"fDoor","order":9,"path":"scripts/fDoor/fDoor.yy",},
     {"name":"sDoor","order":4,"path":"sprites/sDoor/sDoor.yy",},
+    {"name":"fWalkzone","order":11,"path":"scripts/fWalkzone/fWalkzone.yy",},
     {"name":"oDoor","order":6,"path":"objects/oDoor/oDoor.yy",},
     {"name":"oSample_","order":1,"path":"objects/oSample_/oSample_.yy",},
     {"name":"oWalkzone","order":8,"path":"objects/oWalkzone/oWalkzone.yy",},

@@ -66,7 +66,9 @@ enum __WALKZONE_TYPE{
 	ARMORY,
 	STATION,
 	CARGO,
-	ENEMIES
+	ENEMIES,
+	
+	NONE
 }
 
 #macro PORT_X 2
