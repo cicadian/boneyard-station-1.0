@@ -38,6 +38,20 @@ function world_build_cell(_grid_x, _grid_y){
 				}
 			}
 			if (_build){
+				var _layer = layer_get_id("tile_paint");
+				var _tileMap = layer_tilemap_get_id(_layer);
+				var _tile = tilemap_get(_tileMap, _grid_x, _grid_y);
+				switch (_tile){
+					case 1:
+						_v = oCont_World.texcoord_kestrel_v;
+						break;
+					case 2:
+						_v = oCont_World.texcoord_station_v;
+						break;
+					case 3:
+						_v = oCont_World.texcoord_cargo_v;
+						break;
+				}
 				world_build_wall(_grid_x, _grid_y, _i, oCont_World.world_vbuff, _u, _v);
 			}
 		}
