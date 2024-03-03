@@ -29,7 +29,7 @@ function world_build_cell(_grid_x, _grid_y){
 		var _is_empty = global.world_grid[# _grid_x, _grid_y] == __CELL_PATH.EMPTY;
 		var _build = true;
 		var _u = oCont_World.texcoord_default_u;
-		var _v = oCont_World.texcoord_default_v;
+		var _v = oCont_World.texcoord_kestrel_v;
 		var _clickzone_id = instance_position(_grid_x * CELL_SIZE, _grid_y * CELL_SIZE, oClickzone);
 		if (_is_empty){
 			if (_clickzone_id != noone){
@@ -70,6 +70,7 @@ function world_build_wall(_grid_x, _grid_y, _type, _vbuff, _u, _v){
 				}
 			}
 			if (_build){
+				_u = oCont_World.texcoord_wall_u;
 				vertex_position_3d(_vbuff, _x1, _y1, _z2);
 				vertex_texcoord(_vbuff, _u, _v);
 				vertex_colour(_vbuff, c_white, 1);
@@ -94,6 +95,7 @@ function world_build_wall(_grid_x, _grid_y, _type, _vbuff, _u, _v){
 		case __CELL_WALLS.EAST:
 			_build = !pathgrid_get_empty(_grid_x + 1, _grid_y);
 			if (_build){
+				_u = oCont_World.texcoord_wall_u;
 				vertex_position_3d(_vbuff, _x2, _y1, _z2);
 				vertex_texcoord(_vbuff, _u, _v);
 				vertex_colour(_vbuff, c_white, 1);
@@ -118,6 +120,7 @@ function world_build_wall(_grid_x, _grid_y, _type, _vbuff, _u, _v){
 		case __CELL_WALLS.SOUTH:
 			_build = !pathgrid_get_empty(_grid_x, _grid_y + 1);
 			if (_build){
+				_u = oCont_World.texcoord_wall_u;
 				vertex_position_3d(_vbuff, _x2, _y2, _z2);
 				vertex_texcoord(_vbuff, _u, _v);
 				vertex_colour(_vbuff, c_white, 1);
@@ -142,6 +145,7 @@ function world_build_wall(_grid_x, _grid_y, _type, _vbuff, _u, _v){
 		case __CELL_WALLS.WEST:
 			_build = !pathgrid_get_empty(_grid_x - 1, _grid_y);
 			if (_build){
+				_u = oCont_World.texcoord_wall_u;
 				vertex_position_3d(_vbuff, _x1, _y2, _z2);
 				vertex_texcoord(_vbuff, _u, _v);
 				vertex_colour(_vbuff, c_white, 1);
@@ -164,6 +168,7 @@ function world_build_wall(_grid_x, _grid_y, _type, _vbuff, _u, _v){
 			}
 			break;
 		case __CELL_WALLS.TOP:
+			_u = oCont_World.texcoord_ceiling_u;
 			vertex_position_3d(_vbuff, _x1, _y1, _z2);
 			vertex_texcoord(_vbuff, _u, _v);
 			vertex_colour(_vbuff, c_white, 1);
@@ -185,6 +190,7 @@ function world_build_wall(_grid_x, _grid_y, _type, _vbuff, _u, _v){
 			vertex_colour(_vbuff, c_white, 1);
 			break;
 		case __CELL_WALLS.BOTTOM:
+			_u = oCont_World.texcoord_floor_u;
 			vertex_position_3d(_vbuff, _x1, _y1, _z1);
 			vertex_texcoord(_vbuff, _u, _v);
 			vertex_colour(_vbuff, c_white, 1);

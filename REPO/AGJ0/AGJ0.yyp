@@ -27,6 +27,7 @@
     "IDEVersion": "2023.8.2.108",
   },
   "resources": [
+    {"id":{"name":"sTex_World","path":"sprites/sTex_World/sTex_World.yy",},},
     {"id":{"name":"fStateMachine","path":"scripts/fStateMachine/fStateMachine.yy",},},
     {"id":{"name":"sTex_Door","path":"sprites/sTex_Door/sTex_Door.yy",},},
     {"id":{"name":"__CONSTS","path":"scripts/__CONSTS/__CONSTS.yy",},},
@@ -45,7 +46,6 @@
     {"id":{"name":"oCont_Main","path":"objects/oCont_Main/oCont_Main.yy",},},
     {"id":{"name":"oEntity_","path":"objects/oEntity_/oEntity_.yy",},},
     {"id":{"name":"fPathgrid","path":"scripts/fPathgrid/fPathgrid.yy",},},
-    {"id":{"name":"sTex_World","path":"sprites/sTex_World/sTex_World.yy",},},
     {"id":{"name":"sCursor_Aim","path":"sprites/sCursor_Aim/sCursor_Aim.yy",},},
     {"id":{"name":"sCursor_Default","path":"sprites/sCursor_Default/sCursor_Default.yy",},},
     {"id":{"name":"fTile","path":"scripts/fTile/fTile.yy",},},
