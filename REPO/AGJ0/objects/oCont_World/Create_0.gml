@@ -19,10 +19,14 @@ texcoord_bottom_u = (tex_spr_m_uvs * 6) + tex_pix_uvs;
 texcoord_wall_u    = 0;
 texcoord_floor_u   = tex_pix_uvs * tex_block_size;
 texcoord_ceiling_u = tex_pix_uvs * (tex_block_size * 2);
+texcoord_console_u = 0;
+texcoord_engine_u  = tex_pix_uvs * tex_block_size;
+texcoord_armory_u  = tex_pix_uvs * (tex_block_size * 2);
 
 texcoord_kestrel_v = 0;
 texcoord_station_v = tex_pix_uvs * tex_block_size;
 texcoord_cargo_v   = tex_pix_uvs * (tex_block_size * 2);
+texcoord_special_v = tex_pix_uvs * (tex_block_size * 3);
 
 // 3d stuff
 vertex_format_begin();
@@ -32,7 +36,9 @@ vertex_format_add_color();
 world_format = vertex_format_end();
 
 world_vbuff = undefined;
-world_tex = sprite_get_texture(sTex_World, 0);
+world_tex_0 = sprite_get_texture(sTex_World, 0);
+world_tex_1 = sprite_get_texture(sTex_World, 1);
+world_tex_2 = sprite_get_texture(sTex_World, 2);
 
 door_tex = sprite_get_texture(sTex_Door, 0);
 

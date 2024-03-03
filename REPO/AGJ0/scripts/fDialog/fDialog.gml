@@ -31,6 +31,9 @@ function dialog_lookup(_event, _page){
 				_str = "The airlock is to the left, I should go right first to get my weapon from the locker.";
 			}
 			break;
+		case __DIALOG.ARMORY_OPEN_CASE:
+			_str = "";
+			break;
 		case __DIALOG.ARMORY_GET_GUN:
 			dialog_page_count = 2;
 			dialog_portrait = sPort_Player;

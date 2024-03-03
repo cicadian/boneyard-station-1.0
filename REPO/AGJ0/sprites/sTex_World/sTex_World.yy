@@ -4,7 +4,7 @@
   "name": "sTex_World",
   "bbox_bottom": 135,
   "bbox_left": 0,
-  "bbox_right": 169,
+  "bbox_right": 101,
   "bbox_top": 0,
   "bboxMode": 0,
   "collisionKind": 1,
@@ -14,6 +14,8 @@
   "For3D": true,
   "frames": [
     {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"72eafdb8-22b9-4c99-85a9-c3f9aac9eee2",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"bbb57ffa-fa90-4525-9697-bf37233321e5",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"83ed99ce-64f5-4116-ae98-b5d4fb0dbf9f",},
   ],
   "gridX": 0,
   "gridY": 0,
@@ -43,7 +45,7 @@
     "events": {"resourceType":"KeyframeStore<MessageEventKeyframe>","resourceVersion":"1.0","Keyframes":[],},
     "eventStubScript": null,
     "eventToFunction": {},
-    "length": 1.0,
+    "length": 3.0,
     "lockOrigin": false,
     "moments": {"resourceType":"KeyframeStore<MomentsEventKeyframe>","resourceVersion":"1.0","Keyframes":[],},
     "playback": 1,
@@ -55,6 +57,8 @@
     "tracks": [
       {"resourceType":"GMSpriteFramesTrack","resourceVersion":"1.0","name":"frames","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"1.0","Keyframes":[
             {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"72eafdb8-22b9-4c99-85a9-c3f9aac9eee2","path":"sprites/sTex_World/sTex_World.yy",},},},"Disabled":false,"id":"c0b091b0-2311-4413-a1a9-afc77ae2c61b","IsCreationKey":false,"Key":0.0,"Length":1.0,"Stretch":false,},
+            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"bbb57ffa-fa90-4525-9697-bf37233321e5","path":"sprites/sTex_World/sTex_World.yy",},},},"Disabled":false,"id":"c38f9f4d-910e-40d8-9f71-95577bec5aa6","IsCreationKey":false,"Key":1.0,"Length":1.0,"Stretch":false,},
+            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"83ed99ce-64f5-4116-ae98-b5d4fb0dbf9f","path":"sprites/sTex_World/sTex_World.yy",},},},"Disabled":false,"id":"bcbb1992-a8fd-4678-a1ae-99a5a1683806","IsCreationKey":false,"Key":2.0,"Length":1.0,"Stretch":false,},
           ],},"modifiers":[],"spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange": null,

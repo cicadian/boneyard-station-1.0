@@ -1,4 +1,4 @@
-z = floor(CELL_SIZE - (CELL_SIZE / 3));
+z = CELL_SIZE - (CELL_SIZE / 2.75);
 
 grid_x = x div CELL_SIZE;
 grid_y = y div CELL_SIZE;
