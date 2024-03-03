@@ -49,6 +49,7 @@ function world_build_dark(){
 		clickzone_build(id, vbuff_dark);
 		vertex_end(vbuff_dark);
 		vertex_freeze(vbuff_dark);
+		vbuff = vbuff_dark;
 	}
 }
 
