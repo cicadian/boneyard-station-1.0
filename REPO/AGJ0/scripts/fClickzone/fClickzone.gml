@@ -1,9 +1,9 @@
 /// @func clickzone_build
 /// @desc {void} builds a clickzone wall
 /// @arg {id} id
-function clickzone_build(_id){
-	_id.vbuff = vertex_create_buffer();
-	vertex_begin(_id.vbuff, oCont_World.world_format);
+/// @arg {vbuff} vbuff
+function clickzone_build(_id, _vbuff){
+	
 	var _u = oCont_World.texcoord_floor_u;
 	switch (_id.type){
 		case __CLICKZONE_TYPE.START_CONSOLE:
@@ -17,9 +17,7 @@ function clickzone_build(_id){
 			break;
 	}
 	var _v = oCont_World.texcoord_special_v;
-	world_build_wall(_id.grid_x, _id.grid_y, _id.wall, _id.vbuff, _u, _v);
-	vertex_end(_id.vbuff);
-	vertex_freeze(_id.vbuff);
+	world_build_wall(_id.grid_x, _id.grid_y, _id.wall, _vbuff, _u, _v);
 }
 /// @func clickzone_execute
 /// @desc {void} runs clickzone behavior

@@ -28,6 +28,9 @@ texcoord_station_v = tex_pix_uvs * tex_block_size;
 texcoord_cargo_v   = tex_pix_uvs * (tex_block_size * 2);
 texcoord_special_v = tex_pix_uvs * (tex_block_size * 3);
 
+// lighting
+global.light_grid = -1;
+
 // 3d stuff
 vertex_format_begin();
 vertex_format_add_position_3d();

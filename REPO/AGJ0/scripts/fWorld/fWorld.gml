@@ -2,6 +2,7 @@
 /// @desc {void} builds the game world grid
 function world_build(){
 	tile_to_grid(LAYER_NAME_PATH, global.world_grid, __CELL_PATH.EMPTY);
+	lightmap_build();
 	global.light_ambient = AMBIENT_LIT;
 	world_light_vbuff = vertex_create_buffer();
 	vertex_begin(world_light_vbuff, world_format);
@@ -13,11 +14,15 @@ function world_build(){
 	}
 	vertex_end(world_light_vbuff);
 	vertex_freeze(world_light_vbuff);
-	with (oDoor){
-		door_build();
-	}
+	//with (oDoor){
+	//	door_build();
+	//}
 	with (oClickzone){
-		clickzone_build(id);
+		vbuff_light = vertex_create_buffer();
+		vertex_begin(vbuff_light, oCont_World.world_format);
+		clickzone_build(id, vbuff_light);
+		vertex_end(vbuff_light);
+		vertex_freeze(vbuff_light);
 	}
 }
 /// @func world_build_dark
@@ -35,12 +40,16 @@ function world_build_dark(){
 	vertex_end(world_dark_vbuff);
 	vertex_freeze(world_dark_vbuff);
 	oCont_World.world_vbuff = world_dark_vbuff;
-	//with (oDoor){
-	//	door_build();
-	//}
-	//with (oClickzone){
-	//	clickzone_build(id);
-	//}
+	with (oDoor){
+		door_build();
+	}
+	with (oClickzone){
+		vbuff_dark = vertex_create_buffer();
+		vertex_begin(vbuff_dark, oCont_World.world_format);
+		clickzone_build(id, vbuff_dark);
+		vertex_end(vbuff_dark);
+		vertex_freeze(vbuff_dark);
+	}
 }
 
 /// @func world_build_cell
@@ -112,7 +121,17 @@ function world_build_wall(_grid_x, _grid_y, _type, _vbuff, _u, _v){
 	var _z1 = 0;
 	var _z2 = CELL_SIZE; 
 	var _build = false;
-	var _lightlevel = global.light_ambient;
+	var _ambient = global.light_ambient;
+	var _layer = layer_get_id("tile_paint");
+	var _tileMap = layer_tilemap_get_id(_layer);
+	var _tile = tilemap_get(_tileMap, _grid_x, _grid_y);
+	if (_tile == 3){
+		_ambient = 0.25;
+	}
+	var _lightlevel = global.light_grid[# _grid_x, _grid_y] + _ambient;
+	if (_lightlevel > 1){
+		_lightlevel = 1;
+	}
 	var _color = make_colour_rgb(_lightlevel * 255, _lightlevel * 255, _lightlevel * 255);
 
 	switch(_type){

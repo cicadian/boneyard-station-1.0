@@ -25,7 +25,7 @@ if (world_light_vbuff != undefined){
 												0, 0, 1));
 												
 	matrix_set(matrix_projection, matrix_build_projection_perspective_fov(global.fov, GAME_ASPECT,  1, 2000));
-	gpu_set_fog(global.fog_on, global.fog_color, global.fog_start, global.fog_end);
+	//gpu_set_fog(global.fog_on, global.fog_color, global.fog_start, global.fog_end);
 	
 	vertex_submit(world_vbuff, pr_trianglelist, world_tex_0);
 	for (var _i = 0; _i < door_count; _i++){
@@ -44,7 +44,7 @@ if (world_light_vbuff != undefined){
 		}
 	}
 	
-	gpu_set_fog(false, global.fog_color, global.fog_start, global.fog_end);
+	//gpu_set_fog(false, global.fog_color, global.fog_start, global.fog_end);
 	
 	//shader_reset();
 	gpu_set_ztestenable(false);
