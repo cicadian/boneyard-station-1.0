@@ -15,9 +15,12 @@ function walkzone_execute(_id){
 			//dialog event for pressing console at start
 			oCont_Game.dialog_index = __DIALOG.MUSE_CARGO;
 			break;
-		case __WALKZONE_TYPE.ENEMIES:
+		case __WALKZONE_TYPE.CHECKPOINT_CARGO:
 			//dialog event for pressing console at start
 			oCont_Game.dialog_index = __DIALOG.MUSE_ENEMIES;
+			oPlayer.checkpoint_x = _id.x;
+			oPlayer.checkpoint_y = _id.y;
+			oPlayer.checkpoint_dir = _id.dir;
 			break;
 	}
 }

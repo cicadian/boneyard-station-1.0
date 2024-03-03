@@ -88,6 +88,13 @@ function dialog_lookup(_event, _page){
 				_str = "There's controls here for the emergency lights, but until power is restored I won't be able to access much of the station.";
 			}
 			break;
+		case __DIALOG.MUSE_ENEMIES:
+			dialog_page_count = 1;
+			dialog_portrait = sPort_Player;
+			if (_page == 0){
+				_str = "I hear footsteps, better get my weapon ready.";
+			}
+			break;
 	}
 	return _str;
 }

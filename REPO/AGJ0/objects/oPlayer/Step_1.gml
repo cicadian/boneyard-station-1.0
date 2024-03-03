@@ -1,6 +1,34 @@
 if (oCont_Game.lock_controls){
 	exit;
 }
+if (regen_counter >= regen_counter_max){
+	if (life > 0){
+		life++;
+		regen_counter = -1;
+	}
+}
+regen_counter++;
+if (life == 0){
+	global.fog_color = make_color_rgb(55, 0, 0);
+}
+else if (life == 1){
+	global.fog_color = make_color_rgb(45, 0, 0);
+}
+else if (life == 2){
+	global.fog_color = make_color_rgb(25, 0, 0);
+}
+else if (life == 3){
+	global.fog_color = make_color_rgb(15, 0, 0);
+}
+else if (life == 4){
+	global.fog_color = c_black;
+}
+if (life <= 0){
+	player_die();
+}
+if (life <= 0){
+	exit;
+}
 
 if (keyboard_check_pressed(KEY_RIGHT)){
 	dir -= 90; // Right...

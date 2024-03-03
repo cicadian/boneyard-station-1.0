@@ -3,3 +3,4 @@ grid_y = y div CELL_SIZE;
 
 type = __WALKZONE_TYPE.NONE;
 triggered = false;
+dir = __CARDINAL.NORTH;

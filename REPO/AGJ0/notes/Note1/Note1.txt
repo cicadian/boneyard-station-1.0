@@ -17,11 +17,9 @@ eversion skins
 
 bonus art if there's time
 intro and outro1/outro2
-pulsing fog
 some kind of shader effect
 posterization
 textures per wall
 death effects
 
 alternate ceiling lights texture
-add lit and unlit vertex buffer

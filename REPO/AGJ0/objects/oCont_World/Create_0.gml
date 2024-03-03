@@ -54,7 +54,7 @@ clickzone_tex = sprite_get_texture(sTex_Clickzone, 0);
 global.fov = 70;
 global.fog_on = true;
 global.fog_color = c_black;
-global.fog_start = CELL_SIZE;
+global.fog_start = CELL_SIZE * 0;
 global.fog_end = CELL_SIZE * 4;
 global.light_ambient = 1;
 
