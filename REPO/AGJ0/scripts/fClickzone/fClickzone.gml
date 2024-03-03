@@ -45,5 +45,15 @@ function clickzone_execute(_id){
 				oCont_Game.dialog_index = __DIALOG.ARMORY_HAVE_GUN;
 			}
 			break;
+		case __CLICKZONE_TYPE.EMERGENCY_LIGHTSWITCH:
+			//dialog event for pressing console at start
+			if (_id.stage == 0){
+				oCont_Game.dialog_index = __DIALOG.LIGHT0;
+				_id.stage++;
+			}
+			else if (_id.stage == 1){
+				light_toggle();
+			}
+			break;
 	}
 }

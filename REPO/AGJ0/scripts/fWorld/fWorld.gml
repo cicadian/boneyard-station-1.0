@@ -2,16 +2,17 @@
 /// @desc {void} builds the game world grid
 function world_build(){
 	tile_to_grid(LAYER_NAME_PATH, global.world_grid, __CELL_PATH.EMPTY);
-	
-	world_vbuff = vertex_create_buffer();
-	vertex_begin(world_vbuff, world_format);
+	global.light_ambient = AMBIENT_LIT;
+	world_light_vbuff = vertex_create_buffer();
+	vertex_begin(world_light_vbuff, world_format);
+	var _vbuff = world_light_vbuff;
 	for (var _h = 0; _h < NATIVE_H div CELL_SIZE; _h++){
 		for (var _w = 0; _w < NATIVE_W div CELL_SIZE; _w++){
-			world_build_cell(_w, _h);
+			world_build_cell(_w, _h, _vbuff);
 		}
 	}
-	vertex_end(world_vbuff);
-	vertex_freeze(world_vbuff);
+	vertex_end(world_light_vbuff);
+	vertex_freeze(world_light_vbuff);
 	with (oDoor){
 		door_build();
 	}
@@ -19,12 +20,35 @@ function world_build(){
 		clickzone_build(id);
 	}
 }
+/// @func world_build_dark
+/// @desc {void} builds the dark game world grid
+function world_build_dark(){
+	global.light_ambient = AMBIENT_DARK;
+	world_dark_vbuff = vertex_create_buffer();
+	vertex_begin(world_dark_vbuff, world_format);
+	var _vbuff = world_dark_vbuff;
+	for (var _h = 0; _h < NATIVE_H div CELL_SIZE; _h++){
+		for (var _w = 0; _w < NATIVE_W div CELL_SIZE; _w++){
+			world_build_cell(_w, _h, _vbuff);
+		}
+	}
+	vertex_end(world_dark_vbuff);
+	vertex_freeze(world_dark_vbuff);
+	oCont_World.world_vbuff = world_dark_vbuff;
+	//with (oDoor){
+	//	door_build();
+	//}
+	//with (oClickzone){
+	//	clickzone_build(id);
+	//}
+}
 
 /// @func world_build_cell
 /// @desc {void} builds a world cell
 /// @arg {real} grid_x
 /// @arg {real} grid_y
-function world_build_cell(_grid_x, _grid_y){
+/// @arg {real} vbuff
+function world_build_cell(_grid_x, _grid_y, _vbuff){
 	for (var _i = 0; _i < __CELL_WALLS.SIZE; _i++){
 		var _is_empty = global.world_grid[# _grid_x, _grid_y] == __CELL_PATH.EMPTY;
 		var _build = true;
@@ -66,7 +90,7 @@ function world_build_cell(_grid_x, _grid_y){
 						_u = oCont_World.texcoord_floor_u;
 						break;
 				}
-				world_build_wall(_grid_x, _grid_y, _i, oCont_World.world_vbuff, _u, _v);
+				world_build_wall(_grid_x, _grid_y, _i, _vbuff, _u, _v);
 			}
 		}
 	}
@@ -88,6 +112,8 @@ function world_build_wall(_grid_x, _grid_y, _type, _vbuff, _u, _v){
 	var _z1 = 0;
 	var _z2 = CELL_SIZE; 
 	var _build = false;
+	var _lightlevel = global.light_ambient;
+	var _color = make_colour_rgb(_lightlevel * 255, _lightlevel * 255, _lightlevel * 255);
 
 	switch(_type){
 		case __CELL_WALLS.NORTH:
@@ -100,23 +126,23 @@ function world_build_wall(_grid_x, _grid_y, _type, _vbuff, _u, _v){
 			if (_build){
 				vertex_position_3d(_vbuff, _x1, _y1, _z2);
 				vertex_texcoord(_vbuff, _u, _v);
-				vertex_colour(_vbuff, c_white, 1);
+				vertex_colour(_vbuff, _color, 1);
 				vertex_position_3d(_vbuff, _x2, _y1, _z2);
 				vertex_texcoord(_vbuff, _u + oCont_World.tex_spr_uvs, _v);
-				vertex_colour(_vbuff, c_white, 1);
+				vertex_colour(_vbuff, _color, 1);
 				vertex_position_3d(_vbuff, _x2, _y1, _z1);
 				vertex_texcoord(_vbuff, _u + oCont_World.tex_spr_uvs, _v + oCont_World.tex_spr_uvs);
-				vertex_colour(_vbuff, c_white, 1);
+				vertex_colour(_vbuff, _color, 1);
 
 				vertex_position_3d(_vbuff, _x1, _y1, _z2);
 				vertex_texcoord(_vbuff, _u, _v);
-				vertex_colour(_vbuff, c_white, 1);
+				vertex_colour(_vbuff, _color, 1);
 				vertex_position_3d(_vbuff, _x2, _y1, _z1);
 				vertex_texcoord(_vbuff, _u + oCont_World.tex_spr_uvs, _v + oCont_World.tex_spr_uvs);
-				vertex_colour(_vbuff, c_white, 1);
+				vertex_colour(_vbuff, _color, 1);
 				vertex_position_3d(_vbuff, _x1, _y1, _z1);
 				vertex_texcoord(_vbuff, _u, _v + oCont_World.tex_spr_uvs);
-				vertex_colour(_vbuff, c_white, 1);
+				vertex_colour(_vbuff, _color, 1);
 			}
 			break;
 		case __CELL_WALLS.EAST:
@@ -124,23 +150,23 @@ function world_build_wall(_grid_x, _grid_y, _type, _vbuff, _u, _v){
 			if (_build){
 				vertex_position_3d(_vbuff, _x2, _y1, _z2);
 				vertex_texcoord(_vbuff, _u, _v);
-				vertex_colour(_vbuff, c_white, 1);
+				vertex_colour(_vbuff, _color, 1);
 				vertex_position_3d(_vbuff, _x2, _y2, _z2);
 				vertex_texcoord(_vbuff, _u + oCont_World.tex_spr_uvs, _v);
-				vertex_colour(_vbuff, c_white, 1);
+				vertex_colour(_vbuff, _color, 1);
 				vertex_position_3d(_vbuff, _x2, _y2, _z1);
 				vertex_texcoord(_vbuff, _u + oCont_World.tex_spr_uvs, _v + oCont_World.tex_spr_uvs);
-				vertex_colour(_vbuff, c_white, 1);
+				vertex_colour(_vbuff, _color, 1);
 
 				vertex_position_3d(_vbuff, _x2, _y1, _z2);
 				vertex_texcoord(_vbuff, _u, _v);
-				vertex_colour(_vbuff, c_white, 1);
+				vertex_colour(_vbuff, _color, 1);
 				vertex_position_3d(_vbuff, _x2, _y2, _z1);
 				vertex_texcoord(_vbuff, _u + oCont_World.tex_spr_uvs, _v + oCont_World.tex_spr_uvs);
-				vertex_colour(_vbuff, c_white, 1);
+				vertex_colour(_vbuff, _color, 1);
 				vertex_position_3d(_vbuff, _x2, _y1, _z1);
 				vertex_texcoord(_vbuff, _u, _v + oCont_World.tex_spr_uvs);
-				vertex_colour(_vbuff, c_white, 1);
+				vertex_colour(_vbuff, _color, 1);
 			}
 			break;
 		case __CELL_WALLS.SOUTH:
@@ -148,23 +174,23 @@ function world_build_wall(_grid_x, _grid_y, _type, _vbuff, _u, _v){
 			if (_build){
 				vertex_position_3d(_vbuff, _x2, _y2, _z2);
 				vertex_texcoord(_vbuff, _u, _v);
-				vertex_colour(_vbuff, c_white, 1);
+				vertex_colour(_vbuff, _color, 1);
 				vertex_position_3d(_vbuff, _x1, _y2, _z2);
 				vertex_texcoord(_vbuff, _u + oCont_World.tex_spr_uvs, _v);
-				vertex_colour(_vbuff, c_white, 1);
+				vertex_colour(_vbuff, _color, 1);
 				vertex_position_3d(_vbuff, _x1, _y2, _z1);
 				vertex_texcoord(_vbuff, _u + oCont_World.tex_spr_uvs, _v + oCont_World.tex_spr_uvs);
-				vertex_colour(_vbuff, c_white, 1);
+				vertex_colour(_vbuff, _color, 1);
 
 				vertex_position_3d(_vbuff, _x2, _y2, _z2);
 				vertex_texcoord(_vbuff, _u, _v);
-				vertex_colour(_vbuff, c_white, 1);
+				vertex_colour(_vbuff, _color, 1);
 				vertex_position_3d(_vbuff, _x1, _y2, _z1);
 				vertex_texcoord(_vbuff, _u + oCont_World.tex_spr_uvs, _v + oCont_World.tex_spr_uvs);
-				vertex_colour(_vbuff, c_white, 1);
+				vertex_colour(_vbuff, _color, 1);
 				vertex_position_3d(_vbuff, _x2, _y2, _z1);
 				vertex_texcoord(_vbuff, _u, _v + oCont_World.tex_spr_uvs);
-				vertex_colour(_vbuff, c_white, 1);
+				vertex_colour(_vbuff, _color, 1);
 			}
 			break;
 		case __CELL_WALLS.WEST:
@@ -172,66 +198,66 @@ function world_build_wall(_grid_x, _grid_y, _type, _vbuff, _u, _v){
 			if (_build){
 				vertex_position_3d(_vbuff, _x1, _y2, _z2);
 				vertex_texcoord(_vbuff, _u, _v);
-				vertex_colour(_vbuff, c_white, 1);
+				vertex_colour(_vbuff, _color, 1);
 				vertex_position_3d(_vbuff, _x1, _y1, _z2);
 				vertex_texcoord(_vbuff, _u + oCont_World.tex_spr_uvs, _v);
-				vertex_colour(_vbuff, c_white, 1);
+				vertex_colour(_vbuff, _color, 1);
 				vertex_position_3d(_vbuff, _x1, _y1, _z1);
 				vertex_texcoord(_vbuff, _u + oCont_World.tex_spr_uvs, _v + oCont_World.tex_spr_uvs);
-				vertex_colour(_vbuff, c_white, 1);
+				vertex_colour(_vbuff, _color, 1);
 
 				vertex_position_3d(_vbuff, _x1, _y2, _z2);
 				vertex_texcoord(_vbuff, _u, _v);
-				vertex_colour(_vbuff, c_white, 1);
+				vertex_colour(_vbuff, _color, 1);
 				vertex_position_3d(_vbuff, _x1, _y1, _z1);
 				vertex_texcoord(_vbuff, _u + oCont_World.tex_spr_uvs, _v + oCont_World.tex_spr_uvs);
-				vertex_colour(_vbuff, c_white, 1);
+				vertex_colour(_vbuff, _color, 1);
 				vertex_position_3d(_vbuff, _x1, _y2, _z1);
 				vertex_texcoord(_vbuff, _u, _v + oCont_World.tex_spr_uvs);
-				vertex_colour(_vbuff, c_white, 1);
+				vertex_colour(_vbuff, _color, 1);
 			}
 			break;
 		case __CELL_WALLS.TOP:
 			vertex_position_3d(_vbuff, _x1, _y1, _z2);
 			vertex_texcoord(_vbuff, _u, _v);
-			vertex_colour(_vbuff, c_white, 1);
+			vertex_colour(_vbuff, _color, 1);
 			vertex_position_3d(_vbuff, _x2, _y1, _z2);
 			vertex_texcoord(_vbuff, _u + oCont_World.tex_spr_uvs, _v);
-			vertex_colour(_vbuff, c_white, 1);
+			vertex_colour(_vbuff, _color, 1);
 			vertex_position_3d(_vbuff, _x2, _y2, _z2);
 			vertex_texcoord(_vbuff, _u + oCont_World.tex_spr_uvs, _v + oCont_World.tex_spr_uvs);
-			vertex_colour(_vbuff, c_white, 1);
+			vertex_colour(_vbuff, _color, 1);
 
 			vertex_position_3d(_vbuff, _x1, _y1, _z2);
 			vertex_texcoord(_vbuff, _u, _v);
-			vertex_colour(_vbuff, c_white, 1);
+			vertex_colour(_vbuff, _color, 1);
 			vertex_position_3d(_vbuff, _x2, _y2, _z2);
 			vertex_texcoord(_vbuff, _u + oCont_World.tex_spr_uvs, _v + oCont_World.tex_spr_uvs);
-			vertex_colour(_vbuff, c_white, 1);
+			vertex_colour(_vbuff, _color, 1);
 			vertex_position_3d(_vbuff, _x1, _y2, _z2);
 			vertex_texcoord(_vbuff, _u, _v + oCont_World.tex_spr_uvs);
-			vertex_colour(_vbuff, c_white, 1);
+			vertex_colour(_vbuff, _color, 1);
 			break;
 		case __CELL_WALLS.BOTTOM:
 			vertex_position_3d(_vbuff, _x1, _y1, _z1);
 			vertex_texcoord(_vbuff, _u, _v);
-			vertex_colour(_vbuff, c_white, 1);
+			vertex_colour(_vbuff, _color, 1);
 			vertex_position_3d(_vbuff, _x2, _y1, _z1);
 			vertex_texcoord(_vbuff, _u + oCont_World.tex_spr_uvs, _v);
-			vertex_colour(_vbuff, c_white, 1);
+			vertex_colour(_vbuff, _color, 1);
 			vertex_position_3d(_vbuff, _x2, _y2, _z1);
 			vertex_texcoord(_vbuff, _u + oCont_World.tex_spr_uvs, _v + oCont_World.tex_spr_uvs);
-			vertex_colour(_vbuff, c_white, 1);
+			vertex_colour(_vbuff, _color, 1);
 
 			vertex_position_3d(_vbuff, _x1, _y1, _z1);
 			vertex_texcoord(_vbuff, _u, _v);
-			vertex_colour(_vbuff, c_white, 1);
+			vertex_colour(_vbuff, _color, 1);
 			vertex_position_3d(_vbuff, _x2, _y2, _z1);
 			vertex_texcoord(_vbuff, _u + oCont_World.tex_spr_uvs, _v + oCont_World.tex_spr_uvs);
-			vertex_colour(_vbuff, c_white, 1);
+			vertex_colour(_vbuff, _color, 1);
 			vertex_position_3d(_vbuff, _x1, _y2, _z1);
 			vertex_texcoord(_vbuff, _u, _v + oCont_World.tex_spr_uvs);
-			vertex_colour(_vbuff, c_white, 1);
+			vertex_colour(_vbuff, _color, 1);
 			break;
 	}
 }

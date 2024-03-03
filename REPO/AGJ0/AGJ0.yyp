@@ -62,6 +62,7 @@
     {"id":{"name":"oSample_","path":"objects/oSample_/oSample_.yy",},},
     {"id":{"name":"oWalkzone","path":"objects/oWalkzone/oWalkzone.yy",},},
     {"id":{"name":"fGame","path":"scripts/fGame/fGame.yy",},},
+    {"id":{"name":"fLight","path":"scripts/fLight/fLight.yy",},},
     {"id":{"name":"fSampleBehavior","path":"scripts/fSampleBehavior/fSampleBehavior.yy",},},
     {"id":{"name":"tTile_Path","path":"tilesets/tTile_Path/tTile_Path.yy",},},
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},

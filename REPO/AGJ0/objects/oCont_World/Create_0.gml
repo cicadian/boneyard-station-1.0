@@ -35,10 +35,14 @@ vertex_format_add_texcoord();
 vertex_format_add_color();
 world_format = vertex_format_end();
 
-world_vbuff = undefined;
+world_light_vbuff = undefined;
 world_tex_0 = sprite_get_texture(sTex_World, 0);
 world_tex_1 = sprite_get_texture(sTex_World, 1);
 world_tex_2 = sprite_get_texture(sTex_World, 2);
+
+world_dark_vbuff = undefined;
+
+world_vbuff = world_light_vbuff;
 
 door_tex = sprite_get_texture(sTex_Door, 0);
 
@@ -49,6 +53,7 @@ global.fog_on = true;
 global.fog_color = c_black;
 global.fog_start = CELL_SIZE;
 global.fog_end = CELL_SIZE * 4;
+global.light_ambient = 1;
 
 global.world_grid = ds_grid_create(GAME_W, GAME_H);
 ds_grid_clear(global.world_grid, __CELL_PATH.FULL);

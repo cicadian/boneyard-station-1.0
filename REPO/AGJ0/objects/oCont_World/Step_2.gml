@@ -1,5 +1,5 @@
 // Render world
-if (world_vbuff != undefined){
+if (world_light_vbuff != undefined){
 	if (!surface_exists(surf_world)){
 		surf_world = surface_create(NATIVE_W, NATIVE_H);
 	}

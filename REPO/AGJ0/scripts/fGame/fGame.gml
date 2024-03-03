@@ -58,6 +58,9 @@ function game_declare_methods(){
 				if (keyboard_check_pressed(KEY_SKIP) || mouse_check_button_pressed(MOUSE_INTERACT)){
 					dialog_page++;
 					if (dialog_page >= dialog_page_count){
+						if (dialog_index == __DIALOG.LIGHT0){
+							light_toggle();
+						}
 						dialog_page = 0;
 						dialog_index = -1;
 						dialog_string = "";
