@@ -10,10 +10,17 @@ tex_spr_m_uvs = tex_spr_uvs + (tex_pix_uvs * 2); // 34 pixels in UV coordinates
 
 texcoord_wall_u    = 0 + tex_pix_uvs;
 texcoord_floor_u   = tex_pix_uvs * tex_block_size + tex_pix_uvs;
-texcoord_ceiling_u = tex_pix_uvs * (tex_block_size * 2) + tex_pix_uvs;
+texcoord_ceiling_u = tex_pix_uvs * (tex_block_size * 3) + tex_pix_uvs;
+texcoord_light_u = tex_pix_uvs * (tex_block_size * 2) + tex_pix_uvs;
 texcoord_console_u = 0 + tex_pix_uvs + tex_pix_uvs;
 texcoord_engine_u  = tex_pix_uvs * tex_block_size + tex_pix_uvs;
 texcoord_armory_u  = tex_pix_uvs * (tex_block_size * 2) + tex_pix_uvs;
+texcoord_lightswitch_u  = tex_pix_uvs * (tex_block_size * 5) + tex_pix_uvs;
+texcoord_fuelslot_u     = tex_pix_uvs * (tex_block_size * 3) + tex_pix_uvs;
+texcoord_fuel_u         = tex_pix_uvs * (tex_block_size * 4) + tex_pix_uvs;
+texcoord_elevator_u     = tex_pix_uvs * (tex_block_size * 6) + tex_pix_uvs;
+
+texcoord_bloodmod_v = tex_pix_uvs * (tex_block_size * 4);
 
 texcoord_kestrel_v = 0 + tex_pix_uvs;
 texcoord_station_v = tex_pix_uvs * tex_block_size + tex_pix_uvs;

@@ -15,6 +15,18 @@ function clickzone_build(_id, _vbuff){
 		case __CLICKZONE_TYPE.ARMORY:
 			_u = oCont_World.texcoord_armory_u;
 			break;
+		case __CLICKZONE_TYPE.EMERGENCY_LIGHTSWITCH:
+			_u = oCont_World.texcoord_lightswitch_u;
+			break;
+		case __CLICKZONE_TYPE.FUEL_SLOT:
+			_u = oCont_World.texcoord_fuelslot_u;
+			break;
+		case __CLICKZONE_TYPE.FUEL:
+			_u = oCont_World.texcoord_fuel_u;
+			break;
+		case __CLICKZONE_TYPE.ELEVATOR_UP:
+			_u = oCont_World.texcoord_elevator_u;
+			break;
 	}
 	var _v = oCont_World.texcoord_special_v;
 	world_build_wall(_id.grid_x, _id.grid_y, _id.wall, _vbuff, _u, _v);

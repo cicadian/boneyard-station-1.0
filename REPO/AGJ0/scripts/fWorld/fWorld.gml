@@ -81,9 +81,29 @@ function world_build_cell(_grid_x, _grid_y, _vbuff){
 						break;
 					case 2:
 						_v = oCont_World.texcoord_station_v;
+						if (_vbuff == oCont_World.world_dark_vbuff){
+							if (irandom(3) == 0){
+								_v += oCont_World.texcoord_bloodmod_v;
+							}
+						}
+						else{
+							if (irandom(9) == 0){
+								_v += oCont_World.texcoord_bloodmod_v;
+							}
+						}
 						break;
 					case 3:
 						_v = oCont_World.texcoord_cargo_v;
+						if (_vbuff == oCont_World.world_dark_vbuff){
+							if (irandom(3) == 0){
+								_v += oCont_World.texcoord_bloodmod_v;
+							}
+						}
+						else{
+							if (irandom(16) == 0){
+								_v += oCont_World.texcoord_bloodmod_v;
+							}
+						}
 						break;
 				}
 				switch (_i){
@@ -95,16 +115,17 @@ function world_build_cell(_grid_x, _grid_y, _vbuff){
 						break;
 					case __CELL_WALLS.TOP:
 						if (_grid_x % 2 == 0 && _grid_y % 2 == 0){
-							_u = oCont_World.texcoord_ceiling_u;
+							_u = oCont_World.texcoord_light_u;
 						}
 						else{
-							_u = oCont_World.texcoord_floor_u;
+							_u = oCont_World.texcoord_ceiling_u;
 						}
 						break;
 					case __CELL_WALLS.BOTTOM:
 						_u = oCont_World.texcoord_floor_u;
 						break;
 				}
+				show_debug_message(_v);
 				world_build_wall(_grid_x, _grid_y, _i, _vbuff, _u, _v);
 			}
 		}
