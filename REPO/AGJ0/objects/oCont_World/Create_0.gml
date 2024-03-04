@@ -7,26 +7,18 @@ tex_sht_size = 256;
 tex_pix_uvs  = 1 / tex_sht_size; // 1 pixel in UV coordinates
 tex_spr_uvs  = tex_pix_uvs * tex_spr_size; // 32 pixels in UV coordinates
 tex_spr_m_uvs = tex_spr_uvs + (tex_pix_uvs * 2); // 34 pixels in UV coordinates
-texcoord_default_u = 0; // default start x position for world texture
-texcoord_default_v = 0 + tex_pix_uvs; // default start y position for world_texture
-texcoord_north_u  = (tex_spr_m_uvs * 1) + tex_pix_uvs;
-texcoord_east_u   = (tex_spr_m_uvs * 2) + tex_pix_uvs;
-texcoord_south_u  = (tex_spr_m_uvs * 3) + tex_pix_uvs;
-texcoord_west_u   = (tex_spr_m_uvs * 4) + tex_pix_uvs;
-texcoord_top_u    = (tex_spr_m_uvs * 5) + tex_pix_uvs;
-texcoord_bottom_u = (tex_spr_m_uvs * 6) + tex_pix_uvs;
 
-texcoord_wall_u    = 0;
-texcoord_floor_u   = tex_pix_uvs * tex_block_size;
-texcoord_ceiling_u = tex_pix_uvs * (tex_block_size * 2);
-texcoord_console_u = 0;
-texcoord_engine_u  = tex_pix_uvs * tex_block_size;
-texcoord_armory_u  = tex_pix_uvs * (tex_block_size * 2);
+texcoord_wall_u    = 0 + tex_pix_uvs;
+texcoord_floor_u   = tex_pix_uvs * tex_block_size + tex_pix_uvs;
+texcoord_ceiling_u = tex_pix_uvs * (tex_block_size * 2) + tex_pix_uvs;
+texcoord_console_u = 0 + tex_pix_uvs + tex_pix_uvs;
+texcoord_engine_u  = tex_pix_uvs * tex_block_size + tex_pix_uvs;
+texcoord_armory_u  = tex_pix_uvs * (tex_block_size * 2) + tex_pix_uvs;
 
-texcoord_kestrel_v = 0;
-texcoord_station_v = tex_pix_uvs * tex_block_size;
-texcoord_cargo_v   = tex_pix_uvs * (tex_block_size * 2);
-texcoord_special_v = tex_pix_uvs * (tex_block_size * 3);
+texcoord_kestrel_v = 0 + tex_pix_uvs;
+texcoord_station_v = tex_pix_uvs * tex_block_size + tex_pix_uvs;
+texcoord_cargo_v   = tex_pix_uvs * (tex_block_size * 2) + tex_pix_uvs;
+texcoord_special_v = tex_pix_uvs * (tex_block_size * 3) + tex_pix_uvs;
 
 // lighting
 global.light_grid = -1;

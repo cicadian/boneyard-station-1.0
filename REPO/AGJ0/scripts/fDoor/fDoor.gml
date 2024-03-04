@@ -66,48 +66,50 @@ function door_build(){
 	var _y2 = _y1 + CELL_SIZE;
 	var _z1 = 0;
 	var _z2 = CELL_SIZE; 
+	var _u = 0;
+	var _v = 0;
 	_vbuff = vertex_create_buffer();
 	vertex_begin(_vbuff, other.world_format);
 	if (orientation == __DOOR_ORIENTATION.HORIZONTAL){
 		vertex_position_3d(_vbuff, _x2 - (CELL_SIZE / 2), _y1, _z2);
-		vertex_texcoord(_vbuff, other.texcoord_default_u, other.texcoord_default_v);
+		vertex_texcoord(_vbuff, _u, _v);
 		vertex_colour(_vbuff, c_white, 1);
 		vertex_position_3d(_vbuff, _x2 - (CELL_SIZE / 2), _y2, _z2);
-		vertex_texcoord(_vbuff, other.texcoord_default_u + other.tex_spr_uvs, other.texcoord_default_v);
+		vertex_texcoord(_vbuff, _u + other.tex_spr_uvs, _v);
 		vertex_colour(_vbuff, c_white, 1);
 		vertex_position_3d(_vbuff, _x2 - (CELL_SIZE / 2), _y2, _z1);
-		vertex_texcoord(_vbuff, other.texcoord_default_u + other.tex_spr_uvs, other.texcoord_default_v + other.tex_spr_uvs);
+		vertex_texcoord(_vbuff, _u + other.tex_spr_uvs, _v + other.tex_spr_uvs);
 		vertex_colour(_vbuff, c_white, 1);
 
 		vertex_position_3d(_vbuff, _x2 - (CELL_SIZE / 2), _y1, _z2);
-		vertex_texcoord(_vbuff, other.texcoord_default_u, other.texcoord_default_v);
+		vertex_texcoord(_vbuff, _u, _v);
 		vertex_colour(_vbuff, c_white, 1);
 		vertex_position_3d(_vbuff, _x2 - (CELL_SIZE / 2), _y2, _z1);
-		vertex_texcoord(_vbuff, other.texcoord_default_u + other.tex_spr_uvs, other.texcoord_default_v + other.tex_spr_uvs);
+		vertex_texcoord(_vbuff, _u + other.tex_spr_uvs, _v + other.tex_spr_uvs);
 		vertex_colour(_vbuff, c_white, 1);
 		vertex_position_3d(_vbuff, _x2 - (CELL_SIZE / 2), _y1, _z1);
-		vertex_texcoord(_vbuff, other.texcoord_default_u, other.texcoord_default_v + other.tex_spr_uvs);
+		vertex_texcoord(_vbuff, _u, _v + other.tex_spr_uvs);
 		vertex_colour(_vbuff, c_white, 1);
 	}
 	else if (orientation == __DOOR_ORIENTATION.VERTICAL){
 		vertex_position_3d(_vbuff, _x1, _y1 + (CELL_SIZE / 2), _z2);
-		vertex_texcoord(_vbuff, other.texcoord_default_u, other.texcoord_default_v);
+		vertex_texcoord(_vbuff, _u, _v);
 		vertex_colour(_vbuff, c_white, 1);
 		vertex_position_3d(_vbuff, _x2, _y1 + (CELL_SIZE / 2), _z2);
-		vertex_texcoord(_vbuff, other.texcoord_default_u + other.tex_spr_uvs, other.texcoord_default_v);
+		vertex_texcoord(_vbuff, _u + other.tex_spr_uvs, _v);
 		vertex_colour(_vbuff, c_white, 1);
 		vertex_position_3d(_vbuff, _x2, _y1 + (CELL_SIZE / 2), _z1);
-		vertex_texcoord(_vbuff, other.texcoord_default_u + other.tex_spr_uvs, other.texcoord_default_v + other.tex_spr_uvs);
+		vertex_texcoord(_vbuff, _u + other.tex_spr_uvs, _v + other.tex_spr_uvs);
 		vertex_colour(_vbuff, c_white, 1);
 
 		vertex_position_3d(_vbuff, _x1, _y1 + (CELL_SIZE / 2), _z2);
-		vertex_texcoord(_vbuff, other.texcoord_default_u, other.texcoord_default_v);
+		vertex_texcoord(_vbuff, _u, _v);
 		vertex_colour(_vbuff, c_white, 1);
 		vertex_position_3d(_vbuff, _x2, _y1 + (CELL_SIZE / 2), _z1);
-		vertex_texcoord(_vbuff, other.texcoord_default_u + other.tex_spr_uvs, other.texcoord_default_v + other.tex_spr_uvs);
+		vertex_texcoord(_vbuff, _u + other.tex_spr_uvs, _v + other.tex_spr_uvs);
 		vertex_colour(_vbuff, c_white, 1);
 		vertex_position_3d(_vbuff, _x1, _y1 + (CELL_SIZE / 2), _z1);
-		vertex_texcoord(_vbuff, other.texcoord_default_u, other.texcoord_default_v + other.tex_spr_uvs);
+		vertex_texcoord(_vbuff, _u, _v + other.tex_spr_uvs);
 		vertex_colour(_vbuff, c_white, 1);
 	}
 	vertex_end(_vbuff);

@@ -62,7 +62,7 @@ function world_build_cell(_grid_x, _grid_y, _vbuff){
 	for (var _i = 0; _i < __CELL_WALLS.SIZE; _i++){
 		var _is_empty = global.world_grid[# _grid_x, _grid_y] == __CELL_PATH.EMPTY;
 		var _build = true;
-		var _u = oCont_World.texcoord_default_u;
+		var _u = 0;
 		var _v = oCont_World.texcoord_kestrel_v;
 		var _clickzone_id = instance_position(_grid_x * CELL_SIZE, _grid_y * CELL_SIZE, oClickzone);
 		if (_is_empty){
