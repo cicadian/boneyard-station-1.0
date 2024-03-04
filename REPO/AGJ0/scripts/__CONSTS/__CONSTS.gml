@@ -16,7 +16,7 @@
 #macro GAME_H room_height div CELL_SIZE
 
 #macro AMBIENT_LIT 0.8
-#macro AMBIENT_DARK 0.1
+#macro AMBIENT_DARK 0.2
 
 enum __CELL_PATH {
 	EMPTY,

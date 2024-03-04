@@ -94,7 +94,12 @@ function world_build_cell(_grid_x, _grid_y, _vbuff){
 						_u = oCont_World.texcoord_wall_u;
 						break;
 					case __CELL_WALLS.TOP:
-						_u = oCont_World.texcoord_ceiling_u;
+						if (_grid_x % 2 == 0 && _grid_y % 2 == 0){
+							_u = oCont_World.texcoord_ceiling_u;
+						}
+						else{
+							_u = oCont_World.texcoord_floor_u;
+						}
 						break;
 					case __CELL_WALLS.BOTTOM:
 						_u = oCont_World.texcoord_floor_u;

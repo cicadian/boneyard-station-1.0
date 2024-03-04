@@ -1,5 +1,4 @@
-3/3 add paint tiles and do some art!
-3/4 add death and checkpoint and roaming enemies that can't go through doors
+3/4 add roaming enemies that can't go through doors
 3/5 add shooting and being shot at, start sounds and music
 3/6 add elevator/teleport, begin work on final area
 3/7 finish work on final area, add any missing text events
