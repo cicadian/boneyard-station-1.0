@@ -50,6 +50,13 @@ if (world_light_vbuff != undefined){
 			vertex_submit(vbuff, pr_trianglelist, tex);
 		}
 	}
+	with (oEnemy){
+		if (vbuff != undefined){
+			matrix_set(matrix_world, matrix_build(x, y, 0, 0, 0, 0, 1, 1, 1));
+			vertex_submit(vbuff, pr_trianglelist, tex);
+		}
+	}
+	matrix_set(matrix_world, _worldMat);
 	
 	gpu_set_fog(false, global.fog_color, global.fog_start, global.fog_end);
 	
