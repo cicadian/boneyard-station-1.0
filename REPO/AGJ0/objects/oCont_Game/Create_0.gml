@@ -24,3 +24,5 @@ cursor_spr = -1;
 cursor_default = sCursor_Default;
 cursor_aim     = sCursor_Aim;
 cursor_frame = 0;
+
+have_fuel = false;

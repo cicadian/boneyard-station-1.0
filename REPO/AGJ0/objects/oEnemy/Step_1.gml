@@ -37,22 +37,29 @@ if (action_counter >= action_counter_max){
 	var _look_east = false;
 	var _look_west = false;
 	var _look_south = false;
+	var _playerX = x - 2;
+	var _playerY = y - 2;
+	
+	var _north1 = (_gridX == oPlayer.grid_x && _gridY - 1 == oPlayer.grid_y);
+	var _north2 = (_gridX == oPlayer.grid_x && _gridY - 2 == oPlayer.grid_y) && (global.world_grid[# _gridX, _gridY - 1] == __CELL_PATH.EMPTY);
+	var _south1 = (_gridX == oPlayer.grid_x && _gridY + 1 == oPlayer.grid_y);
+	var _south2 = (_gridX == oPlayer.grid_x && _gridY + 2 == oPlayer.grid_y) && (global.world_grid[# _gridX, _gridY + 1] == __CELL_PATH.EMPTY);
+	var _west1  = (_gridX - 1 == oPlayer.grid_x && _gridY == oPlayer.grid_y);
+	var _west2  = (_gridX - 2 == oPlayer.grid_x && _gridY == oPlayer.grid_y) && (global.world_grid[# _gridX - 1, _gridY] == __CELL_PATH.EMPTY);
+	var _east1  = (_gridX + 1 == oPlayer.grid_x && _gridY == oPlayer.grid_y);							   
+	var _east2  = (_gridX + 2 == oPlayer.grid_x && _gridY == oPlayer.grid_y) && (global.world_grid[# _gridX + 1, _gridY] == __CELL_PATH.EMPTY);
 
-	if ((instance_position(x + 2, y - CELL_SIZE * 2 + 2, oPlayer) != noone && global.world_grid[# _gridX, _gridY - 1] == __CELL_PATH.EMPTY && global.world_grid[# _gridX, _gridY - 2] == __CELL_PATH.EMPTY) || instance_position(x + 2, y - CELL_SIZE+ 2, oPlayer) != noone){
+	if (_north1 || _north2){
 		_look_north = true;
-		show_debug_message("north");
 	}
-	else if ((instance_position(x + 2, y + CELL_SIZE * 2 + 2, oPlayer) != noone && global.world_grid[# _gridX, _gridY + 1] == __CELL_PATH.EMPTY && global.world_grid[# _gridX, _gridY + 2] == __CELL_PATH.EMPTY) || instance_position(x + 2, y + CELL_SIZE + 2, oPlayer) != noone){
+	else if (_south1 || _south2){
 		_look_south = true;
-		show_debug_message("south");
 	}
-	else if ((instance_position(x - CELL_SIZE * 2 + 2, y + 2, oPlayer) != noone && global.world_grid[# _gridX - 1, _gridY] == __CELL_PATH.EMPTY && global.world_grid[# _gridX - 2, _gridY] == __CELL_PATH.EMPTY) || instance_position(x - CELL_SIZE + 2, y + 2, oPlayer) != noone){
+	else if (_west1 || _west2){
 		_look_west = true;
-		show_debug_message("west");
 	}
-	else if ((instance_position(x + CELL_SIZE * 2 + 2, y + 2, oPlayer) != noone && global.world_grid[# _gridX + 1, _gridY] == __CELL_PATH.EMPTY && global.world_grid[# _gridX + 2, _gridY] == __CELL_PATH.EMPTY) || instance_position(x + CELL_SIZE + 2, y + 2, oPlayer) != noone){
+	else if (_east1 || _east2){
 		_look_east = true;
-		show_debug_message("east");
 	}
 	if (_look_north){
 		if (facing != __CARDINAL.NORTH){
@@ -116,15 +123,24 @@ if (action_counter >= action_counter_max){
 				turn_right = true;
 				break;
 			case 2:
-				move_forward = true;
+				if (global.world_grid[# _gridX + _vecX, _gridY + _vecY] == __CELL_PATH.EMPTY){
+					move_forward = true;
+				}
+				else{
+					turn_right = true;
+				}
 				break;
 			case 3:
-				move_backward = true;
+				if (global.world_grid[# _gridX - _vecX, _gridY - _vecY] == __CELL_PATH.EMPTY){
+					move_backward = true;
+				}
+				else{
+					turn_right = true;
+				}
 				break;
 		}
 	}
 	action_counter = -1 - random(15);
-	action_counter = action_counter_max;
 }
 action_counter++;
 

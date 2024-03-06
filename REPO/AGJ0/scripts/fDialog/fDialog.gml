@@ -62,7 +62,7 @@ function dialog_lookup(_event, _page){
 			dialog_page_count = 1;
 			dialog_portrait = sPort_Player;
 			if (_page == 0){
-				_str = "This is the engine access hatch for my ship, everything is in working order."
+				_str = "This is the fuel hatch for my ship, I better not mess with this."
 			}
 			break;
 		case __DIALOG.MUSE_STATION:
@@ -88,11 +88,39 @@ function dialog_lookup(_event, _page){
 				_str = "There's controls here for the emergency lights, but until power is restored I won't be able to access much of the station.";
 			}
 			break;
+		case __DIALOG.POWERSTATION_NOFUEL:
+			dialog_page_count = 1;
+			dialog_portrait = sPort_Player;
+			if (_page == 0){
+				_str = "Someone has taken the fuel from this receptacle, I won't be able to explore the rest of the station until I find some way to turn the power back on.";
+			}
+			break;
+		case __DIALOG.POWERSTATION_FUELINHAND:
+			dialog_page_count = 1;
+			dialog_portrait = sPort_Player;
+			if (_page == 0){
+				_str = "There we go, back where you belong.";
+			}
+			break;
+		case __DIALOG.POWERSTATION_HASFUEL:
+			dialog_page_count = 1;
+			dialog_portrait = sPort_Player;
+			if (_page == 0){
+				_str = "Station power is restored, I should try looking around for a way up to the main deck.";
+			}
+			break;
 		case __DIALOG.MUSE_ENEMIES:
 			dialog_page_count = 1;
 			dialog_portrait = sPort_Player;
 			if (_page == 0){
 				_str = "Better get my weapon ready before going any further.";
+			}
+			break;
+		case __DIALOG.FUEL_PICKUP:
+			dialog_page_count = 1;
+			dialog_portrait = sPort_Player;
+			if (_page == 0){
+				_str = "This must be the missing fuel for the station. What is going on here?";
 			}
 			break;
 	}

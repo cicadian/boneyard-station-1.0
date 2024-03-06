@@ -65,5 +65,39 @@ function clickzone_execute(_id){
 				light_toggle();
 			}
 			break;
+		case __CLICKZONE_TYPE.ENGINE:
+			//dialog event for useless engine hatch on starting ship
+			oCont_Game.dialog_index = __DIALOG.ENGINE;
+			break;
+		case __CLICKZONE_TYPE.FUEL_SLOT:
+			//dialog event for useless engine hatch on starting ship
+			if (oCont_Game.have_fuel){
+				if (_id.stage == 0){
+					_id.stage++;
+					_id.tex = oCont_World.world_tex_1;
+					with (oDoor){
+						if (name == "LOCKED_ELEVATOR"){
+							stateMachine_push(state_door_closed, stateMap_door);
+						}
+					}
+					oCont_Game.dialog_index = __DIALOG.POWERSTATION_FUELINHAND;
+				}
+				else if (_id.stage == 1){
+					oCont_Game.dialog_index = __DIALOG.POWERSTATION_HASFUEL;
+				}
+			}
+			else{
+				oCont_Game.dialog_index = __DIALOG.POWERSTATION_NOFUEL;
+			}
+			break;
+		case __CLICKZONE_TYPE.FUEL:
+			//dialog event for useless engine hatch on starting ship
+			if (_id.stage == 0){
+				_id.stage++;
+				_id.tex = oCont_World.world_tex_0;
+				oCont_Game.have_fuel = true;
+				oCont_Game.dialog_index = __DIALOG.FUEL_PICKUP;
+			}
+			break;
 	}
 }

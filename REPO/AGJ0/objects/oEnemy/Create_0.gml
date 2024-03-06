@@ -9,6 +9,8 @@ move_forward = false;
 move_backward = false;
 shoot_at_player = false;
 
+name = "";
+
 action_counter = 0;
 action_counter_max = 60;
 

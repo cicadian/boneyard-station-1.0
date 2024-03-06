@@ -12,3 +12,5 @@ tex_door_locked = sprite_get_texture(sTex_World, 2);
 tex = tex_door_closed;
 
 locked = false;	
+
+name = "";
