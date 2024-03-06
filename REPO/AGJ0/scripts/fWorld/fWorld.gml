@@ -18,11 +18,13 @@ function world_build(){
 		door_build(false);
 	}
 	with (oClickzone){
-		vbuff_light = vertex_create_buffer();
-		vertex_begin(vbuff_light, oCont_World.world_format);
-		clickzone_build(id, vbuff_light);
-		vertex_end(vbuff_light);
-		vertex_freeze(vbuff_light);
+		if (type != __CLICKZONE_TYPE.MAD_CAPTAIN){
+			vbuff_light = vertex_create_buffer();
+			vertex_begin(vbuff_light, oCont_World.world_format);
+			clickzone_build(id, vbuff_light);
+			vertex_end(vbuff_light);
+			vertex_freeze(vbuff_light);
+		}
 	}
 }
 /// @func world_build_dark
@@ -125,7 +127,6 @@ function world_build_cell(_grid_x, _grid_y, _vbuff){
 						_u = oCont_World.texcoord_floor_u;
 						break;
 				}
-				show_debug_message(_v);
 				world_build_wall(_grid_x, _grid_y, _i, _vbuff, _u, _v);
 			}
 		}

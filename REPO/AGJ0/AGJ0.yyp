@@ -58,6 +58,7 @@
     {"id":{"name":"oPlayer","path":"objects/oPlayer/oPlayer.yy",},},
     {"id":{"name":"sEnemy","path":"sprites/sEnemy/sEnemy.yy",},},
     {"id":{"name":"fClickzone","path":"scripts/fClickzone/fClickzone.yy",},},
+    {"id":{"name":"sGun","path":"sprites/sGun/sGun.yy",},},
     {"id":{"name":"sWalkzone","path":"sprites/sWalkzone/sWalkzone.yy",},},
     {"id":{"name":"sTile_Paint","path":"sprites/sTile_Paint/sTile_Paint.yy",},},
     {"id":{"name":"fDoor","path":"scripts/fDoor/fDoor.yy",},},

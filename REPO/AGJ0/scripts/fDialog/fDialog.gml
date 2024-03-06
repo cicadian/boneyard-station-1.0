@@ -123,6 +123,36 @@ function dialog_lookup(_event, _page){
 				_str = "This must be the missing fuel for the station. What is going on here?";
 			}
 			break;
+		case __DIALOG.MAD_CAPTAIN:
+			dialog_page_count = 5;
+			if (_page == 0){
+				dialog_portrait = sPort_Player;
+				_str = "\"Is there anyone there?\"";
+			}
+			if (_page == 1){
+				dialog_portrait = sPort_Captain;
+				_str = "\"Go away! This one hides in the shadows. Have to get away!\"";
+			}
+			if (_page == 2){
+				dialog_portrait = sPort_Player;
+				_str = "\"Please I only want to find out what happened here. Can't you tell me anything?\"";
+			}
+			if (_page == 3){
+				dialog_portrait = sPort_Captain;
+				_str = "\"It beckons to us... Do not believe. Do not see. Keep to the shadows...\"";
+			}
+			if (_page == 4){
+				dialog_portrait = sPort_Player;
+				_str = "\"...\"";
+			}
+			break;
+		case __DIALOG.MAD_CAPTAIN_2:
+			dialog_page_count = 2;
+			if (_page == 0){
+				dialog_portrait = sPort_Player;
+				_str = "I don't think whoever is behind this door will help me.";
+			}
+			break;
 	}
 	return _str;
 }

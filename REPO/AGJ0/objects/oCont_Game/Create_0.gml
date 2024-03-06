@@ -26,3 +26,5 @@ cursor_aim     = sCursor_Aim;
 cursor_frame = 0;
 
 have_fuel = false;
+
+global.has_gun = false;

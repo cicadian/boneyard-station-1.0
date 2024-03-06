@@ -1,6 +1,46 @@
 if (oCont_Game.lock_controls){
 	exit;
 }
+
+if (global.has_gun){
+	if (mouse_check_button_pressed(MOUSE_SHOOT) && !gun_out){
+		gun_out = true;
+		oCont_Game.cursor_spr = oCont_Game.cursor_aim;
+		mouse_clear(MOUSE_SHOOT);
+	}
+	if (mouse_check_button_pressed(MOUSE_INTERACT) && gun_out){
+		oCont_Game.cursor_spr = oCont_Game.cursor_default;
+		gun_out = false;
+	}
+}
+if (gun_out){
+	if (mouse_check_button_pressed(MOUSE_SHOOT)){
+		// fire weapon
+		if (gun_counter >= gun_counter_max){
+			gun_fire = true;
+			target_x = mouse_x;
+			target_y = mouse_y;
+			gun_counter = -1;
+		}
+	}
+	gun_counter++;
+	gun_x = round(mouse_x / 2 - (NATIVE_W / 2));
+	gun_y = round(mouse_y / 4 - (NATIVE_H / 4) + (NATIVE_H / 4)); 
+}
+if (gun_counter < gun_counter_max){
+	gun_frame = 1;
+}
+else{
+	gun_frame = 0;
+}
+if (gun_fire){
+	if (gun_fire_counter >= gun_fire_counter_max){
+		gun_fire = false;
+		gun_fire_counter = -1;
+	}
+	gun_fire_counter++;
+}
+
 if (regen_counter >= regen_counter_max){
 	if (life > 0){
 		life++;

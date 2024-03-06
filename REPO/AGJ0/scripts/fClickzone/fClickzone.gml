@@ -49,6 +49,7 @@ function clickzone_execute(_id){
 			else if (_id.stage == 1){
 				oCont_Game.dialog_index = __DIALOG.ARMORY_GET_GUN;
 				_id.tex = oCont_World.world_tex_2;
+				global.has_gun = true;
 				_id.stage++;
 			}
 			else if (_id.stage == 2){
@@ -97,6 +98,16 @@ function clickzone_execute(_id){
 				_id.tex = oCont_World.world_tex_0;
 				oCont_Game.have_fuel = true;
 				oCont_Game.dialog_index = __DIALOG.FUEL_PICKUP;
+			}
+			break;
+		case __CLICKZONE_TYPE.MAD_CAPTAIN:
+			//dialog event for useless engine hatch on starting ship
+			if (_id.stage == 0){
+				_id.stage++;
+				oCont_Game.dialog_index = __DIALOG.MAD_CAPTAIN;
+			}
+			if (_id.stage == 1){
+				oCont_Game.dialog_index = __DIALOG.MAD_CAPTAIN_2;
 			}
 			break;
 	}

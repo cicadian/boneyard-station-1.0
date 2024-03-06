@@ -37,6 +37,7 @@
     {"name":"oPlayer","order":4,"path":"objects/oPlayer/oPlayer.yy",},
     {"name":"sEnemy","order":18,"path":"sprites/sEnemy/sEnemy.yy",},
     {"name":"fClickzone","order":10,"path":"scripts/fClickzone/fClickzone.yy",},
+    {"name":"sGun","order":19,"path":"sprites/sGun/sGun.yy",},
     {"name":"sWalkzone","order":11,"path":"sprites/sWalkzone/sWalkzone.yy",},
     {"name":"sTile_Paint","order":13,"path":"sprites/sTile_Paint/sTile_Paint.yy",},
     {"name":"fDoor","order":9,"path":"scripts/fDoor/fDoor.yy",},

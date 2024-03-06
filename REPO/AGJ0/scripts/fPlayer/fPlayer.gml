@@ -5,6 +5,12 @@ function player_die(){
 		z = 0.9;
 	}
 	death_counter++;
+	gun_out = false;
+	gun_counter = 0;
+	gun_fire = false;
+	gun_frame = 0;
+	gun_fire_counter = 0;
+	oCont_Game.cursor_spr = oCont_Game.cursor_default;
 	if (death_counter >= death_counter_max){
 		if (keyboard_check_pressed(vk_escape) || keyboard_check_pressed(KEY_SKIP) || mouse_check_button_pressed(MOUSE_INTERACT) || mouse_check_button_pressed(MOUSE_SHOOT)){
 			x = checkpoint_x + (CELL_SIZE / 2);

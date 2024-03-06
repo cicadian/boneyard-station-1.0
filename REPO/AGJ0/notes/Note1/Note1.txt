@@ -1,5 +1,4 @@
-3/5 write some more, add shooting and being shot at
-3/6 start sounds and music, gun and laser sprites, add bodies
+3/6 start sounds and music, add bodies, enemy sprites, billboarding
 3/7 add elevator/teleport, begin work on final area
 3/8 finish work on final area, add any missing text events
 3/9 add sound and music and an art pass

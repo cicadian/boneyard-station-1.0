@@ -16,7 +16,7 @@ function game_declare_methods(){
 		var _stateMap = stateMap_game;
 		if (!stateMachine_get_init(_stateMap)){
 			stateMachine_set_init(_stateMap, true);
-			cursor_spr = -1;
+			cursor_spr = cursor_default;
 		}
 		//if (counter_tutorial != -1){
 		//	if (counter_tutorial >= counter_tutorial_max){
@@ -93,7 +93,6 @@ function game_declare_methods(){
 		}
 		else{
 			lock_controls = false;
-			cursor_spr = cursor_default;
 		}
 		
 		if (stateMachine_get_done(_stateMap)){

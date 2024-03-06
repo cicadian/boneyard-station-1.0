@@ -57,6 +57,7 @@ enum __CLICKZONE_TYPE{
 	ELEVATOR_DOWN,
 	FUEL,
 	BRIDGE_CONSOLE,
+	MAD_CAPTAIN,
 	CAPTAIN,
 	
 	DOOR_FAKE,
@@ -93,3 +94,6 @@ enum __WALKZONE_TYPE{
 
 #macro FONTMAP " ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789.,!?:;'\"[]()"
 #macro CHARMAX 32 // This is generally how many of the widest characters we can fit on a line, not used anywhere
+
+#macro LASER_X 256
+#macro LASER_Y 88
