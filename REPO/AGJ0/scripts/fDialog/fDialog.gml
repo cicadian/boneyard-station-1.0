@@ -72,7 +72,7 @@ function dialog_lookup(_event, _page){
 				_str = "\"...\"";
 			}
 			if (_page == 1){
-				_str = "This looks bad. Main power is out and I smell blood.";
+				_str = "This looks bad.";
 			}
 			if (_page == 2){
 				_str = "I need to find an access panel if I want to get anywhere.";
@@ -92,7 +92,7 @@ function dialog_lookup(_event, _page){
 			dialog_page_count = 1;
 			dialog_portrait = sPort_Player;
 			if (_page == 0){
-				_str = "I hear footsteps, better get my weapon ready.";
+				_str = "Better get my weapon ready before going any further.";
 			}
 			break;
 	}

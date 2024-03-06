@@ -1,15 +1,22 @@
 /// @func light_toggle
 function light_toggle(){
+	global.light_toggle = !global.light_toggle;
 	if (oCont_World.world_vbuff == oCont_World.world_light_vbuff){
 		oCont_World.world_vbuff = oCont_World.world_dark_vbuff;
 		with (oClickzone){
 			vbuff = vbuff_dark;
+			if (type == __CLICKZONE_TYPE.EMERGENCY_LIGHTSWITCH){
+				tex = oCont_World.world_tex_0;
+			}
 		}
 	}
 	else{
 		oCont_World.world_vbuff = oCont_World.world_light_vbuff;
 		with (oClickzone){
 			vbuff = vbuff_light;
+			if (type == __CLICKZONE_TYPE.EMERGENCY_LIGHTSWITCH){
+				tex = oCont_World.world_tex_1;
+			}
 		}
 	}
 }

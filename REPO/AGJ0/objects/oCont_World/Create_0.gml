@@ -19,6 +19,7 @@ texcoord_lightswitch_u  = tex_pix_uvs * (tex_block_size * 5) + tex_pix_uvs;
 texcoord_fuelslot_u     = tex_pix_uvs * (tex_block_size * 3) + tex_pix_uvs;
 texcoord_fuel_u         = tex_pix_uvs * (tex_block_size * 4) + tex_pix_uvs;
 texcoord_elevator_u     = tex_pix_uvs * (tex_block_size * 6) + tex_pix_uvs;
+texcoord_door_u         = tex_pix_uvs * (tex_block_size * 4) + tex_pix_uvs;
 
 texcoord_bloodmod_v = tex_pix_uvs * (tex_block_size * 4);
 
@@ -56,9 +57,11 @@ global.fog_color = c_black;
 global.fog_start = CELL_SIZE * 0;
 global.fog_end = CELL_SIZE * 4;
 global.light_ambient = 1;
+global.light_toggle = false;
 
 global.world_grid = ds_grid_create(GAME_W, GAME_H);
 ds_grid_clear(global.world_grid, __CELL_PATH.FULL);
 
 door_buffer_list = ds_list_create();
+door_buffer_list_dark = ds_list_create();
 door_count = 0;

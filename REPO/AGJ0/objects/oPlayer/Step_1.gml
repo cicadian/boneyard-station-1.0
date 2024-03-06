@@ -51,8 +51,8 @@ if (keyboard_check_pressed(KEY_LEFT)){
 	}
 }
 
-var _vecX = dcos(dir);
-var _vecY = -dsin(dir);
+vec_x = dcos(dir);
+vec_y = -dsin(dir);
 var _gridX = x div CELL_SIZE;
 var _gridY = y div CELL_SIZE;
 var _moveX = false;
@@ -60,20 +60,20 @@ var _moveY = false;
 
 if (keyboard_check_pressed(KEY_FORWARD)){
 	// Make sure we're not trying to leave the grid
-	_moveX = (_gridX + _vecX) < ds_grid_width(global.world_grid) && (_gridX + _vecX) >= 0;
-	_moveY = (_gridY + _vecY) < ds_grid_height(global.world_grid) && (_gridY + _vecY) >= 0;
+	_moveX = (_gridX + vec_x) < ds_grid_width(global.world_grid) && (_gridX + vec_x) >= 0;
+	_moveY = (_gridY + vec_y) < ds_grid_height(global.world_grid) && (_gridY + vec_y) >= 0;
 
 	if (_moveX && _moveY){
 		// Make sure we're not trying to enter a wall
-		var _empty = global.world_grid[# _gridX + _vecX, _gridY + _vecY] == __CELL_PATH.EMPTY;
-		var _door_id = instance_position(x + (_vecX * CELL_SIZE), y + (_vecY * CELL_SIZE), oDoor);
+		var _empty = global.world_grid[# _gridX + vec_x, _gridY + vec_y] == __CELL_PATH.EMPTY;
+		var _door_id = instance_position(x + (vec_x * CELL_SIZE), y + (vec_y * CELL_SIZE), oDoor);
 		var _blocked = false;
 		if (_door_id != noone){
-			_blocked = state_door_get_closed(_door_id);
+			_blocked = !state_door_get_open(_door_id);
 		}
 		if (_empty && !_blocked){
-			x += CELL_SIZE * _vecX;
-			y += CELL_SIZE * _vecY;
+			x += CELL_SIZE * vec_x;
+			y += CELL_SIZE * vec_y;
 			grid_x = x div CELL_SIZE;
 			grid_y = y div CELL_SIZE;
 		}
@@ -81,20 +81,20 @@ if (keyboard_check_pressed(KEY_FORWARD)){
 }
 else if (keyboard_check_pressed(KEY_BACKWARD)){
 	// Make sure we're not trying to leave the grid
-	_moveX = (_gridX - _vecX) < ds_grid_width(global.world_grid) && (_gridX - _vecX) >= 0;
-	_moveY = (_gridY - _vecY) < ds_grid_height(global.world_grid) && (_gridY - _vecY) >= 0;
+	_moveX = (_gridX - vec_x) < ds_grid_width(global.world_grid) && (_gridX - vec_x) >= 0;
+	_moveY = (_gridY - vec_y) < ds_grid_height(global.world_grid) && (_gridY - vec_y) >= 0;
 
 	if (_moveX && _moveY){
 		// Make sure we're not trying to enter a wall
-		var _empty = global.world_grid[# _gridX - _vecX, _gridY - _vecY] == __CELL_PATH.EMPTY;
-		var _door_id = instance_position(x - (_vecX * CELL_SIZE), y - (_vecY * CELL_SIZE), oDoor);
+		var _empty = global.world_grid[# _gridX - vec_x, _gridY - vec_y] == __CELL_PATH.EMPTY;
+		var _door_id = instance_position(x - (vec_x * CELL_SIZE), y - (vec_y * CELL_SIZE), oDoor);
 		var _blocked = false;
 		if (_door_id != noone){
-			_blocked = state_door_get_closed(_door_id);
+			_blocked = !state_door_get_open(_door_id);
 		}
 		if (_empty && !_blocked){
-			x -= CELL_SIZE * _vecX;
-			y -= CELL_SIZE * _vecY;
+			x -= CELL_SIZE * vec_x;
+			y -= CELL_SIZE * vec_y;
 			grid_x = x div CELL_SIZE;
 			grid_y = y div CELL_SIZE;
 		}

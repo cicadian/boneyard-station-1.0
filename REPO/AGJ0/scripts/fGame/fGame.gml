@@ -37,6 +37,19 @@ function game_declare_methods(){
 						clickzone_execute(_clickzone);
 					}
 				}
+				var _door = instance_position((oPlayer.grid_x + oPlayer.vec_x) * CELL_SIZE, (oPlayer.grid_y + oPlayer.vec_y) * CELL_SIZE, oDoor);
+				if (_door != noone){
+					if (state_door_get_closed(_door) && !state_door_get_locked(_door)){
+						with (_door){
+							stateMachine_push(state_door_open, stateMap_door);
+						}
+					}
+					else if (state_door_get_open(_door)){
+						with (_door){
+							stateMachine_push(state_door_closed, stateMap_door);
+						}
+					}
+				}
 			}
 			var _walkzone = instance_position(oPlayer.x, oPlayer.y, oWalkzone);
 			if (_walkzone != noone){

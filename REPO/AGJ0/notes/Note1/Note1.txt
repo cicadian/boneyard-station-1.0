@@ -1,5 +1,5 @@
-3/4 add roaming enemies that can't go through doors
-3/5 add shooting and being shot at, start sounds and music
+3/4 add the rest of the clickzone dialogs and walkzone stuff, write some more, add shooting and being shot at
+3/5 start sounds and music, gun and laser sprites, add bodies
 3/6 add elevator/teleport, begin work on final area
 3/7 finish work on final area, add any missing text events
 3/8 add sound and music and an art pass
@@ -10,8 +10,7 @@
 3/14 hopefully done
 
 art needed
-walls/ceilings/floor, light switch, door panel, door, doorframe, shutter
-gun, laserbeam, enemy1, enemy2, final enemy parts, captain, creep, pile
+gun, laserbeam, enemy1, enemy2, final enemy parts, captain, pile
 eversion skins
 
 bonus art if there's time
@@ -20,5 +19,3 @@ some kind of shader effect
 posterization
 textures per wall
 death effects
-
-alternate ceiling lights texture

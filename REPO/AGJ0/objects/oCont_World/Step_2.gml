@@ -20,8 +20,8 @@ if (world_light_vbuff != undefined){
 	gpu_set_cullmode(cull_noculling);
 	gpu_set_tex_repeat(true);
 	
-	var _camX = oPlayer.x;
-	var _camY = oPlayer.y;
+	var _camX = oPlayer.x - lengthdir_x(0.65, oPlayer.dir);
+	var _camY = oPlayer.y - lengthdir_y(0.65, oPlayer.dir);
 	var _camZ = oPlayer.z;
 	var _camDX = dcos(oPlayer.dir + -oPlayer.yaw);
 	var _camDY = -dsin(oPlayer.dir + -oPlayer.yaw);
@@ -35,14 +35,12 @@ if (world_light_vbuff != undefined){
 	gpu_set_fog(global.fog_on, global.fog_color, global.fog_start, global.fog_end);
 	
 	vertex_submit(world_vbuff, pr_trianglelist, world_tex_0);
+	var _list = door_buffer_list;
+	if (!global.light_toggle){
+		var _list = door_buffer_list_dark;
+	}
 	for (var _i = 0; _i < door_count; _i++){
-		if (state_door_get_open(door_buffer_list[| _i][? "ID"])){
-			matrix_set(matrix_world, matrix_build(0, 0, CELL_SIZE - (CELL_SIZE / 4), 0, 0, 0, 1, 1, 1));
-		}
-		else{
-			matrix_set(matrix_world, _worldMat);
-		}
-		vertex_submit(door_buffer_list[| _i][? "VBUFF"], pr_trianglelist, door_tex);
+		vertex_submit(_list[| _i][? "VBUFF"], pr_trianglelist, _list[| _i][? "ID"].tex);
 	}
 	matrix_set(matrix_world, _worldMat);
 	with (oClickzone){

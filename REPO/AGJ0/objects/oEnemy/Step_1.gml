@@ -145,7 +145,7 @@ if (move_forward){
 		var _door_id = instance_position(x + (_vecX * CELL_SIZE), y + (_vecY * CELL_SIZE), oDoor);
 		var _blocked = false;
 		if (_door_id != noone){
-			_blocked = state_door_get_closed(_door_id);
+			_blocked = !state_door_get_open(_door_id);
 		}
 		if (_empty && !_blocked){
 			x += CELL_SIZE * _vecX;
@@ -167,7 +167,7 @@ else if (move_backward){
 		var _door_id = instance_position(x - (_vecX * CELL_SIZE), y - (_vecY * CELL_SIZE), oDoor);
 		var _blocked = false;
 		if (_door_id != noone){
-			_blocked = state_door_get_closed(_door_id);
+			_blocked = !state_door_get_open(_door_id);
 		}
 		if (_empty && !_blocked){
 			x -= CELL_SIZE * _vecX;

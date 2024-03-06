@@ -14,9 +14,9 @@ function world_build(){
 	}
 	vertex_end(world_light_vbuff);
 	vertex_freeze(world_light_vbuff);
-	//with (oDoor){
-	//	door_build();
-	//}
+	with (oDoor){
+		door_build(false);
+	}
 	with (oClickzone){
 		vbuff_light = vertex_create_buffer();
 		vertex_begin(vbuff_light, oCont_World.world_format);
@@ -41,7 +41,7 @@ function world_build_dark(){
 	vertex_freeze(world_dark_vbuff);
 	oCont_World.world_vbuff = world_dark_vbuff;
 	with (oDoor){
-		door_build();
+		door_build(true);
 	}
 	with (oClickzone){
 		vbuff_dark = vertex_create_buffer();

@@ -8,5 +8,8 @@ checkpoint_x = START_X;
 checkpoint_y = START_Y;
 checkpoint_dir = __CARDINAL.NORTH;
 
+vec_x = 0;
+vec_y = 0;
+
 death_counter = 0;
 death_counter_max = 60; // wait one second before player can prompt a respawn
