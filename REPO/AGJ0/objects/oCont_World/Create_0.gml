@@ -1,4 +1,5 @@
 surf_world = -1;
+surf_fog = -1;
 
 // texture stuff
 tex_spr_size = 32;
@@ -53,11 +54,19 @@ clickzone_tex = sprite_get_texture(sTex_Clickzone, 0);
 
 global.fov = 70;
 global.fog_on = true;
-global.fog_color = c_black;
+global.fog_color_r = 0.0;
 global.fog_start = CELL_SIZE * 0;
 global.fog_end = CELL_SIZE * 4;
 global.light_ambient = 1;
 global.light_toggle = false;
+
+u_fog_start = shader_get_uniform(gPos, "u_fog_start");
+u_fog_end   = shader_get_uniform(gPos, "u_fog_end");
+u_fog_color = shader_get_uniform(gPos, "u_fog_color");
+
+u_fog_start2 = shader_get_uniform(gFogCrunch, "u_fog_start");
+u_fog_end2   = shader_get_uniform(gFogCrunch, "u_fog_end");
+u_fog_color2 = shader_get_uniform(gFogCrunch, "u_fog_color");
 
 global.world_grid = ds_grid_create(GAME_W, GAME_H);
 ds_grid_clear(global.world_grid, __CELL_PATH.FULL);

@@ -8,10 +8,13 @@ else if (world_vbuff == world_dark_vbuff){
 // Render world
 if (world_light_vbuff != undefined){
 	if (!surface_exists(surf_world)){
-		surf_world = surface_create(NATIVE_W, NATIVE_H);
+		surf_world = surface_create(NATIVE_W / 2, NATIVE_H / 2);
+	}
+	if (!surface_exists(surf_fog)){
+		surf_fog = surface_create(NATIVE_W, NATIVE_H);
 	}
 	surface_set_target(surf_world);
-	draw_clear_alpha(c_black, 1);
+	draw_clear_alpha(c_white, 1);
 	var _worldMat = matrix_get(matrix_world);
 	var _viewMat = matrix_get(matrix_view);
 	var _projMat = matrix_get(matrix_projection);
@@ -32,7 +35,11 @@ if (world_light_vbuff != undefined){
 												0, 0, 1));
 												
 	matrix_set(matrix_projection, matrix_build_projection_perspective_fov(global.fov, GAME_ASPECT,  1, 2000));
-	gpu_set_fog(global.fog_on, global.fog_color, global.fog_start, global.fog_end);
+	
+	shader_set(gPos);
+	shader_set_uniform_f(u_fog_start, global.fog_start);
+	shader_set_uniform_f(u_fog_end, global.fog_end);
+	shader_set_uniform_f(u_fog_color, global.fog_color_r, 0.0, 0.0, 1.0);
 	
 	vertex_submit(world_vbuff, pr_trianglelist, world_tex_0);
 	var _list = door_buffer_list;
@@ -56,9 +63,24 @@ if (world_light_vbuff != undefined){
 	}
 	matrix_set(matrix_world, _worldMat);
 	
-	gpu_set_fog(false, global.fog_color, global.fog_start, global.fog_end);
 	
-	//shader_reset();
+	shader_reset();
+	surface_reset_target();
+	
+	surface_set_target(surf_fog);
+	draw_clear_alpha(c_white, 1);
+	matrix_set(matrix_view, matrix_build_lookat(_camX, _camY, _camZ,
+												_camX + _camDX, _camY + _camDY, _camZ + _camDZ,
+												0, 0, 1));
+												
+	matrix_set(matrix_projection, matrix_build_projection_perspective_fov(global.fov, GAME_ASPECT,  1, 2000));
+	shader_set(gFogCrunch);
+	shader_set_uniform_f(u_fog_start2, global.fog_start);
+	shader_set_uniform_f(u_fog_end2, global.fog_end);
+	shader_set_uniform_f(u_fog_color2, global.fog_color_r, 0.0, 0.0, 1.0);
+	vertex_submit(world_vbuff, pr_trianglelist, world_tex_0);
+	shader_reset();
+	
 	gpu_set_ztestenable(false);
 	gpu_set_zwriteenable(false);
 	gpu_set_cullmode(cull_noculling);

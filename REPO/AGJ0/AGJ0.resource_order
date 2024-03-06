@@ -30,6 +30,8 @@
     {"name":"tTile_Paint","order":1,"path":"tilesets/tTile_Paint/tTile_Paint.yy",},
     {"name":"fPathgrid","order":5,"path":"scripts/fPathgrid/fPathgrid.yy",},
     {"name":"sCursor_Aim","order":9,"path":"sprites/sCursor_Aim/sCursor_Aim.yy",},
+    {"name":"gPosterize","order":2,"path":"shaders/gPosterize/gPosterize.yy",},
+    {"name":"gFogCrunch","order":1,"path":"shaders/gFogCrunch/gFogCrunch.yy",},
     {"name":"sCursor_Default","order":8,"path":"sprites/sCursor_Default/sCursor_Default.yy",},
     {"name":"fTile","order":4,"path":"scripts/fTile/fTile.yy",},
     {"name":"sPort_Player","order":10,"path":"sprites/sPort_Player/sPort_Player.yy",},

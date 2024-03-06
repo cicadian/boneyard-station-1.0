@@ -49,19 +49,19 @@ if (regen_counter >= regen_counter_max){
 }
 regen_counter++;
 if (life == 0){
-	global.fog_color = make_color_rgb(55, 0, 0);
+	global.fog_color_r = 55 / 255;
 }
 else if (life == 1){
-	global.fog_color = make_color_rgb(45, 0, 0);
+	global.fog_color_r = 45 / 255;
 }
 else if (life == 2){
-	global.fog_color = make_color_rgb(25, 0, 0);
+	global.fog_color_r = 25 / 255;
 }
 else if (life == 3){
-	global.fog_color = make_color_rgb(15, 0, 0);
+	global.fog_color_r = 15 / 255;
 }
 else if (life == 4){
-	global.fog_color = c_black;
+	global.fog_color_r = 0.0;
 }
 if (life <= 0){
 	player_die();
