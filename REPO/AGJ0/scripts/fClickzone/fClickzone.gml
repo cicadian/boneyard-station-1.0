@@ -39,15 +39,18 @@ function clickzone_execute(_id){
 		case __CLICKZONE_TYPE.START_CONSOLE:
 			//dialog event for pressing console at start
 			oCont_Game.dialog_index = __DIALOG.BRIDGE_CONSOLE_START;
+			audio_play_sound(switchsound, 0, false);
 			break;
 		case __CLICKZONE_TYPE.ARMORY:
 			//dialog event for pressing console at start
 			if (_id.stage == 0){
 				_id.tex = oCont_World.world_tex_1;
+				audio_play_sound(openbox, 0, false);
 				_id.stage++;
 			}
 			else if (_id.stage == 1){
 				oCont_Game.dialog_index = __DIALOG.ARMORY_GET_GUN;
+				audio_play_sound(takegun, 0, false);
 				_id.tex = oCont_World.world_tex_2;
 				global.has_gun = true;
 				_id.stage++;
@@ -60,6 +63,7 @@ function clickzone_execute(_id){
 			//dialog event for pressing console at start
 			if (_id.stage == 0){
 				oCont_Game.dialog_index = __DIALOG.LIGHT0;
+				audio_play_sound(switchsound, 0, 0);
 				_id.stage++;
 			}
 			else if (_id.stage == 1){
@@ -76,6 +80,10 @@ function clickzone_execute(_id){
 				if (_id.stage == 0){
 					_id.stage++;
 					_id.tex = oCont_World.world_tex_1;
+					_id.emit = audio_emitter_create();
+					//audio_emitter_position(emit, _id.grid_x, _id.grid_y);
+					//audio_emitter_falloff(emit, 100, 16, 1);
+					audio_play_sound_at(poweractive, _id.x, _id.y, 0, 100, 16, 1, true, 0);
 					with (oDoor){
 						if (name == "LOCKED_ELEVATOR"){
 							stateMachine_push(state_door_closed, stateMap_door);

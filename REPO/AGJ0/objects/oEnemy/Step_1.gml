@@ -1,6 +1,13 @@
 if (oCont_Game.lock_controls){
 	exit;
 }
+if (life <= 0){
+	x = 0;
+	y = 0;
+	grid_x = 0;
+	grid_y = 0;
+	exit;
+}
 
 if (turn_right){
 	dir -= 90; // Right...
@@ -146,8 +153,15 @@ action_counter++;
 
 
 if (shoot_at_player){
+	audio_play_sound(gun_1, 0, 0, 0.75);
 	oPlayer.life--;
 	shoot_at_player = false;
+	if (oPlayer.life = 0){
+		audio_play_sound(grunt, 2, false, 1, 0, random_range(0.5, 0.55));
+	}
+	else if (oPlayer.life > 0){
+		audio_play_sound(grunt, 2, false, 0.75, 0, random_range(0.95, 1.05));
+	}
 }
 
 if (move_forward){

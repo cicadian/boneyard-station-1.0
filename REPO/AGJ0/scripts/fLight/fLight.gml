@@ -1,6 +1,12 @@
 /// @func light_toggle
 function light_toggle(){
 	global.light_toggle = !global.light_toggle;
+	if (global.light_toggle){
+		audio_sound_gain(track1, 1, 2000);
+	}
+	else{
+		audio_sound_gain(track1, 0, 2000);
+	}
 	if (oCont_World.world_vbuff == oCont_World.world_light_vbuff){
 		oCont_World.world_vbuff = oCont_World.world_dark_vbuff;
 		with (oClickzone){

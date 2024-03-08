@@ -16,6 +16,7 @@ if (global.has_gun){
 if (gun_out){
 	if (mouse_check_button_pressed(MOUSE_SHOOT)){
 		// fire weapon
+		audio_play_sound(gun_0, 0, 0, 0.75);
 		if (gun_counter >= gun_counter_max){
 			gun_fire = true;
 			target_x = mouse_x;
@@ -116,6 +117,7 @@ if (keyboard_check_pressed(KEY_FORWARD)){
 			y += CELL_SIZE * vec_y;
 			grid_x = x div CELL_SIZE;
 			grid_y = y div CELL_SIZE;
+			audio_play_sound(footstep, 0, 0);
 		}
 	}
 }
@@ -137,6 +139,9 @@ else if (keyboard_check_pressed(KEY_BACKWARD)){
 			y -= CELL_SIZE * vec_y;
 			grid_x = x div CELL_SIZE;
 			grid_y = y div CELL_SIZE;
+			
 		}
 	}
 }
+
+audio_listener_set_position(0, x, y, 0);

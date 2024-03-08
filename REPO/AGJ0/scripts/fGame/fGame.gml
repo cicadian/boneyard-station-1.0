@@ -15,6 +15,8 @@ function game_declare_methods(){
 	function state_game_default(){
 		var _stateMap = stateMap_game;
 		if (!stateMachine_get_init(_stateMap)){
+			track0 = audio_play_sound(ambient_0, 0, true, 0.5);
+			track1 = audio_play_sound(ambient_1, 1, true, 0);
 			stateMachine_set_init(_stateMap, true);
 			cursor_spr = cursor_default;
 		}
@@ -41,13 +43,18 @@ function game_declare_methods(){
 				if (_door != noone){
 					if (state_door_get_closed(_door) && !state_door_get_locked(_door)){
 						with (_door){
+							audio_play_sound(dooropen, 0, 0);
 							stateMachine_push(state_door_open, stateMap_door);
 						}
 					}
 					else if (state_door_get_open(_door)){
 						with (_door){
+							audio_play_sound(doorclose, 0, 0);
 							stateMachine_push(state_door_closed, stateMap_door);
 						}
+					}
+					else if (state_door_get_locked(_door)){
+						audio_play_sound(doorlocked, 0, 0);
 					}
 				}
 			}

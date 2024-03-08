@@ -14,8 +14,8 @@ void main()
 	vec4 samp = texture2D(gm_BaseTexture, v_vTexcoord);
 	
 	float d = length(v_worldpos);
-	//float f = clamp((d - u_fog_start) / (u_fog_end - u_fog_start), 0.0, 1.0);
-	float f = 0.0;
+	float f = clamp((d - u_fog_start) / (u_fog_end - u_fog_start), 0.0, 1.0);
+	//float f = 0.0;
 	vec4 final = mix(samp, u_fog_color, f);
 	final.rgb = floor(final.rgb * 12.) / 12.;
 	if (samp.a <= 0.1){

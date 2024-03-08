@@ -10,3 +10,5 @@ vbuff_dark = undefined;
 tex = oCont_World.world_tex_0;
 
 stage = 0;
+
+emit = undefined;

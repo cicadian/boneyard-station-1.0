@@ -9,6 +9,8 @@ dialog_page_count = 1;
 dialog_displayed = false;
 dialog_string = "";
 dialog_portrait = -1;
+track0 = undefined;
+track1 = undefined;
 
 lock_controls = false;
 

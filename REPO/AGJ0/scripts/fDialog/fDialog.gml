@@ -128,6 +128,7 @@ function dialog_lookup(_event, _page){
 			if (_page == 0){
 				dialog_portrait = sPort_Player;
 				_str = "\"Is there anyone there?\"";
+				audio_play_sound(doorknock, 0, 0);
 			}
 			if (_page == 1){
 				dialog_portrait = sPort_Captain;
@@ -151,6 +152,7 @@ function dialog_lookup(_event, _page){
 			if (_page == 0){
 				dialog_portrait = sPort_Player;
 				_str = "I don't think whoever is behind this door will help me.";
+				audio_play_sound(doorknock, 0, 0);
 			}
 			break;
 	}

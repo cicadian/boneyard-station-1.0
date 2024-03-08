@@ -12,7 +12,7 @@ shoot_at_player = false;
 name = "";
 
 action_counter = 0;
-action_counter_max = 60;
+action_counter_max = 90;
 
 tex = sprite_get_texture(sTex_Enemy, 0);
 vbuff = vertex_create_buffer();
