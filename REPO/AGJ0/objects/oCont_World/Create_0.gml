@@ -13,7 +13,7 @@ texcoord_wall_u    = 0 + tex_pix_uvs;
 texcoord_floor_u   = tex_pix_uvs * tex_block_size + tex_pix_uvs;
 texcoord_ceiling_u = tex_pix_uvs * (tex_block_size * 3) + tex_pix_uvs;
 texcoord_light_u = tex_pix_uvs * (tex_block_size * 2) + tex_pix_uvs;
-texcoord_console_u = 0 + tex_pix_uvs + tex_pix_uvs;
+texcoord_console_u = 0 + tex_pix_uvs;
 texcoord_engine_u  = tex_pix_uvs * tex_block_size + tex_pix_uvs;
 texcoord_armory_u  = tex_pix_uvs * (tex_block_size * 2) + tex_pix_uvs;
 texcoord_lightswitch_u  = tex_pix_uvs * (tex_block_size * 5) + tex_pix_uvs;
@@ -63,6 +63,8 @@ global.light_toggle = false;
 u_fog_start = shader_get_uniform(gPos, "u_fog_start");
 u_fog_end   = shader_get_uniform(gPos, "u_fog_end");
 u_fog_color = shader_get_uniform(gPos, "u_fog_color");
+u_gamma = shader_get_uniform(gPos, "u_gamma");
+global.gamma = 0;
 
 u_fog_start2 = shader_get_uniform(gFogCrunch, "u_fog_start");
 u_fog_end2   = shader_get_uniform(gFogCrunch, "u_fog_end");

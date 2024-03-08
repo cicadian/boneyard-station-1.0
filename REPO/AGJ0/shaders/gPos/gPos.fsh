@@ -1,6 +1,3 @@
-//
-// Simple passthrough fragment shader
-//
 varying vec2 v_vTexcoord;
 varying vec4 v_vColour;
 varying vec3 v_worldpos;
@@ -8,6 +5,7 @@ varying vec3 v_worldpos;
 uniform float u_fog_start;
 uniform float u_fog_end;
 uniform vec4 u_fog_color;
+uniform float u_gamma;
 
 void main()
 {
@@ -18,17 +16,9 @@ void main()
 	//float f = 0.0;
 	vec4 final = mix(samp, u_fog_color, f);
 	final.rgb = floor(final.rgb * 12.) / 12.;
+	vec4 final2 = clamp(final + u_gamma, 0.0, 1.0);
 	if (samp.a <= 0.1){
 		discard;
 	}
-    gl_FragColor = v_vColour * vec4(final.rgb, samp.a);
+    gl_FragColor = v_vColour * vec4(final2.rgb, samp.a);
 }
-
-/*
-
-vec4 post = floor(samp.rgb * 11.) / 11.);
-
-
-
-	
-*/

@@ -23,6 +23,7 @@
     {"name":"sTest","order":2,"path":"sprites/sTest/sTest.yy",},
     {"name":"gun_0","order":8,"path":"sounds/gun_0/gun_0.yy",},
     {"name":"__DIALOG_EVENTS","order":7,"path":"scripts/__DIALOG_EVENTS/__DIALOG_EVENTS.yy",},
+    {"name":"crumple","order":14,"path":"sounds/crumple/crumple.yy",},
     {"name":"doorclose","order":4,"path":"sounds/doorclose/doorclose.yy",},
     {"name":"sGUI_Log","order":16,"path":"sprites/sGUI_Log/sGUI_Log.yy",},
     {"name":"sTex_Enemy","order":17,"path":"sprites/sTex_Enemy/sTex_Enemy.yy",},

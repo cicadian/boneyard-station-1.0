@@ -63,7 +63,6 @@ function clickzone_execute(_id){
 			//dialog event for pressing console at start
 			if (_id.stage == 0){
 				oCont_Game.dialog_index = __DIALOG.LIGHT0;
-				audio_play_sound(switchsound, 0, 0);
 				_id.stage++;
 			}
 			else if (_id.stage == 1){
@@ -114,9 +113,23 @@ function clickzone_execute(_id){
 				_id.stage++;
 				oCont_Game.dialog_index = __DIALOG.MAD_CAPTAIN;
 			}
-			if (_id.stage == 1){
+			else if (_id.stage == 1){
 				oCont_Game.dialog_index = __DIALOG.MAD_CAPTAIN_2;
 			}
+			break;
+		case __CLICKZONE_TYPE.ELEVATOR_UP:
+			oPlayer.x = 30;
+			oPlayer.y = 134;
+			oPlayer.grid_x = 30 div CELL_SIZE;
+			oPlayer.grid_y = 134 div CELL_SIZE;
+			audio_play_sound(switchsound, 0, 0);
+			break;
+		case __CLICKZONE_TYPE.ELEVATOR_DOWN:
+			oPlayer.x = 258;
+			oPlayer.y = 6;
+			oPlayer.grid_x = 258 div CELL_SIZE;
+			oPlayer.grid_y = 6 div CELL_SIZE;
+			audio_play_sound(switchsound, 0, 0);
 			break;
 	}
 }

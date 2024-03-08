@@ -9,8 +9,11 @@ if (global.has_gun){
 		mouse_clear(MOUSE_SHOOT);
 	}
 	if (mouse_check_button_pressed(MOUSE_INTERACT) && gun_out){
-		oCont_Game.cursor_spr = oCont_Game.cursor_default;
-		gun_out = false;
+		var _door = instance_position((oPlayer.grid_x + oPlayer.vec_x) * CELL_SIZE, (oPlayer.grid_y + oPlayer.vec_y) * CELL_SIZE, oDoor);
+		if (_door == noone){
+			oCont_Game.cursor_spr = oCont_Game.cursor_default;
+			gun_out = false;
+		}
 	}
 }
 if (gun_out){
@@ -26,6 +29,7 @@ if (gun_out){
 			var _enemy1 = instance_position(x + (vec_x * CELL_SIZE), y + (vec_y * CELL_SIZE), oEnemy);
 			if (_enemy1 != noone){
 				_enemy1.life--;
+				audio_play_sound(crumple, 0, 0);
 				var _clutter = instance_create_layer(_enemy1.x, _enemy1.y, global.layer_cont, oClutter);
 				_clutter.spr = -1;
 			}

@@ -54,7 +54,9 @@ function game_declare_methods(){
 						}
 					}
 					else if (state_door_get_locked(_door)){
-						audio_play_sound(doorlocked, 0, 0);
+						if (_door.name != "ALWAYSLOCKED"){
+							audio_play_sound(doorlocked, 0, 0);
+						}
 					}
 				}
 			}

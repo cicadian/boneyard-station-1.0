@@ -148,13 +148,19 @@ function dialog_lookup(_event, _page){
 			}
 			break;
 		case __DIALOG.MAD_CAPTAIN_2:
-			dialog_page_count = 2;
+			dialog_page_count = 1;
 			if (_page == 0){
 				dialog_portrait = sPort_Player;
 				_str = "I don't think whoever is behind this door will help me.";
 				audio_play_sound(doorknock, 0, 0);
 			}
 			break;
+		case __DIALOG.MUSE_CARGO:
+			dialog_page_count = 1;
+			if (_page == 0){
+				dialog_portrait = sPort_Player;
+				_str = "This must be another docked ship. The door is unlocked..."
+			}
 	}
 	return _str;
 }

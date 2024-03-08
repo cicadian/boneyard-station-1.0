@@ -5,6 +5,15 @@ else if (world_vbuff == world_dark_vbuff){
 	global.fog_end = (CELL_SIZE * 3) + (EaseInSine(current_time / 256, 0, 1, 4));
 }
 
+if (keyboard_check_pressed(vk_f1)){
+	global.gamma -= 0.01;
+}
+if (keyboard_check_pressed(vk_f2)){
+	global.gamma += 0.01;
+}
+global.gamma = clamp(global.gamma, 0, 1);
+show_debug_message(global.gamma);
+
 // Render world
 if (world_light_vbuff != undefined){
 	if (!surface_exists(surf_world)){
@@ -40,6 +49,7 @@ if (world_light_vbuff != undefined){
 	shader_set_uniform_f(u_fog_start, global.fog_start);
 	shader_set_uniform_f(u_fog_end, global.fog_end);
 	shader_set_uniform_f(u_fog_color, global.fog_color_r, 0.0, 0.0, 1.0);
+	shader_set_uniform_f(u_gamma, global.gamma);
 	
 	vertex_submit(world_vbuff, pr_trianglelist, world_tex_0);
 	var _list = door_buffer_list;
@@ -57,7 +67,9 @@ if (world_light_vbuff != undefined){
 	}
 	with (oEnemy){
 		if (vbuff != undefined){
-			matrix_set(matrix_world, matrix_build(x, y, 0, 0, 0, 0, 1, 1, 1));
+			var _matrot = matrix_build(x, y, 0, 0, 0, point_direction(x + 2, y + 2, oPlayer.x, oPlayer.y) + 90, 1, 1, 1);
+			//matrix_multiply(_matrot, matrix_build(x, y, 0, 0, 0, 0, 1, 1, 1));
+			matrix_set(matrix_world, _matrot);
 			vertex_submit(vbuff, pr_trianglelist, tex);
 		}
 	}

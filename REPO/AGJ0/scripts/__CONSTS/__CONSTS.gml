@@ -3,7 +3,7 @@
 #macro CELL_SIZE 4
 #macro NATIVE_W 320
 #macro NATIVE_H 180
-#macro WINDOW_SCALE 4
+#macro WINDOW_SCALE 6
 
 #macro LAYER_NAME_PATH "tile_path"
 

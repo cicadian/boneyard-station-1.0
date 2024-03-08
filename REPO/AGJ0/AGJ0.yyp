@@ -42,6 +42,7 @@
     {"id":{"name":"sTest","path":"sprites/sTest/sTest.yy",},},
     {"id":{"name":"gun_0","path":"sounds/gun_0/gun_0.yy",},},
     {"id":{"name":"__DIALOG_EVENTS","path":"scripts/__DIALOG_EVENTS/__DIALOG_EVENTS.yy",},},
+    {"id":{"name":"crumple","path":"sounds/crumple/crumple.yy",},},
     {"id":{"name":"doorclose","path":"sounds/doorclose/doorclose.yy",},},
     {"id":{"name":"sGUI_Log","path":"sprites/sGUI_Log/sGUI_Log.yy",},},
     {"id":{"name":"sTex_Enemy","path":"sprites/sTex_Enemy/sTex_Enemy.yy",},},
