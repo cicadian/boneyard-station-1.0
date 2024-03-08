@@ -10,6 +10,7 @@ move_backward = false;
 shoot_at_player = false;
 
 name = "";
+life = 1;
 
 action_counter = 0;
 action_counter_max = 90;

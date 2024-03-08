@@ -12,6 +12,7 @@
   "ResourceOrderSettings": [
     {"name":"sTex_World","order":12,"path":"sprites/sTex_World/sTex_World.yy",},
     {"name":"ambient_1","order":1,"path":"sounds/ambient_1/ambient_1.yy",},
+    {"name":"sClutter","order":20,"path":"sprites/sClutter/sClutter.yy",},
     {"name":"sTex_Door","order":5,"path":"sprites/sTex_Door/sTex_Door.yy",},
     {"name":"dooropen","order":6,"path":"sounds/dooropen/dooropen.yy",},
     {"name":"switchsound","order":13,"path":"sounds/switchsound/switchsound.yy",},
@@ -33,6 +34,7 @@
     {"name":"fDialog","order":8,"path":"scripts/fDialog/fDialog.yy",},
     {"name":"oCont_Game","order":5,"path":"objects/oCont_Game/oCont_Game.yy",},
     {"name":"oEntity_","order":3,"path":"objects/oEntity_/oEntity_.yy",},
+    {"name":"oClutter","order":11,"path":"objects/oClutter/oClutter.yy",},
     {"name":"doorlocked","order":10,"path":"sounds/doorlocked/doorlocked.yy",},
     {"name":"tTile_Paint","order":1,"path":"tilesets/tTile_Paint/tTile_Paint.yy",},
     {"name":"fPathgrid","order":5,"path":"scripts/fPathgrid/fPathgrid.yy",},

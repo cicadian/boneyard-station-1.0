@@ -29,6 +29,7 @@
   "resources": [
     {"id":{"name":"sTex_World","path":"sprites/sTex_World/sTex_World.yy",},},
     {"id":{"name":"ambient_1","path":"sounds/ambient_1/ambient_1.yy",},},
+    {"id":{"name":"sClutter","path":"sprites/sClutter/sClutter.yy",},},
     {"id":{"name":"fStateMachine","path":"scripts/fStateMachine/fStateMachine.yy",},},
     {"id":{"name":"sTex_Door","path":"sprites/sTex_Door/sTex_Door.yy",},},
     {"id":{"name":"dooropen","path":"sounds/dooropen/dooropen.yy",},},
@@ -55,6 +56,7 @@
     {"id":{"name":"oCont_Game","path":"objects/oCont_Game/oCont_Game.yy",},},
     {"id":{"name":"oCont_Main","path":"objects/oCont_Main/oCont_Main.yy",},},
     {"id":{"name":"oEntity_","path":"objects/oEntity_/oEntity_.yy",},},
+    {"id":{"name":"oClutter","path":"objects/oClutter/oClutter.yy",},},
     {"id":{"name":"doorlocked","path":"sounds/doorlocked/doorlocked.yy",},},
     {"id":{"name":"tTile_Paint","path":"tilesets/tTile_Paint/tTile_Paint.yy",},},
     {"id":{"name":"fPathgrid","path":"scripts/fPathgrid/fPathgrid.yy",},},

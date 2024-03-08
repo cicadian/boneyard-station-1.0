@@ -1,19 +1,15 @@
-3/6 start sounds and music, add bodies, enemy sprites, billboarding
-3/7 add elevator/teleport, begin work on final area
-3/8 finish work on final area, add any missing text events
-3/9 add sound and music and an art pass
-3/10 continue as needed
+3/7 add bodies, enemy sprites, billboarding
+3/8 add elevator/teleport, begin work on final area
+3/9 finish work on final area, add any missing text events
+3/10 add sound and music and an art pass
+3/11 continue as needed
 3/12 try to finish project
 3/13 hopefully done
 3/14 hopefully done
 
 art needed
-gun, laserbeam, enemy1, enemy2, final enemy parts, captain, pile
-eversion skins
+enemy1, enemy2, final enemy parts, captain, pile
 
 bonus art if there's time
 intro and outro1/outro2
-some kind of shader effect
-posterization
 textures per wall
-death effects

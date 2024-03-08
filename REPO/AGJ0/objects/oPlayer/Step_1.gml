@@ -16,12 +16,19 @@ if (global.has_gun){
 if (gun_out){
 	if (mouse_check_button_pressed(MOUSE_SHOOT)){
 		// fire weapon
-		audio_play_sound(gun_0, 0, 0, 0.75);
 		if (gun_counter >= gun_counter_max){
+			audio_play_sound(gun_0, 0, 0, 0.75);
 			gun_fire = true;
 			target_x = mouse_x;
 			target_y = mouse_y;
 			gun_counter = -1;
+			// shoot at target
+			var _enemy1 = instance_position(x + (vec_x * CELL_SIZE), y + (vec_y * CELL_SIZE), oEnemy);
+			if (_enemy1 != noone){
+				_enemy1.life--;
+				var _clutter = instance_create_layer(_enemy1.x, _enemy1.y, global.layer_cont, oClutter);
+				_clutter.spr = -1;
+			}
 		}
 	}
 	gun_counter++;
