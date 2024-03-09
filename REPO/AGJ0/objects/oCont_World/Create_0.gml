@@ -76,3 +76,7 @@ ds_grid_clear(global.world_grid, __CELL_PATH.FULL);
 door_buffer_list = ds_list_create();
 door_buffer_list_dark = ds_list_create();
 door_count = 0;
+
+hit_counter = 0;
+hit_counter_max = 60;
+hit = false;

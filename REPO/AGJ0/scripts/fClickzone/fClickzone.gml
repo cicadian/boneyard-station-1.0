@@ -25,10 +25,22 @@ function clickzone_build(_id, _vbuff){
 			_u = oCont_World.texcoord_fuelslot_u;
 			break;
 		case __CLICKZONE_TYPE.FUEL:
-			_u = oCont_World.texcoord_fuel_u;
+			_u = oCont_World.texcoord_fuelslot_u;
 			break;
 		case __CLICKZONE_TYPE.ELEVATOR_UP:
 			_u = oCont_World.texcoord_elevator_u;
+			break;
+		case __CLICKZONE_TYPE.BRIDGE_CONSOLE:
+			_u = oCont_World.texcoord_fuel_u;
+			if (wall == __CELL_WALLS.NORTH){
+				tex = oCont_World.world_tex_0;
+			}
+			else if (wall == __CELL_WALLS.WEST){
+				tex = oCont_World.world_tex_1;
+			}
+			else if (wall == __CELL_WALLS.EAST){
+				tex = oCont_World.world_tex_2;
+			}
 			break;
 	}
 	var _v = oCont_World.texcoord_special_v;

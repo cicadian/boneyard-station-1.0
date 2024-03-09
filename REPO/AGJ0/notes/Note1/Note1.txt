@@ -1,4 +1,4 @@
-3/9 add bodies, enemy sprites, begin work on final area
+3/9 begin work on final area
 3/10 finish work on final area, add any missing text events
 3/11 continue as needed
 3/12 try to finish project and submit if satisfied

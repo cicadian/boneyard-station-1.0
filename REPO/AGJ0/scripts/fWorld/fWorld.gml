@@ -46,12 +46,14 @@ function world_build_dark(){
 		door_build(true);
 	}
 	with (oClickzone){
-		vbuff_dark = vertex_create_buffer();
-		vertex_begin(vbuff_dark, oCont_World.world_format);
-		clickzone_build(id, vbuff_dark);
-		vertex_end(vbuff_dark);
-		vertex_freeze(vbuff_dark);
-		vbuff = vbuff_dark;
+		if (type != __CLICKZONE_TYPE.MAD_CAPTAIN){
+			vbuff_dark = vertex_create_buffer();
+			vertex_begin(vbuff_dark, oCont_World.world_format);
+			clickzone_build(id, vbuff_dark);
+			vertex_end(vbuff_dark);
+			vertex_freeze(vbuff_dark);
+			vbuff = vbuff_dark;
+		}
 	}
 }
 

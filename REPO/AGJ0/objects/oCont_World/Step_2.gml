@@ -5,6 +5,14 @@ else if (world_vbuff == world_dark_vbuff){
 	global.fog_end = (CELL_SIZE * 3) + (EaseInSine(current_time / 256, 0, 1, 4));
 }
 
+if (hit){
+	if (hit_counter >= hit_counter_max){
+		hit_counter = -1;
+		hit = false;
+	}
+	hit_counter++;
+}
+
 if (keyboard_check_pressed(vk_f1)){
 	global.gamma -= 0.01;
 }
@@ -46,9 +54,17 @@ if (world_light_vbuff != undefined){
 	matrix_set(matrix_projection, matrix_build_projection_perspective_fov(global.fov, GAME_ASPECT,  1, 2000));
 	
 	shader_set(gPos);
+	var _r = 0.0;
+	var _g = 0.0;
+	var _b = 0.0;
+	if (hit){
+		_r = (1 / hit_counter);
+		_g = (1 / hit_counter);
+		_b = (1 / hit_counter);
+	}
 	shader_set_uniform_f(u_fog_start, global.fog_start);
 	shader_set_uniform_f(u_fog_end, global.fog_end);
-	shader_set_uniform_f(u_fog_color, global.fog_color_r, 0.0, 0.0, 1.0);
+	shader_set_uniform_f(u_fog_color, global.fog_color_r + _r, _g, _b, 1.0);
 	shader_set_uniform_f(u_gamma, global.gamma);
 	
 	vertex_submit(world_vbuff, pr_trianglelist, world_tex_0);

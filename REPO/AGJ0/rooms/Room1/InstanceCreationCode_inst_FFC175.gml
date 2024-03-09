@@ -1,2 +1,0 @@
-type = __CLICKZONE_TYPE.CAPTAIN;
-wall = __CARDINAL.NORTH;

@@ -107,7 +107,12 @@ if (action_counter >= action_counter_max){
 			}
 		}
 		else{
-			shoot_at_player = true;
+			if (_north1 && !_north2){
+				shoot_at_player = true;
+			}
+			else if (!_north1 && _north2){
+				move_forward = true;
+			}
 		}
 	}
 	else if (_look_south){
@@ -120,7 +125,12 @@ if (action_counter >= action_counter_max){
 			}
 		}
 		else{
-			shoot_at_player = true;
+			if (_south1 && !_south2){
+				shoot_at_player = true;
+			}
+			else if (!_south1 && _south2){
+				move_forward = true;
+			}
 		}
 	}
 	else if (_look_west){
@@ -133,7 +143,12 @@ if (action_counter >= action_counter_max){
 			}
 		}
 		else{
-			shoot_at_player = true;
+			if (_west1 && !_west2){
+				shoot_at_player = true;
+			}
+			else if (!_west1 && _west2){
+				move_forward = true;
+			}
 		}
 	}
 	else if (_look_east){
@@ -146,7 +161,12 @@ if (action_counter >= action_counter_max){
 			}
 		}
 		else{
-			shoot_at_player = true;
+			if (_east1 && !_east2){
+				shoot_at_player = true;
+			}
+			else if (!_east1 && _east2){
+				move_forward = true;
+			}
 		}
 	}
 	else{
@@ -182,6 +202,7 @@ if (shoot_at_player){
 	audio_play_sound(gun_1, 0, 0, 0.75);
 	oPlayer.life--;
 	shoot_at_player = false;
+	oCont_World.hit = true;
 	if (oPlayer.life = 0){
 		audio_play_sound(grunt, 2, false, 1, 0, random_range(0.5, 0.55));
 	}
