@@ -32,8 +32,8 @@ if (world_light_vbuff != undefined){
 	gpu_set_cullmode(cull_noculling);
 	gpu_set_tex_repeat(true);
 	
-	var _camX = oPlayer.x// - lengthdir_x(0.65, oPlayer.dir);
-	var _camY = oPlayer.y //- lengthdir_y(0.65, oPlayer.dir);
+	var _camX = oPlayer.x - lengthdir_x(0.65, oPlayer.dir);
+	var _camY = oPlayer.y - lengthdir_y(0.65, oPlayer.dir);
 	var _camZ = oPlayer.z;
 	var _camDX = dcos(oPlayer.dir + -oPlayer.yaw);
 	var _camDY = -dsin(oPlayer.dir + -oPlayer.yaw);
@@ -67,8 +67,10 @@ if (world_light_vbuff != undefined){
 	}
 	with (oEnemy){
 		if (vbuff != undefined){
-			var _matrot = matrix_build(x, y, 0, 0, 0, point_direction(x + 2, y + 2, oPlayer.x, oPlayer.y) + 90, 1, 1, 1);
+			//var _matrot = matrix_build(x, y, 0, 0, 0, point_direction(x + 2, y + 2, oPlayer.x, oPlayer.y) + 90, 1, 1, 1);
 			//matrix_multiply(_matrot, matrix_build(x, y, 0, 0, 0, 0, 1, 1, 1));
+			var _dir = point_direction(x + 2, y + 2, oPlayer.x, oPlayer.y) + 90;
+			var _matrot = matrix_build(x + 2, y + 2, 0, 0, 0, _dir, 1, 1, 1);
 			matrix_set(matrix_world, _matrot);
 			vertex_submit(vbuff, pr_trianglelist, tex);
 		}

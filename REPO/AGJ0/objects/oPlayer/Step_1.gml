@@ -109,7 +109,6 @@ var _gridX = x div CELL_SIZE;
 var _gridY = y div CELL_SIZE;
 var _moveX = false;
 var _moveY = false;
-show_debug_message(string(vec_x) + " " + string(vec_y));
 
 if (keyboard_check_pressed(KEY_FORWARD)){
 	// Make sure we're not trying to leave the grid
@@ -119,12 +118,13 @@ if (keyboard_check_pressed(KEY_FORWARD)){
 	if (_moveX && _moveY){
 		// Make sure we're not trying to enter a wall
 		var _empty = global.world_grid[# _gridX + vec_x, _gridY + vec_y] == __CELL_PATH.EMPTY;
+		var _noentitiy = instance_position(x + (vec_x * CELL_SIZE), y + (vec_y * CELL_SIZE), oEnemy) == noone && instance_position(x + (vec_x * CELL_SIZE), y + (vec_y * CELL_SIZE), oEnemy) == noone;
 		var _door_id = instance_position(x + (vec_x * CELL_SIZE), y + (vec_y * CELL_SIZE), oDoor);
 		var _blocked = false;
 		if (_door_id != noone){
 			_blocked = !state_door_get_open(_door_id);
 		}
-		if (_empty && !_blocked){
+		if (_empty && !_blocked && _noentitiy){
 			x += CELL_SIZE * vec_x;
 			y += CELL_SIZE * vec_y;
 			grid_x = x div CELL_SIZE;
@@ -142,11 +142,12 @@ else if (keyboard_check_pressed(KEY_BACKWARD)){
 		// Make sure we're not trying to enter a wall
 		var _empty = global.world_grid[# _gridX - vec_x, _gridY - vec_y] == __CELL_PATH.EMPTY;
 		var _door_id = instance_position(x - (vec_x * CELL_SIZE), y - (vec_y * CELL_SIZE), oDoor);
+		var _noentitiy = instance_position(x - (vec_x * CELL_SIZE), y - (vec_y * CELL_SIZE), oEnemy) == noone && instance_position(x - (vec_x * CELL_SIZE), y - (vec_y * CELL_SIZE), oEnemy) == noone;
 		var _blocked = false;
 		if (_door_id != noone){
 			_blocked = !state_door_get_open(_door_id);
 		}
-		if (_empty && !_blocked){
+		if (_empty && !_blocked && _noentitiy){
 			x -= CELL_SIZE * vec_x;
 			y -= CELL_SIZE * vec_y;
 			grid_x = x div CELL_SIZE;

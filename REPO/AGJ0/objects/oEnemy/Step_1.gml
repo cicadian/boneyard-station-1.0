@@ -31,6 +31,35 @@ if (turn_left){
 	}
 	turn_left = false;
 }
+var _pface = oPlayer.facing;//point_direction(oPlayer.x, oPlayer.y, x + 2, y + 2);
+var _frame = 0;
+repeat(_pface){
+	_frame++;
+	if (_frame > 3){
+		_frame = 0;
+	}
+}
+repeat(facing){
+	_frame--;
+	if (_frame < 0){
+		_frame = 3;
+	}
+}
+switch(_frame){
+	case 0:
+		tex = tex_east;
+		break;
+	case 1:
+		tex = tex_north;
+		break;
+	case 2:
+		tex = tex_west;
+		break;
+	case 3:
+		tex = tex_south;
+		break;
+}
+
 
 var _vecX = dcos(dir);
 var _vecY = -dsin(dir);
@@ -131,19 +160,16 @@ if (action_counter >= action_counter_max){
 				break;
 			case 2:
 				if (global.world_grid[# _gridX + _vecX, _gridY + _vecY] == __CELL_PATH.EMPTY){
-					move_forward = true;
+					if (oPlayer.grid_x != _gridX + _vecX && oPlayer.grid_y != _gridY + _vecY){
+						move_forward = true;
+					}
 				}
 				else{
 					turn_right = true;
 				}
 				break;
 			case 3:
-				if (global.world_grid[# _gridX - _vecX, _gridY - _vecY] == __CELL_PATH.EMPTY){
-					move_backward = true;
-				}
-				else{
-					turn_right = true;
-				}
+				// do nothing
 				break;
 		}
 	}
@@ -185,26 +211,4 @@ if (move_forward){
 		}
 	}
 	move_forward = false;
-}
-else if (move_backward){
-	// Make sure we're not trying to leave the grid
-	_moveX = (_gridX - _vecX) < ds_grid_width(global.world_grid) && (_gridX - _vecX) >= 0;
-	_moveY = (_gridY - _vecY) < ds_grid_height(global.world_grid) && (_gridY - _vecY) >= 0;
-
-	if (_moveX && _moveY){
-		// Make sure we're not trying to enter a wall
-		var _empty = global.world_grid[# _gridX - _vecX, _gridY - _vecY] == __CELL_PATH.EMPTY;
-		var _door_id = instance_position(x - (_vecX * CELL_SIZE), y - (_vecY * CELL_SIZE), oDoor);
-		var _blocked = false;
-		if (_door_id != noone){
-			_blocked = !state_door_get_open(_door_id);
-		}
-		if (_empty && !_blocked){
-			x -= CELL_SIZE * _vecX;
-			y -= CELL_SIZE * _vecY;
-			grid_x = x div CELL_SIZE;
-			grid_y = y div CELL_SIZE;
-		}
-	}
-	move_backward = false
 }
