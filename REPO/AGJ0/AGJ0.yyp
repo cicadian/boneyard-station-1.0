@@ -37,6 +37,7 @@
     {"id":{"name":"gun_1","path":"sounds/gun_1/gun_1.yy",},},
     {"id":{"name":"__CONSTS","path":"scripts/__CONSTS/__CONSTS.yy",},},
     {"id":{"name":"sTex_Clickzone","path":"sprites/sTex_Clickzone/sTex_Clickzone.yy",},},
+    {"id":{"name":"sPort_Commander","path":"sprites/sPort_Commander/sPort_Commander.yy",},},
     {"id":{"name":"fWorld","path":"scripts/fWorld/fWorld.yy",},},
     {"id":{"name":"sTile_Path","path":"sprites/sTile_Path/sTile_Path.yy",},},
     {"id":{"name":"sTest","path":"sprites/sTest/sTest.yy",},},

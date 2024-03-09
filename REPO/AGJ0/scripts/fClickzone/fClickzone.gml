@@ -30,6 +30,10 @@ function clickzone_build(_id, _vbuff){
 		case __CLICKZONE_TYPE.ELEVATOR_UP:
 			_u = oCont_World.texcoord_elevator_u;
 			break;
+		case __CLICKZONE_TYPE.ELEVATOR_DOWN:
+			tex = oCont_World.world_tex_1;
+			_u = oCont_World.texcoord_elevator_u;
+			break;
 		case __CLICKZONE_TYPE.BRIDGE_CONSOLE:
 			_u = oCont_World.texcoord_fuel_u;
 			if (wall == __CELL_WALLS.NORTH){
@@ -53,8 +57,14 @@ function clickzone_execute(_id){
 	switch (_id.type){
 		case __CLICKZONE_TYPE.START_CONSOLE:
 			//dialog event for pressing console at start
-			oCont_Game.dialog_index = __DIALOG.BRIDGE_CONSOLE_START;
-			audio_play_sound(switchsound, 0, false);
+			if (!global.unlock_flee){
+				oCont_Game.dialog_index = __DIALOG.BRIDGE_CONSOLE_START;
+				audio_play_sound(switchsound, 0, false);
+			}
+			else{
+				stateMachine_push(state_game_ending_flee, stateMap_game);
+			}
+			
 			break;
 		case __CLICKZONE_TYPE.ARMORY:
 			//dialog event for pressing console at start
@@ -117,7 +127,6 @@ function clickzone_execute(_id){
 			}
 			break;
 		case __CLICKZONE_TYPE.FUEL:
-			//dialog event for useless engine hatch on starting ship
 			if (_id.stage == 0){
 				_id.stage++;
 				_id.tex = oCont_World.world_tex_0;
@@ -126,13 +135,27 @@ function clickzone_execute(_id){
 			}
 			break;
 		case __CLICKZONE_TYPE.MAD_CAPTAIN:
-			//dialog event for useless engine hatch on starting ship
 			if (_id.stage == 0){
 				_id.stage++;
 				oCont_Game.dialog_index = __DIALOG.MAD_CAPTAIN;
 			}
 			else if (_id.stage == 1){
 				oCont_Game.dialog_index = __DIALOG.MAD_CAPTAIN_2;
+			}
+			break;
+		case __CLICKZONE_TYPE.BRIDGE_CONSOLE:
+			if (_id.wall == __CELL_WALLS.NORTH){
+				if (_id.stage == 0){
+					_id.stage++;
+					oCont_Game.dialog_index = __DIALOG.BRIDGE_CONSOLE_END;
+				}
+				else if (_id.stage == 1){
+					_id.stage++;
+					oCont_Game.dialog_index = __DIALOG.BRIDGE_CONSOLE_END_2;
+				}
+				else if (_id.stage == 2){
+					oCont_Game.dialog_index = __DIALOG.BRIDGE_CONSOLE_END_3;
+				}
 			}
 			break;
 		case __CLICKZONE_TYPE.ELEVATOR_UP:

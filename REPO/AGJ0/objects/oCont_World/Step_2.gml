@@ -20,7 +20,6 @@ if (keyboard_check_pressed(vk_f2)){
 	global.gamma += 0.01;
 }
 global.gamma = clamp(global.gamma, 0, 1);
-show_debug_message(global.gamma);
 
 // Render world
 if (world_light_vbuff != undefined){

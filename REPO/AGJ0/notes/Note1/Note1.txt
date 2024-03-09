@@ -6,14 +6,11 @@
 3/14 hopefully done
 
 art needed
-enemy1, enemy2, final enemy parts, captain, pile
+final enemy parts, pile
 
-bonus art if there's time
 intro and outro1/outro2
-textures per wall
 
 add a toggle for fog/gamma/posterize so there is more visual fidelity
 fix unable to move through second area
-fix billboarding
-add enemy death sound
 add final enemy death sounds
+sometimes clickzones dont work after you die

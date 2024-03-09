@@ -29,4 +29,4 @@ cursor_frame = 0;
 
 have_fuel = false;
 
-global.has_gun = false;
+global.has_gun = true;

@@ -9,8 +9,8 @@
 
 #macro GAME_ASPECT NATIVE_W / NATIVE_H
 
-#macro START_X 216
-#macro START_Y 20
+#macro START_X 16 //216
+#macro START_Y 132 //20
 
 #macro GAME_W room_width div CELL_SIZE
 #macro GAME_H room_height div CELL_SIZE
@@ -72,9 +72,11 @@ enum __WALKZONE_TYPE{
 	STATION,
 	CARGO,
 	ENEMIES,
+	FEAR,
 	CHECKPOINT_CARGO,
 	CHECKPOINT_BRIDGE,
 	CHECKPOINT_FINALE,
+	ENDING,
 	
 	NONE
 }

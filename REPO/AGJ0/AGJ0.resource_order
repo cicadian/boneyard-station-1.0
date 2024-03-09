@@ -19,6 +19,7 @@
     {"name":"gun_1","order":9,"path":"sounds/gun_1/gun_1.yy",},
     {"name":"__CONSTS","order":2,"path":"scripts/__CONSTS/__CONSTS.yy",},
     {"name":"sTex_Clickzone","order":7,"path":"sprites/sTex_Clickzone/sTex_Clickzone.yy",},
+    {"name":"sPort_Commander","order":22,"path":"sprites/sPort_Commander/sPort_Commander.yy",},
     {"name":"fWorld","order":3,"path":"scripts/fWorld/fWorld.yy",},
     {"name":"sTest","order":2,"path":"sprites/sTest/sTest.yy",},
     {"name":"gun_0","order":8,"path":"sounds/gun_0/gun_0.yy",},

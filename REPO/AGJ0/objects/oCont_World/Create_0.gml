@@ -60,6 +60,8 @@ global.fog_end = CELL_SIZE * 4;
 global.light_ambient = 1;
 global.light_toggle = false;
 
+global.unlock_flee = false;
+
 u_fog_start = shader_get_uniform(gPos, "u_fog_start");
 u_fog_end   = shader_get_uniform(gPos, "u_fog_end");
 u_fog_color = shader_get_uniform(gPos, "u_fog_color");
