@@ -1,3 +1,3 @@
 orientation = __DOOR_ORIENTATION.VERTICAL;
-locked = true;
+locked = false;
 name = "LOCKED_ELEVATOR";

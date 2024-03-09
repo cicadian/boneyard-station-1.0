@@ -109,6 +109,7 @@ var _gridX = x div CELL_SIZE;
 var _gridY = y div CELL_SIZE;
 var _moveX = false;
 var _moveY = false;
+show_debug_message(string(vec_x) + " " + string(vec_y));
 
 if (keyboard_check_pressed(KEY_FORWARD)){
 	// Make sure we're not trying to leave the grid

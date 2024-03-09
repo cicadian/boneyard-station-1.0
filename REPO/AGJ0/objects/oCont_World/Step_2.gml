@@ -32,8 +32,8 @@ if (world_light_vbuff != undefined){
 	gpu_set_cullmode(cull_noculling);
 	gpu_set_tex_repeat(true);
 	
-	var _camX = oPlayer.x - lengthdir_x(0.65, oPlayer.dir);
-	var _camY = oPlayer.y - lengthdir_y(0.65, oPlayer.dir);
+	var _camX = oPlayer.x// - lengthdir_x(0.65, oPlayer.dir);
+	var _camY = oPlayer.y //- lengthdir_y(0.65, oPlayer.dir);
 	var _camZ = oPlayer.z;
 	var _camDX = dcos(oPlayer.dir + -oPlayer.yaw);
 	var _camDY = -dsin(oPlayer.dir + -oPlayer.yaw);

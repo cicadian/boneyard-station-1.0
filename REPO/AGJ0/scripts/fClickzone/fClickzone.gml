@@ -18,6 +18,9 @@ function clickzone_build(_id, _vbuff){
 		case __CLICKZONE_TYPE.EMERGENCY_LIGHTSWITCH:
 			_u = oCont_World.texcoord_lightswitch_u;
 			break;
+		case __CLICKZONE_TYPE.EMERGENCY_LIGHTSWITCH_2:
+			_u = oCont_World.texcoord_lightswitch_u;
+			break;
 		case __CLICKZONE_TYPE.FUEL_SLOT:
 			_u = oCont_World.texcoord_fuelslot_u;
 			break;
@@ -69,6 +72,9 @@ function clickzone_execute(_id){
 				light_toggle();
 			}
 			break;
+		case __CLICKZONE_TYPE.EMERGENCY_LIGHTSWITCH_2:
+			light_toggle();
+			break;
 		case __CLICKZONE_TYPE.ENGINE:
 			//dialog event for useless engine hatch on starting ship
 			oCont_Game.dialog_index = __DIALOG.ENGINE;
@@ -118,17 +124,17 @@ function clickzone_execute(_id){
 			}
 			break;
 		case __CLICKZONE_TYPE.ELEVATOR_UP:
-			oPlayer.x = 30;
-			oPlayer.y = 134;
-			oPlayer.grid_x = 30 div CELL_SIZE;
-			oPlayer.grid_y = 134 div CELL_SIZE;
+			oPlayer.x = 38;
+			oPlayer.y = 126;
+			oPlayer.grid_x = 38 div CELL_SIZE;
+			oPlayer.grid_y = 126 div CELL_SIZE;
 			audio_play_sound(switchsound, 0, 0);
 			break;
 		case __CLICKZONE_TYPE.ELEVATOR_DOWN:
-			oPlayer.x = 258;
-			oPlayer.y = 6;
-			oPlayer.grid_x = 258 div CELL_SIZE;
-			oPlayer.grid_y = 6 div CELL_SIZE;
+			oPlayer.x = 250;
+			oPlayer.y = 14;
+			oPlayer.grid_x = 250 div CELL_SIZE;
+			oPlayer.grid_y = 14 div CELL_SIZE;
 			audio_play_sound(switchsound, 0, 0);
 			break;
 	}
