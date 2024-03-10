@@ -4,7 +4,7 @@ if (draw_imtired){
 if (draw_animatic){
 	draw_sprite(spr_animatic, animatic_frame, 0, 0);
 	if (animatic_string != ""){
-		draw_sprite(sGUI_Log, 0, 0, DIALOG_Y - 8);
+		//draw_sprite(sGUI_Log, 0, 0, DIALOG_Y - 8 + 40);
 		draw_set_color(c_black);
 		draw_text_ext(DIALOG_X, DIALOG_Y + 2, animatic_string, 10, DIALOG_W);
 		draw_text_ext(DIALOG_X+1, DIALOG_Y + 2, animatic_string, 10, DIALOG_W);

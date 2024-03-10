@@ -27,7 +27,8 @@ if (gun_out){
 			gun_counter = -1;
 			// shoot at target
 			var _enemy1 = instance_position(x + (vec_x * CELL_SIZE), y + (vec_y * CELL_SIZE), oEnemy);
-			if (_enemy1 != noone){
+			var _inbox = point_in_rectangle(mouse_x, mouse_y, 120, 70, 200, 140);
+			if (_enemy1 != noone && _inbox){
 				_enemy1.life--;
 				audio_play_sound(crumple, 0, 0);
 				var _clutter = instance_create_layer(_enemy1.x, _enemy1.y, global.layer_cont, oClutter);
