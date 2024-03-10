@@ -1,14 +1,48 @@
 if (oCont_Game.lock_controls){
 	exit;
 }
-if (life <= 0){
-	x = 0;
-	y = 0;
-	grid_x = 0;
-	grid_y = 0;
+if (life <= 0 && !global.ending_beastkiller){
+	x = 16;
+	y = 16;
+	grid_x = 4;
+	grid_y = 4;
+	
+	if (name == "MONSTER" && !global.light_toggle){
+		audio_play_sound(crumple, 2, 0);
+		with (oEnemy){
+			if (name == "LEFT" || name == "RIGHT"){
+				life = 0;
+			}
+		}
+		with (oCont_Game){
+			global.ending_beastkiller = true;
+			animatic_frame_max = 6;
+			stateMachine_push(state_game_outro, stateMap_game);
+		}
+	}
+	else{
+		if (name != "LEFT" && name != "RIGHT"){
+			audio_play_sound(crumple, 2, 0);
+		}
+	}
 	exit;
 }
-
+if (name == "LEFT" || name == "RIGHT"){
+	exit;
+}
+if (point_distance(x, y, oPlayer.x + 2, oPlayer.y + 2) < (6 * CELL_SIZE)){
+	if (irandom(149) == 0){
+		audio_play_sound(crumple, 2, 0); // TODO get new sound
+	}
+}
+if (name == "MONSTER"){
+	if (point_distance(x, y, oPlayer.x + 2, oPlayer.y + 2) < (6 * CELL_SIZE)){
+		if (irandom(149) == 0){
+			audio_play_sound(crumple, 2, 0); // TODO get new sound
+		}
+	}
+	exit;
+}
 if (turn_right){
 	dir -= 90; // Right...
 	if (dir < 0){

@@ -28,11 +28,14 @@ function walkzone_execute(_id){
 				oCont_Game.dialog_index = __DIALOG.MUSE_FEAR;
 				break;
 			case __WALKZONE_TYPE.ENDING:
-				if (_id.available){
+				if (_id.available && !global.light_toggle){
 					oPlayer.life = 0;
 					global.ending_eaten = true;
 					animatic_frame_max = 3;
 					stateMachine_push(state_game_outro, stateMap_game);
+				}
+				else{
+					triggered = false;
 				}
 				break;
 		}

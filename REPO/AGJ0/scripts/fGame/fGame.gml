@@ -149,15 +149,19 @@ function game_declare_methods(){
 			else if (global.ending_beastkiller){
 				spr_animatic = sEnding_Beastkiller;
 				if (animatic_frame == 0){
-					animatic_string = "\"A beast that fears the shadows, I think that's a new one.\""
+					animatic_string = ""
 				}
 				if (animatic_frame == 1){
-					animatic_string = "\"My head is starting to clear up now. I should report back what I've experienced.\""
+					animatic_string = "\"A beast that fears the shadows, I think that's a new one.\""
 				}
 				if (animatic_frame == 2){
-					animatic_string = "";
+					animatic_string = ""
 				}
 				if (animatic_frame == 3){
+					animatic_string = "\"My head is starting to clear up now. I should report back what I've experienced.\""
+				}
+				if (animatic_frame == 4){
+					animatic_string = "";
 				}
 			}
 			if (animatic_frame < animatic_frame_max){
