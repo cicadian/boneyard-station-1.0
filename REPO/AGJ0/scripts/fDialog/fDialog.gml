@@ -221,7 +221,7 @@ function dialog_lookup(_event, _page){
 				_str = "\"Station! I've activated the automated distress signal, but nothing feels real anymore, have I? Did I kill my crew? Did they kill me? Where is my light? When is help arriving? I keep.. pacing. Power will run out soon, where is that delivery... I... Who?\"";
 			}
 			if (_page == 4){
-				_str = "I should leave, this is a job for a star cruiser, a research ship. Not a scout vessel."
+				_str = "I should leave, this is a job for a star cruiser, a research ship. Not a scout pilot."
 				with (oWalkzone){
 					if (type == __WALKZONE_TYPE.FEAR){
 						available = true;

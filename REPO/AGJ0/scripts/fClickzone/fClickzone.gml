@@ -62,7 +62,9 @@ function clickzone_execute(_id){
 				audio_play_sound(switchsound, 0, false);
 			}
 			else{
-				stateMachine_push(state_game_ending_flee, stateMap_game);
+				global.ending_flee = true;
+				animatic_frame_max = 5;
+				stateMachine_push(state_game_outro, stateMap_game);
 			}
 			
 			break;

@@ -25,3 +25,21 @@ if (draw_black){
 	// TODO START INTRO TEXT EVENT
 	black_counter++;
 }
+if (draw_imtired){
+	if (!surface_exists(surf_spatter)){
+		surf_spatter = surface_create(NATIVE_W, NATIVE_H);
+		surface_set_target(surf_spatter);
+		draw_clear_alpha(c_black, 0);
+		surface_reset_target();
+	}
+	surface_set_target(surf_spatter);
+	repeat(irandom_range(155, 255)){
+		draw_sprite(sPixel, 0, irandom_range(0, NATIVE_W - 1), irandom_range(0, NATIVE_H - 1));
+	}
+	surface_reset_target();
+	if (black_counter >= black_counter_max){
+		draw_imtired = false;
+	}
+	// TODO START INTRO TEXT EVENT
+	black_counter++;
+}

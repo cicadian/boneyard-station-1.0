@@ -30,7 +30,9 @@ function walkzone_execute(_id){
 			case __WALKZONE_TYPE.ENDING:
 				if (_id.available){
 					oPlayer.life = 0;
-					stateMachine_push(state_game_ending_death, stateMap_game);
+					global.ending_eaten = true;
+					animatic_frame_max = 3;
+					stateMachine_push(state_game_outro, stateMap_game);
 				}
 				break;
 		}

@@ -51,6 +51,7 @@ function game_declare_methods(){
 			audio_play_sound(ambient_0, 0, 0);
 			draw_black = false;
 			surface_free(surf_spatter);
+			surf_spatter = -1;
 		}
 		if (keyboard_check_pressed(vk_anykey) || mouse_check_button_pressed(mb_any)){
 			animatic_counter = animatic_counter_max;
@@ -78,6 +79,93 @@ function game_declare_methods(){
 				draw_black = true;
 				audio_stop_all();
 				stateMachine_push(state_game_default, _stateMap);	
+			}
+		}
+		animatic_counter++;
+		if (stateMachine_get_done(_stateMap)){
+			stateMachine_set_done(_stateMap, false);
+		}
+	}
+	function state_game_outro(){
+		var _stateMap = stateMap_game;
+		if (!stateMachine_get_init(_stateMap)){
+			stateMachine_set_init(_stateMap, true);
+			audio_stop_all();
+			black_counter = 0;
+			animatic_frame = 0;
+			animatic_counter = 0;
+			draw_black = false;
+			
+			draw_imtired = true;
+			surface_free(surf_spatter);
+			surf_spatter = -1;
+			if (global.ending_flee){
+				
+			}
+			else if (global.ending_eaten){
+				
+			}
+			else if (global.ending_beastkiller){
+				
+			}
+		}
+		if (keyboard_check_pressed(vk_anykey) || mouse_check_button_pressed(mb_any)){
+			animatic_counter = animatic_counter_max;
+		}
+		if (animatic_counter >= animatic_counter_max){
+			draw_animatic = true;
+			animatic_counter = 0;
+			if (global.ending_flee){
+				spr_animatic = sEnding_Flee;
+				if (animatic_frame == 0){
+					animatic_string = "\"Must find the light.\""
+				}
+				if (animatic_frame == 1){
+					animatic_string = "\"There! That beautiful glow...\""
+				}
+				if (animatic_frame == 2){
+					animatic_string = ""
+				}
+				if (animatic_frame == 3){
+				}
+			}
+			else if (global.ending_eaten){
+				spr_animatic = sEnding_Eaten;
+				animatic_string = "";
+				/*
+				if (animatic_frame == 0){
+					animatic_string = "\"The light!\""
+				}
+				if (animatic_frame == 1){
+					animatic_string = "\"There!\""
+				}
+				if (animatic_frame == 2){
+					animatic_string = "\"Aghhh!!\""
+				}
+				if (animatic_frame == 3){
+				}
+				*/
+			}
+			else if (global.ending_beastkiller){
+				spr_animatic = sEnding_Beastkiller;
+				if (animatic_frame == 0){
+					animatic_string = "\"A beast that fears the shadows, I think that's a new one.\""
+				}
+				if (animatic_frame == 1){
+					animatic_string = "\"My head is starting to clear up now. I should report back what I've experienced.\""
+				}
+				if (animatic_frame == 2){
+					animatic_string = "";
+				}
+				if (animatic_frame == 3){
+				}
+			}
+			if (animatic_frame < animatic_frame_max){
+				animatic_frame++;
+				animatic_counter = -1;
+			}
+			else{
+				game_end();
 			}
 		}
 		animatic_counter++;

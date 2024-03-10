@@ -1,3 +1,6 @@
+if (draw_imtired){
+	draw_surface(surf_spatter, 0, 0);
+}
 if (draw_animatic){
 	draw_sprite(spr_animatic, animatic_frame, 0, 0);
 	if (animatic_string != ""){
@@ -35,7 +38,4 @@ if (cursor_spr != -1){
 }
 if (dialog_portrait != -1){
 	draw_sprite(dialog_portrait, 0, PORT_X, PORT_Y);
-}
-if (surface_exists(surf_spatter)){
-	draw_surface(surf_spatter, 0, 0);
 }
