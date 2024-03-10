@@ -106,7 +106,7 @@ function game_declare_methods(){
 				
 			}
 			else if (global.ending_beastkiller){
-				audio_play_sound(monster_die_final, 3, 0);
+				audio_play_sound(monster_die_final, 3, 0, 2);
 			}
 		}
 		if (keyboard_check_pressed(vk_anykey) || mouse_check_button_pressed(mb_any)){
@@ -166,7 +166,7 @@ function game_declare_methods(){
 			}
 			if (animatic_frame < animatic_frame_max){
 				if (global.ending_eaten){
-					audio_play_sound(monster_cry, 2, 0);
+					audio_play_sound(monster_cry, 2, 0, 2);
 				}
 				animatic_frame++;
 				animatic_counter = -1;

@@ -174,7 +174,7 @@ function dialog_lookup(_event, _page){
 			}
 			if (_page == 2){
 				dialog_portrait = sPort_Player;
-				_str = "\"These ones were taken in the last few days.\" \n2634.8.10.14:23 Junkyard Auditor's Report \n2634.8.11.08:46 Fuel delivery \n2634.8.11.16:12 Sensor Anomaly";
+				_str = "\"These ones were recorded in the last few days.\" \n2634.8.10.14:23 Junkyard Auditor's Report \n2634.8.11.08:46 Fuel delivery \n2634.8.11.16:12 Sensor Anomaly";
 			}
 			if (_page == 3){
 				dialog_portrait = sPort_Player;
@@ -242,9 +242,9 @@ function dialog_lookup(_event, _page){
 			break;
 		case __DIALOG.MUSE_FEAR:
 			dialog_page_count = 1;
-			if (_page == 0){
+			if (_page == 0 && !global.light_toggle){
 				dialog_portrait = sPort_Player;
-				_str = "I shouldn't go back, it's too dark, I should... Find the mechbay"
+				_str = "It's so dark here, I need to keep going. Need to find... Light."
 				global.unlock_flee = true;
 			}
 			break;
