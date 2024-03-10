@@ -106,7 +106,7 @@ function game_declare_methods(){
 				
 			}
 			else if (global.ending_beastkiller){
-				
+				audio_play_sound(monster_die_final, 3, 0);
 			}
 		}
 		if (keyboard_check_pressed(vk_anykey) || mouse_check_button_pressed(mb_any)){
@@ -165,6 +165,9 @@ function game_declare_methods(){
 				}
 			}
 			if (animatic_frame < animatic_frame_max){
+				if (global.ending_eaten){
+					audio_play_sound(monster_cry, 2, 0);
+				}
 				animatic_frame++;
 				animatic_counter = -1;
 			}
@@ -228,8 +231,8 @@ function game_declare_methods(){
 			var _walkzone = instance_position(oPlayer.x, oPlayer.y, oWalkzone);
 			if (_walkzone != noone){
 				if (!_walkzone.triggered){
-					walkzone_execute(_walkzone);
 					_walkzone.triggered = true;
+					walkzone_execute(_walkzone);
 				}
 			}
 		}

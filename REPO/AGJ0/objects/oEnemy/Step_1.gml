@@ -21,24 +21,17 @@ if (life <= 0 && !global.ending_beastkiller){
 		}
 	}
 	else{
-		if (name != "LEFT" && name != "RIGHT"){
-			audio_play_sound(crumple, 2, 0);
-		}
+		
 	}
 	exit;
 }
 if (name == "LEFT" || name == "RIGHT"){
 	exit;
 }
-if (point_distance(x, y, oPlayer.x + 2, oPlayer.y + 2) < (6 * CELL_SIZE)){
-	if (irandom(149) == 0){
-		audio_play_sound(crumple, 2, 0); // TODO get new sound
-	}
-}
 if (name == "MONSTER"){
 	if (point_distance(x, y, oPlayer.x + 2, oPlayer.y + 2) < (6 * CELL_SIZE)){
 		if (irandom(149) == 0){
-			audio_play_sound(crumple, 2, 0); // TODO get new sound
+			audio_play_sound(monster_cry, 2, 0);
 		}
 	}
 	exit;
