@@ -48,9 +48,9 @@ world_dark_vbuff = undefined;
 
 world_vbuff = world_light_vbuff;
 
-door_tex = sprite_get_texture(sTex_Door, 0);
+door_tex = -1;
 
-clickzone_tex = sprite_get_texture(sTex_Clickzone, 0);
+clickzone_tex = -1;
 
 global.fov = 70;
 global.fog_on = true;

@@ -182,15 +182,15 @@ function dialog_lookup(_event, _page){
 			}
 			if (_page == 4){
 				dialog_portrait = sPort_Commander;
-				_str = "\"Station log: I've just read the final audit on the last batch of scuttled freigters we recieved. They were all said to have been used for hauling rare minerals but one of them has an unmarked cargo shuttle in it.\"";
+				_str = "\"Station log: I've just read the final audit on the last batch of scuttled freighters we recieved. They were all said to have been used for hauling rare minerals, but one of them has an unmarked cargo shuttle in it.\"";
 			}
 			if (_page == 5){
 				dialog_portrait = sPort_Commander;
-				_str = "\"Scans haven't determined the contents so I will be sending a team to investigate. We don't want to take anything apart we might not have rights so after all.\"";
+				_str = "\"Scans haven't determined the contents so I will be sending a team to investigate. We don't want to take apart anything potentially hazardous.\"";
 			}
 			if (_page == 6){
 				dialog_portrait = sPort_Commander;
-				_str = "\"Station log: The away team I sent to investigate the unmarked shuttle in one of our recent arrivals doesn't have the equipment necesarry to open it and have asked to bring it to the mech bay. Hopefully there's nothing dangerous inside.\"";
+				_str = "\"Station log: The team I sent to investigate the unmarked shuttle doesn't have the equipment necesarry to open it. I have asked them to bring it to the mech bay. Hopefully there's nothing dangerous inside.\"";
 			}
 			if (_page == 7){
 				dialog_portrait = sPort_Player;

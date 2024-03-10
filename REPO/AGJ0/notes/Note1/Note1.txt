@@ -1,6 +1,4 @@
-3/9 begin work on final area
-3/10 finish work on final area, add any missing text events
-3/11 continue as needed
+3/11 implement 3 outros and refine art
 3/12 try to finish project and submit if satisfied
 3/13 hopefully done
 3/14 hopefully done
@@ -8,9 +6,7 @@
 art needed
 final enemy parts, pile
 
-intro and outro1/outro2
+outro1/outro2/outro3 implementation
 
 add a toggle for fog/gamma/posterize so there is more visual fidelity
-fix unable to move through second area
 add final enemy death sounds
-sometimes clickzones dont work after you die

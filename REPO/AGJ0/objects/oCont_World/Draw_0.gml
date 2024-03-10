@@ -6,5 +6,3 @@ if (surface_exists(surf_fog)){
 	//draw_surface_stretched(surf_fog, 0, 0, NATIVE_W, NATIVE_H);
 	//gpu_set_blendmode(bm_normal);
 }
-
-show_debug_overlay(true);

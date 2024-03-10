@@ -7,7 +7,80 @@ function game_declare_methods(){
 		if (!stateMachine_get_init(_stateMap)){
 			stateMachine_set_init(_stateMap, true);
 		}
-		stateMachine_push(state_game_default, _stateMap);
+		stateMachine_push(state_game_intro, _stateMap);
+		if (stateMachine_get_done(_stateMap)){
+			stateMachine_set_done(_stateMap, false);
+		}
+	}
+	function state_game_intro(){
+		var _stateMap = stateMap_game;
+		if (!stateMachine_get_init(_stateMap)){
+			stateMachine_set_init(_stateMap, true);
+			audio_play_sound(aDeerbell, 0, 0);
+			draw_intro = true;
+			draw_animatic = true;
+		}
+		if (keyboard_check_pressed(vk_anykey) || mouse_check_button_pressed(mb_any)){
+			// clear any intro stuff!!
+			intro_counter = 0;
+			draw_intro = false;
+			draw_black = true;
+			stateMachine_push(state_game_opener, _stateMap);
+		}
+		if (intro_counter >= intro_counter_max){
+			intro_counter = 0;
+			if (intro_frame < intro_frame_max - 1){
+				intro_frame++;
+				intro_counter = -1;
+			}
+			else{
+				draw_intro = false;
+				draw_black = true;
+				stateMachine_push(state_game_opener, _stateMap);	
+			}
+		}
+		intro_counter++;
+		if (stateMachine_get_done(_stateMap)){
+			stateMachine_set_done(_stateMap, false);
+		}
+	}
+	function state_game_opener(){
+		var _stateMap = stateMap_game;
+		if (!stateMachine_get_init(_stateMap)){
+			stateMachine_set_init(_stateMap, true);
+			audio_play_sound(ambient_0, 0, 0);
+			draw_black = false;
+			surface_free(surf_spatter);
+		}
+		if (keyboard_check_pressed(vk_anykey) || mouse_check_button_pressed(mb_any)){
+			animatic_counter = animatic_counter_max;
+		}
+		if (animatic_counter >= animatic_counter_max){
+			animatic_counter = 0;
+			if (animatic_frame == 0){
+				animatic_string = "Boneyard Station."
+			}
+			if (animatic_frame == 1){
+				animatic_string = "A far-flung scrapyard orbiting an ancient battlefield."
+			}
+			if (animatic_frame == 2){
+				animatic_string = "Several days ago contact was lost, and none of the scheduled arrivals have returned."
+			}
+			if (animatic_frame == 3){
+				animatic_string = "I've been sent to investigate the severity of this incident, and report back to my superiors what I discover."
+			}
+			if (animatic_frame < 5){
+				animatic_frame++;
+				animatic_counter = -1;
+			}
+			else{
+				draw_animatic = false;
+				draw_black = true;
+				audio_stop_all();
+				stateMachine_push(state_game_default, _stateMap);	
+			}
+		}
+		animatic_counter++;
 		if (stateMachine_get_done(_stateMap)){
 			stateMachine_set_done(_stateMap, false);
 		}
@@ -115,4 +188,7 @@ function game_declare_methods(){
 /// @arg {id} id
 function state_game_get_inactive(_id){
 	return stateMachine_get_current(_id.stateMap_game) == state_game_default;
+}
+function state_game_get_opener(_id){
+	return stateMachine_get_current(_id.stateMap_game) == state_game_opener;
 }

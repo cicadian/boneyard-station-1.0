@@ -30,3 +30,23 @@ cursor_frame = 0;
 have_fuel = false;
 
 global.has_gun = true;
+
+surf_spatter = -1;
+test = false;
+
+intro_counter = 0;
+intro_counter_max = 5;
+intro_frame_max = sprite_get_number(sDeerbell);
+draw_intro = false;
+intro_frame = 0;
+draw_black = false;
+black_counter = 0;
+black_counter_max = 600;
+
+
+animatic_counter = 0;
+animatic_counter_max = 270;
+animatic_frame = 0;
+draw_animatic = false;
+spr_animatic = sIntro_Arrival;
+animatic_string = "";
