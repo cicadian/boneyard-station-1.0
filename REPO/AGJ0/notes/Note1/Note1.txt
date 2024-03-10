@@ -1,4 +1,4 @@
-3/11 refine art add final enemy death sounds and eaten sound
+3/11 refine art add eaten sound
 3/12 try to finish project and submit if satisfied
 3/13 hopefully done
 3/14 hopefully done
@@ -6,4 +6,5 @@
 art needed
 final enemy parts, pile
 
+add automatic res scaling and alt tab
 add a toggle for fog/gamma/posterize so there is more visual fidelity

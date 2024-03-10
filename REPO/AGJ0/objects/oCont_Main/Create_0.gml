@@ -1,5 +1,6 @@
 application_surface_draw_enable(false);
-window_set_size(NATIVE_W * WINDOW_SCALE, NATIVE_H * WINDOW_SCALE);
+global.window_scale = (display_get_width() div NATIVE_W) - 1;
+window_set_size(NATIVE_W * global.window_scale, NATIVE_H * global.window_scale);
 
 global.layer_cont = layer_create(DEPTH_CONT);
 
