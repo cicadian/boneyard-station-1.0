@@ -6,6 +6,13 @@ function dialog_lookup(_event, _page){
 	var _str = "LINE MISSING"
 	dialog_page_count = 1;
 	switch (_event){
+		case __DIALOG.INTRO_WASD:
+			dialog_page_count = 1;
+			dialog_portrait = sPort_Player;
+			if (_page == 0){
+				_str = "[WASD To move around the world.] \n[Left Click to interact with walls.]";
+			}
+			break;
 		case __DIALOG.BRIDGE_CONSOLE_START:
 			dialog_page_count = 4;
 			dialog_portrait = sPort_Player;
@@ -35,13 +42,16 @@ function dialog_lookup(_event, _page){
 			_str = "";
 			break;
 		case __DIALOG.ARMORY_GET_GUN:
-			dialog_page_count = 2;
+			dialog_page_count = 3;
 			dialog_portrait = sPort_Player;
 			if (_page == 0){
 				_str = "I've had this pistol most of my career, though I've never needed to fire it."
 			}
 			if (_page == 1){
 				_str = "\"Here's hoping...\"";
+			}
+			if (_page == 2){
+				_str = "[Right Click to arm weapon.] \n[Right Click when armed to fire.]";
 			}
 			break;
 		case __DIALOG.ARMORY_HAVE_GUN:
@@ -221,6 +231,7 @@ function dialog_lookup(_event, _page){
 				_str = "\"Station! I've activated the automated distress signal, but nothing feels real anymore, have I? Did I kill my crew? Did they kill me? Where is my light? When is help arriving? I keep.. pacing. Power will run out soon, where is that delivery... I... Who?\"";
 			}
 			if (_page == 4){
+				dialog_portrait = sPort_Player;
 				_str = "I should leave, this is a job for a star cruiser, a research ship. Not a scout pilot."
 				with (oWalkzone){
 					if (type == __WALKZONE_TYPE.FEAR){

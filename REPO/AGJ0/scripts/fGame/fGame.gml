@@ -187,6 +187,7 @@ function game_declare_methods(){
 			track1 = audio_play_sound(ambient_1, 1, true, 0);
 			stateMachine_set_init(_stateMap, true);
 			cursor_spr = cursor_default;
+			oCont_Game.dialog_index = __DIALOG.INTRO_WASD;
 		}
 		//if (counter_tutorial != -1){
 		//	if (counter_tutorial >= counter_tutorial_max){

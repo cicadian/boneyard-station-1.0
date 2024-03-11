@@ -3,7 +3,4 @@
 3/13 hopefully done
 3/14 hopefully done
 
-art needed
-final enemy parts, pile
-
 add a toggle for fog/gamma/posterize so there is more visual fidelity
