@@ -20,7 +20,7 @@ function game_declare_methods(){
 			draw_intro = true;
 			draw_animatic = true;
 		}
-		if (keyboard_check_pressed(vk_anykey) || mouse_check_button_pressed(mb_any)){
+		if ((keyboard_check_pressed(vk_anykey) && !keyboard_check_pressed(vk_lalt) && !keyboard_check_pressed(vk_ralt) && !keyboard_check_pressed(vk_enter)) || mouse_check_button_pressed(mb_any)){
 			// clear any intro stuff!!
 			intro_counter = 0;
 			draw_intro = false;
@@ -53,7 +53,7 @@ function game_declare_methods(){
 			surface_free(surf_spatter);
 			surf_spatter = -1;
 		}
-		if (keyboard_check_pressed(vk_anykey) || mouse_check_button_pressed(mb_any)){
+		if ((keyboard_check_pressed(vk_anykey) && !keyboard_check_pressed(vk_lalt) && !keyboard_check_pressed(vk_ralt) && !keyboard_check_pressed(vk_enter)) || mouse_check_button_pressed(mb_any)){
 			animatic_counter = animatic_counter_max;
 		}
 		if (animatic_counter >= animatic_counter_max){
@@ -109,7 +109,7 @@ function game_declare_methods(){
 				audio_play_sound(monster_die_final, 3, 0, 2);
 			}
 		}
-		if (keyboard_check_pressed(vk_anykey) || mouse_check_button_pressed(mb_any)){
+		if ((keyboard_check_pressed(vk_anykey) && !keyboard_check_pressed(vk_lalt) && !keyboard_check_pressed(vk_ralt) && !keyboard_check_pressed(vk_enter)) || mouse_check_button_pressed(mb_any)){
 			animatic_counter = animatic_counter_max;
 		}
 		if (animatic_counter >= animatic_counter_max){
