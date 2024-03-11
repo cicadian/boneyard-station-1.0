@@ -17,7 +17,7 @@ function dialog_lookup(_event, _page){
 			dialog_page_count = 4;
 			dialog_portrait = sPort_Player;
 			if (_page == 0){
-				_str = "I've docked with the station but nobody is responding to my hails. Maybe I should try again?";
+				_str = "I've docked with the station, but nobody is responding to my hails. Maybe I should try again?";
 			}
 			if (_page == 1){
 				_str = "\"This is Captain Damian of the scout vessel Kestrel calling Boneyard Station, does anyone read me?\"";
@@ -65,7 +65,7 @@ function dialog_lookup(_event, _page){
 			dialog_page_count = 1;
 			dialog_portrait = sPort_Player;
 			if (_page == 0){
-				_str = "I shouldn't try to board the station unarmed. With no way to communicate with the station commander I have no way of knowing if it's safe to board."
+				_str = "I shouldn't try to board the station unarmed. With no way to communicate with the station commander, I have no way of knowing if it's safe to board."
 			}
 			break;
 		case __DIALOG.ENGINE:
@@ -146,7 +146,7 @@ function dialog_lookup(_event, _page){
 			}
 			if (_page == 2){
 				dialog_portrait = sPort_Player;
-				_str = "\"Please I only want to find out what happened here. Can't you tell me anything?\"";
+				_str = "\"Please, I only want to find out what happened here. Can't you tell me anything?\"";
 			}
 			if (_page == 3){
 				dialog_portrait = sPort_Captain;
@@ -180,7 +180,7 @@ function dialog_lookup(_event, _page){
 			}
 			if (_page == 1){
 				dialog_portrait = sPort_Player;
-				_str = "There's got be a disc or file somewhere in here..."
+				_str = "There's got to be a disc or file somewhere in here..."
 			}
 			if (_page == 2){
 				dialog_portrait = sPort_Player;
@@ -192,19 +192,19 @@ function dialog_lookup(_event, _page){
 			}
 			if (_page == 4){
 				dialog_portrait = sPort_Commander;
-				_str = "\"Station log: I've just read the final audit on the last batch of scuttled freighters we recieved. They were all said to have been used for hauling rare minerals, but one of them has an unmarked cargo shuttle in it.\"";
+				_str = "\"Station log: I've just read the final audit on the last batch of scuttled freighters we received. They were all said to have been used for hauling rare minerals, but one of them has an unmarked cargo shuttle in it.\"";
 			}
 			if (_page == 5){
 				dialog_portrait = sPort_Commander;
-				_str = "\"Scans haven't determined the contents so I will be sending a team to investigate. We don't want to take apart anything potentially hazardous.\"";
+				_str = "\"Scans haven't determined the contents, so I will be sending a team to investigate. We don't want to take apart anything potentially hazardous.\"";
 			}
 			if (_page == 6){
 				dialog_portrait = sPort_Commander;
-				_str = "\"Station log: The team I sent to investigate the unmarked shuttle doesn't have the equipment necesarry to open it. I have asked them to bring it to the mech bay. Hopefully there's nothing dangerous inside.\"";
+				_str = "\"Station log: The team I sent to investigate the unmarked shuttle doesn't have the equipment necessary to open it. I have asked them to bring it to the mech bay. Hopefully, there's nothing dangerous inside.\"";
 			}
 			if (_page == 7){
 				dialog_portrait = sPort_Player;
-				_str = "I can unlock the mechbay from here, it shouldn't be far.";
+				_str = "I can unlock the mech bay from here, it shouldn't be far.";
 				with (oDoor){
 					//if (name == "MECHBAY_CORRIDOR"){
 						stateMachine_push(state_door_closed, stateMap_door);

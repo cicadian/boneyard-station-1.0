@@ -65,7 +65,7 @@ function game_declare_methods(){
 				animatic_string = "A far-flung scrapyard orbiting an ancient battlefield."
 			}
 			if (animatic_frame == 2){
-				animatic_string = "Several days ago contact was lost, and none of the scheduled arrivals have returned."
+				animatic_string = "Several days ago, contact was lost, and none of the scheduled arrivals have returned."
 			}
 			if (animatic_frame == 3){
 				animatic_string = "I've been sent to investigate the severity of this incident, and report back to my superiors what I discover."
