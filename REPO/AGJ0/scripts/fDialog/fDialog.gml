@@ -255,7 +255,12 @@ function dialog_lookup(_event, _page){
 			dialog_page_count = 1;
 			if (_page == 0 && !global.light_toggle){
 				dialog_portrait = sPort_Player;
-				_str = "It's so dark here, I need to keep going. Need to find... Light."
+				_str = "It's so dark here, I need to turn back. Need to find... Light."
+				global.unlock_flee = true;
+			}
+			else if (_page == 0 && global.light_toggle){
+				dialog_portrait = sPort_Player;
+				_str = "Need to find... Light."
 				global.unlock_flee = true;
 			}
 			break;

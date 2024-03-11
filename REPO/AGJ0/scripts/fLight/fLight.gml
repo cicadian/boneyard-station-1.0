@@ -3,7 +3,7 @@ function light_toggle(){
 	global.light_toggle = !global.light_toggle;
 	audio_play_sound(switchsound, 0, 0);
 	if (global.light_toggle){
-		audio_sound_gain(track1, 1, 2000);
+		audio_sound_gain(track1, 0.5, 2000);
 	}
 	else{
 		audio_sound_gain(track1, 0, 2000);

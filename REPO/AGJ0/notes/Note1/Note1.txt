@@ -1,6 +1,1 @@
-3/11 refine art
-3/12 try to finish project and submit if satisfied
-3/13 hopefully done
-3/14 hopefully done
-
 add a toggle for fog/gamma/posterize so there is more visual fidelity
